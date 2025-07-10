@@ -163,7 +163,7 @@ def parse_tax_annotate(tax_csv):
 
     rows_by_tax = defaultdict(list)
     for row in tax_rows:
-        lin = row["lineage"]
+        lin = row["lineage"] + ';' + row['match_name']
         last = None
         while lin or last:
             rows_by_tax[lin].append(row)
