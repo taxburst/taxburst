@@ -1,0 +1,306 @@
+query_name,rank,fraction,lineage,query_md5,query_filename,f_weighted_at_rank,bp_match_at_rank,query_ani_at_rank,total_weighted_hashes
+SRR606249,superkingdom,0.379,Bacteria,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.727,161123000,0.969,7462785
+SRR606249,superkingdom,0.080,Archaea,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.211,33919000,0.922,7462785
+SRR606249,superkingdom,0.541,unclassified,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.062,229873000,,7462785
+SRR606249,phylum,0.126,Bacteria;Proteobacteria,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.191,53691000,0.935,7462785
+SRR606249,phylum,0.054,Archaea;Euryarchaeota,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.126,23141000,0.910,7462785
+SRR606249,phylum,0.031,Bacteria;Bacteroidetes,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.032,13322000,0.894,7462785
+SRR606249,phylum,0.031,Bacteria;Firmicutes,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.048,13241000,0.894,7462785
+SRR606249,phylum,0.030,Bacteria;Chlorobi,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.062,12742000,0.893,7462785
+SRR606249,phylum,0.027,Bacteria;Chloroflexi,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.031,11653000,0.890,7462785
+SRR606249,phylum,0.025,Bacteria;Actinobacteria,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.021,10428000,0.887,7462785
+SRR606249,phylum,0.024,Archaea;Crenarchaeota,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.073,10347000,0.887,7462785
+SRR606249,phylum,0.017,Bacteria;Cyanobacteria,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.023,7288000,0.877,7462785
+SRR606249,phylum,0.017,Bacteria;Planctomycetes,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.089,7039000,0.876,7462785
+SRR606249,phylum,0.015,Bacteria;Aquificae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.039,6428000,0.874,7462785
+SRR606249,phylum,0.011,Bacteria;Gemmatimonadetes,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.038,4629000,0.864,7462785
+SRR606249,phylum,0.011,Bacteria;Deinococcus-Thermus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.013,4580000,0.864,7462785
+SRR606249,phylum,0.010,Bacteria;Thermotogae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.074,4257000,0.862,7462785
+SRR606249,phylum,0.010,Bacteria;Acidobacteria,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.031,4167000,0.861,7462785
+SRR606249,phylum,0.007,Bacteria;Spirochaetes,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.017,2848000,0.851,7462785
+SRR606249,phylum,0.006,Bacteria;Verrucomicrobia,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,2701000,0.849,7462785
+SRR606249,phylum,0.004,Bacteria;Dictyoglomi,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,1839000,0.839,7462785
+SRR606249,phylum,0.001,Archaea;Nanoarchaeota,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.013,431000,0.801,7462785
+SRR606249,phylum,0.001,Bacteria;Fusobacteria,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.001,270000,0.789,7462785
+SRR606249,phylum,0.541,unclassified,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.062,229873000,,7462785
+SRR606249,class,0.052,Bacteria;Proteobacteria;Betaproteobacteria,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.059,21914000,0.909,7462785
+SRR606249,class,0.031,Bacteria;Bacteroidetes;Bacteroidia,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.032,13322000,0.894,7462785
+SRR606249,class,0.030,Bacteria;Chlorobi;Chlorobia,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.062,12742000,0.893,7462785
+SRR606249,class,0.029,Bacteria;Proteobacteria;Alphaproteobacteria,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.067,12461000,0.892,7462785
+SRR606249,class,0.027,Bacteria;Chloroflexi;Chloroflexia,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.031,11653000,0.890,7462785
+SRR606249,class,0.026,Bacteria;Firmicutes;Clostridia,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.041,11244000,0.889,7462785
+SRR606249,class,0.025,Bacteria;Actinobacteria;Actinobacteria,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.021,10428000,0.887,7462785
+SRR606249,class,0.024,Archaea;Crenarchaeota;Thermoprotei,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.073,10347000,0.887,7462785
+SRR606249,class,0.022,Bacteria;Proteobacteria;Deltaproteobacteria,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.046,9466000,0.885,7462785
+SRR606249,class,0.018,Bacteria;Proteobacteria;Gammaproteobacteria,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.011,7826000,0.879,7462785
+SRR606249,class,0.017,Bacteria;Planctomycetes;Planctomycetia,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.089,7039000,0.876,7462785
+SRR606249,class,0.015,Bacteria;Aquificae;Aquificae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.039,6428000,0.874,7462785
+SRR606249,class,0.013,Archaea;Euryarchaeota;Methanomicrobia,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,5422000,0.869,7462785
+SRR606249,class,0.012,Archaea;Euryarchaeota;Methanococci,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.025,4962000,0.866,7462785
+SRR606249,class,0.011,Bacteria;Gemmatimonadetes;Gemmatimonadetes,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.038,4629000,0.864,7462785
+SRR606249,class,0.011,Bacteria;Deinococcus-Thermus;Deinococci,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.013,4580000,0.864,7462785
+SRR606249,class,0.010,Bacteria;Thermotogae;Thermotogae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.074,4257000,0.862,7462785
+SRR606249,class,0.010,Bacteria;Acidobacteria;Acidobacteriia,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.031,4167000,0.861,7462785
+SRR606249,class,0.009,Archaea;Euryarchaeota;Halobacteria,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,3932000,0.860,7462785
+SRR606249,class,0.008,Archaea;Euryarchaeota;Thermococci,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.037,3578000,0.857,7462785
+SRR606249,class,0.007,Bacteria;Spirochaetes;Spirochaetia,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.017,2848000,0.851,7462785
+SRR606249,class,0.006,Bacteria;Verrucomicrobia;Verrucomicrobiae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,2701000,0.849,7462785
+SRR606249,class,0.005,Archaea;Euryarchaeota;Archaeoglobi,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.024,2139000,0.843,7462785
+SRR606249,class,0.005,Bacteria;Proteobacteria;Epsilonproteobacteria,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,2024000,0.842,7462785
+SRR606249,class,0.005,Bacteria;Firmicutes;Bacilli,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,1997000,0.841,7462785
+SRR606249,class,0.004,Bacteria;Dictyoglomi;Dictyoglomia,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,1839000,0.839,7462785
+SRR606249,class,0.004,Archaea;Euryarchaeota;Methanopyri,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,1631000,0.836,7462785
+SRR606249,class,0.001,Bacteria;Fusobacteria;Fusobacteriia,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.001,270000,0.789,7462785
+SRR606249,class,0.563,unclassified,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.108,239069000,,7462785
+SRR606249,order,0.045,Bacteria;Proteobacteria;Betaproteobacteria;Burkholderiales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.027,19187000,0.905,7462785
+SRR606249,order,0.031,Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.032,13322000,0.894,7462785
+SRR606249,order,0.030,Bacteria;Chlorobi;Chlorobia;Chlorobiales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.062,12742000,0.893,7462785
+SRR606249,order,0.025,Bacteria;Actinobacteria;Actinobacteria;Micromonosporales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.021,10428000,0.887,7462785
+SRR606249,order,0.024,Bacteria;Proteobacteria;Alphaproteobacteria;Rhodobacterales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.064,10335000,0.887,7462785
+SRR606249,order,0.018,Bacteria;Proteobacteria;Gammaproteobacteria;Alteromonadales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.011,7826000,0.879,7462785
+SRR606249,order,0.018,Bacteria;Firmicutes;Clostridia;Thermoanaerobacterales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.028,7588000,0.878,7462785
+SRR606249,order,0.017,Bacteria;Cyanobacteria;;Nostocales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.023,7288000,0.877,7462785
+SRR606249,order,0.017,Bacteria;Planctomycetes;Planctomycetia;Planctomycetales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.089,7039000,0.876,7462785
+SRR606249,order,0.016,Bacteria;Chloroflexi;Chloroflexia;Herpetosiphonales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.014,6604000,0.874,7462785
+SRR606249,order,0.015,Bacteria;Aquificae;Aquificae;Aquificales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.039,6428000,0.874,7462785
+SRR606249,order,0.015,Archaea;Crenarchaeota;Thermoprotei;Thermoproteales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.044,6384000,0.873,7462785
+SRR606249,order,0.013,Bacteria;Proteobacteria;Deltaproteobacteria;Desulfovibrionales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.019,5691000,0.870,7462785
+SRR606249,order,0.013,Archaea;Euryarchaeota;Methanomicrobia;Methanosarcinales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,5422000,0.869,7462785
+SRR606249,order,0.012,Bacteria;Chloroflexi;Chloroflexia;Chloroflexales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.017,5049000,0.867,7462785
+SRR606249,order,0.012,Archaea;Euryarchaeota;Methanococci;Methanococcales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.025,4962000,0.866,7462785
+SRR606249,order,0.011,Bacteria;Gemmatimonadetes;Gemmatimonadetes;Gemmatimonadales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.038,4629000,0.864,7462785
+SRR606249,order,0.010,Bacteria;Thermotogae;Thermotogae;Thermotogales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.074,4257000,0.862,7462785
+SRR606249,order,0.010,Bacteria;Acidobacteria;Acidobacteriia;Acidobacteriales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.031,4167000,0.861,7462785
+SRR606249,order,0.009,Archaea;Euryarchaeota;Halobacteria;Haloferacales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,3932000,0.860,7462785
+SRR606249,order,0.009,Bacteria;Proteobacteria;Deltaproteobacteria;Desulfuromonadales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.027,3775000,0.859,7462785
+SRR606249,order,0.009,Bacteria;Firmicutes;Clostridia;Clostridiales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.012,3656000,0.858,7462785
+SRR606249,order,0.008,Archaea;Euryarchaeota;Thermococci;Thermococcales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.037,3578000,0.857,7462785
+SRR606249,order,0.008,Bacteria;Deinococcus-Thermus;Deinococci;Deinococcales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,3201000,0.854,7462785
+SRR606249,order,0.007,Bacteria;Spirochaetes;Spirochaetia;Spirochaetales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.017,2848000,0.851,7462785
+SRR606249,order,0.006,Bacteria;Proteobacteria;Betaproteobacteria;Nitrosomonadales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.032,2727000,0.850,7462785
+SRR606249,order,0.006,Bacteria;Verrucomicrobia;Verrucomicrobiae;Verrucomicrobiales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,2701000,0.849,7462785
+SRR606249,order,0.006,Archaea;Crenarchaeota;Thermoprotei;Sulfolobales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.026,2679000,0.849,7462785
+SRR606249,order,0.005,Archaea;Euryarchaeota;Archaeoglobi;Archaeoglobales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.024,2139000,0.843,7462785
+SRR606249,order,0.005,Bacteria;Proteobacteria;Alphaproteobacteria;Sphingomonadales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.002,2126000,0.843,7462785
+SRR606249,order,0.005,Bacteria;Proteobacteria;Epsilonproteobacteria;Campylobacterales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,2024000,0.842,7462785
+SRR606249,order,0.005,Bacteria;Firmicutes;Bacilli;Lactobacillales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,1997000,0.841,7462785
+SRR606249,order,0.004,Bacteria;Dictyoglomi;Dictyoglomia;Dictyoglomales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,1839000,0.839,7462785
+SRR606249,order,0.004,Archaea;Euryarchaeota;Methanopyri;Methanopyrales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,1631000,0.836,7462785
+SRR606249,order,0.003,Bacteria;Deinococcus-Thermus;Deinococci;Thermales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,1379000,0.831,7462785
+SRR606249,order,0.003,Archaea;Crenarchaeota;Thermoprotei;Desulfurococcales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.003,1284000,0.829,7462785
+SRR606249,order,0.001,Archaea;Nanoarchaeota;;Nanoarchaeales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.013,431000,0.801,7462785
+SRR606249,order,0.001,Bacteria;Fusobacteria;Fusobacteriia;Fusobacteriales,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.001,270000,0.789,7462785
+SRR606249,order,0.544,unclassified,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.072,231350000,,7462785
+SRR606249,family,0.030,Bacteria;Chlorobi;Chlorobia;Chlorobiales;Chlorobiaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.062,12742000,0.893,7462785
+SRR606249,family,0.026,Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Bacteroidaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.024,11214000,0.889,7462785
+SRR606249,family,0.025,Bacteria;Actinobacteria;Actinobacteria;Micromonosporales;Micromonosporaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.021,10428000,0.887,7462785
+SRR606249,family,0.024,Bacteria;Proteobacteria;Alphaproteobacteria;Rhodobacterales;Rhodobacteraceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.064,10335000,0.887,7462785
+SRR606249,family,0.022,Bacteria;Proteobacteria;Betaproteobacteria;Burkholderiales;Burkholderiaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,9304000,0.884,7462785
+SRR606249,family,0.018,Bacteria;Proteobacteria;Gammaproteobacteria;Alteromonadales;Shewanellaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.011,7826000,0.879,7462785
+SRR606249,family,0.017,Bacteria;Cyanobacteria;;Nostocales;Nostocaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.023,7288000,0.877,7462785
+SRR606249,family,0.017,Bacteria;Planctomycetes;Planctomycetia;Planctomycetales;Planctomycetaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.089,7039000,0.876,7462785
+SRR606249,family,0.016,Bacteria;Chloroflexi;Chloroflexia;Herpetosiphonales;Herpetosiphonaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.014,6604000,0.874,7462785
+SRR606249,family,0.015,Archaea;Crenarchaeota;Thermoprotei;Thermoproteales;Thermoproteaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.044,6384000,0.873,7462785
+SRR606249,family,0.013,Bacteria;Proteobacteria;Deltaproteobacteria;Desulfovibrionales;Desulfovibrionaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.019,5691000,0.870,7462785
+SRR606249,family,0.013,Archaea;Euryarchaeota;Methanomicrobia;Methanosarcinales;Methanosarcinaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,5422000,0.869,7462785
+SRR606249,family,0.013,Bacteria;Firmicutes;Clostridia;Thermoanaerobacterales;Thermoanaerobacterales Family III. Incertae Sedis,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.022,5378000,0.869,7462785
+SRR606249,family,0.012,Bacteria;Proteobacteria;Betaproteobacteria;Burkholderiales;Alcaligenaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.007,5140000,0.867,7462785
+SRR606249,family,0.012,Bacteria;Chloroflexi;Chloroflexia;Chloroflexales;Chloroflexaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.017,5049000,0.867,7462785
+SRR606249,family,0.011,Bacteria;Aquificae;Aquificae;Aquificales;Hydrogenothermaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.025,4833000,0.866,7462785
+SRR606249,family,0.011,Bacteria;Gemmatimonadetes;Gemmatimonadetes;Gemmatimonadales;Gemmatimonadaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.038,4629000,0.864,7462785
+SRR606249,family,0.010,Bacteria;Thermotogae;Thermotogae;Thermotogales;Thermotogaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.074,4257000,0.862,7462785
+SRR606249,family,0.010,Bacteria;Acidobacteria;Acidobacteriia;Acidobacteriales;Acidobacteriaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.031,4167000,0.861,7462785
+SRR606249,family,0.009,Archaea;Euryarchaeota;Halobacteria;Haloferacales;Haloferacaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,3932000,0.860,7462785
+SRR606249,family,0.009,Bacteria;Proteobacteria;Deltaproteobacteria;Desulfuromonadales;Geobacteraceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.027,3775000,0.859,7462785
+SRR606249,family,0.009,Bacteria;Firmicutes;Clostridia;Clostridiales;Ruminococcaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.012,3656000,0.858,7462785
+SRR606249,family,0.008,Archaea;Euryarchaeota;Thermococci;Thermococcales;Thermococcaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.037,3578000,0.857,7462785
+SRR606249,family,0.008,Archaea;Euryarchaeota;Methanococci;Methanococcales;Methanococcaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.015,3283000,0.855,7462785
+SRR606249,family,0.008,Bacteria;Deinococcus-Thermus;Deinococci;Deinococcales;Deinococcaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,3201000,0.854,7462785
+SRR606249,family,0.007,Bacteria;Spirochaetes;Spirochaetia;Spirochaetales;Spirochaetaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.017,2848000,0.851,7462785
+SRR606249,family,0.006,Bacteria;Proteobacteria;Betaproteobacteria;Nitrosomonadales;Nitrosomonadaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.032,2727000,0.850,7462785
+SRR606249,family,0.006,Bacteria;Verrucomicrobia;Verrucomicrobiae;Verrucomicrobiales;Akkermansiaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,2701000,0.849,7462785
+SRR606249,family,0.006,Archaea;Crenarchaeota;Thermoprotei;Sulfolobales;Sulfolobaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.026,2679000,0.849,7462785
+SRR606249,family,0.005,Bacteria;Firmicutes;Clostridia;Thermoanaerobacterales;Thermoanaerobacteraceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,2210000,0.844,7462785
+SRR606249,family,0.005,Archaea;Euryarchaeota;Archaeoglobi;Archaeoglobales;Archaeoglobaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.024,2139000,0.843,7462785
+SRR606249,family,0.005,Bacteria;Proteobacteria;Alphaproteobacteria;Sphingomonadales;Sphingomonadaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.002,2126000,0.843,7462785
+SRR606249,family,0.005,Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Porphyromonadaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,2108000,0.843,7462785
+SRR606249,family,0.005,Bacteria;Proteobacteria;Epsilonproteobacteria;Campylobacterales;Helicobacteraceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,2024000,0.842,7462785
+SRR606249,family,0.005,Bacteria;Firmicutes;Bacilli;Lactobacillales;Enterococcaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,1997000,0.841,7462785
+SRR606249,family,0.004,Bacteria;Dictyoglomi;Dictyoglomia;Dictyoglomales;Dictyoglomaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,1839000,0.839,7462785
+SRR606249,family,0.004,Archaea;Euryarchaeota;Methanococci;Methanococcales;Methanocaldococcaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,1679000,0.837,7462785
+SRR606249,family,0.004,Archaea;Euryarchaeota;Methanopyri;Methanopyrales;Methanopyraceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,1631000,0.836,7462785
+SRR606249,family,0.004,Bacteria;Aquificae;Aquificae;Aquificales;Aquificaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.014,1595000,0.835,7462785
+SRR606249,family,0.003,Bacteria;Deinococcus-Thermus;Deinococci;Thermales;Thermaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,1379000,0.831,7462785
+SRR606249,family,0.003,Archaea;Crenarchaeota;Thermoprotei;Desulfurococcales;Desulfurococcaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.003,1284000,0.829,7462785
+SRR606249,family,0.001,Archaea;Nanoarchaeota;;Nanoarchaeales;Nanoarchaeaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.013,431000,0.801,7462785
+SRR606249,family,0.001,Bacteria;Fusobacteria;Fusobacteriia;Fusobacteriales;Fusobacteriaceae,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.001,270000,0.789,7462785
+SRR606249,family,0.556,unclassified,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.084,236093000,,7462785
+SRR606249,genus,0.026,Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Bacteroidaceae;Bacteroides,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.024,11214000,0.889,7462785
+SRR606249,genus,0.025,Bacteria;Actinobacteria;Actinobacteria;Micromonosporales;Micromonosporaceae;Salinispora,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.021,10428000,0.887,7462785
+SRR606249,genus,0.022,Bacteria;Proteobacteria;Betaproteobacteria;Burkholderiales;Burkholderiaceae;Paraburkholderia,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,9304000,0.884,7462785
+SRR606249,genus,0.018,Bacteria;Proteobacteria;Gammaproteobacteria;Alteromonadales;Shewanellaceae;Shewanella,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.011,7826000,0.879,7462785
+SRR606249,genus,0.018,Bacteria;Chlorobi;Chlorobia;Chlorobiales;Chlorobiaceae;Chlorobium,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.040,7614000,0.878,7462785
+SRR606249,genus,0.017,Bacteria;Cyanobacteria;;Nostocales;Nostocaceae;Nostoc,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.023,7288000,0.877,7462785
+SRR606249,genus,0.017,Bacteria;Planctomycetes;Planctomycetia;Planctomycetales;Planctomycetaceae;Rhodopirellula,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.089,7039000,0.876,7462785
+SRR606249,genus,0.016,Bacteria;Chloroflexi;Chloroflexia;Herpetosiphonales;Herpetosiphonaceae;Herpetosiphon,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.014,6604000,0.874,7462785
+SRR606249,genus,0.015,Archaea;Crenarchaeota;Thermoprotei;Thermoproteales;Thermoproteaceae;Pyrobaculum,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.044,6384000,0.873,7462785
+SRR606249,genus,0.014,Bacteria;Proteobacteria;Alphaproteobacteria;Rhodobacterales;Rhodobacteraceae;Sulfitobacter,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.058,5806000,0.871,7462785
+SRR606249,genus,0.013,Bacteria;Proteobacteria;Deltaproteobacteria;Desulfovibrionales;Desulfovibrionaceae;Desulfovibrio,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.019,5691000,0.870,7462785
+SRR606249,genus,0.013,Archaea;Euryarchaeota;Methanomicrobia;Methanosarcinales;Methanosarcinaceae;Methanosarcina,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,5422000,0.869,7462785
+SRR606249,genus,0.013,Bacteria;Firmicutes;Clostridia;Thermoanaerobacterales;Thermoanaerobacterales Family III. Incertae Sedis;Caldicellulosiruptor,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.022,5378000,0.869,7462785
+SRR606249,genus,0.012,Bacteria;Proteobacteria;Betaproteobacteria;Burkholderiales;Alcaligenaceae;Bordetella,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.007,5140000,0.867,7462785
+SRR606249,genus,0.012,Bacteria;Chloroflexi;Chloroflexia;Chloroflexales;Chloroflexaceae;Chloroflexus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.017,5049000,0.867,7462785
+SRR606249,genus,0.011,Bacteria;Proteobacteria;Betaproteobacteria;Burkholderiales;;Leptothrix,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.012,4743000,0.865,7462785
+SRR606249,genus,0.011,Bacteria;Gemmatimonadetes;Gemmatimonadetes;Gemmatimonadales;Gemmatimonadaceae;Gemmatimonas,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.038,4629000,0.864,7462785
+SRR606249,genus,0.011,Bacteria;Proteobacteria;Alphaproteobacteria;Rhodobacterales;Rhodobacteraceae;Ruegeria,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,4529000,0.864,7462785
+SRR606249,genus,0.010,Bacteria;Thermotogae;Thermotogae;Thermotogales;Thermotogaceae;Thermotoga,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.074,4257000,0.862,7462785
+SRR606249,genus,0.010,Bacteria;Acidobacteria;Acidobacteriia;Acidobacteriales;Acidobacteriaceae;Acidobacterium,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.031,4167000,0.861,7462785
+SRR606249,genus,0.009,Archaea;Euryarchaeota;Halobacteria;Haloferacales;Haloferacaceae;Haloferax,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,3932000,0.860,7462785
+SRR606249,genus,0.009,Bacteria;Proteobacteria;Deltaproteobacteria;Desulfuromonadales;Geobacteraceae;Geobacter,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.027,3775000,0.859,7462785
+SRR606249,genus,0.009,Bacteria;Firmicutes;Clostridia;Clostridiales;Ruminococcaceae;Ruminiclostridium,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.012,3656000,0.858,7462785
+SRR606249,genus,0.008,Archaea;Euryarchaeota;Thermococci;Thermococcales;Thermococcaceae;Pyrococcus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.037,3578000,0.857,7462785
+SRR606249,genus,0.008,Archaea;Euryarchaeota;Methanococci;Methanococcales;Methanococcaceae;Methanococcus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.015,3283000,0.855,7462785
+SRR606249,genus,0.008,Bacteria;Deinococcus-Thermus;Deinococci;Deinococcales;Deinococcaceae;Deinococcus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,3201000,0.854,7462785
+SRR606249,genus,0.007,Bacteria;Chlorobi;Chlorobia;Chlorobiales;Chlorobiaceae;Pelodictyon,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.011,2963000,0.852,7462785
+SRR606249,genus,0.007,Bacteria;Aquificae;Aquificae;Aquificales;Hydrogenothermaceae;Sulfurihydrogenibium,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.012,2895000,0.851,7462785
+SRR606249,genus,0.007,Bacteria;Spirochaetes;Spirochaetia;Spirochaetales;Spirochaetaceae;Treponema,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.017,2848000,0.851,7462785
+SRR606249,genus,0.006,Bacteria;Proteobacteria;Betaproteobacteria;Nitrosomonadales;Nitrosomonadaceae;Nitrosomonas,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.032,2727000,0.850,7462785
+SRR606249,genus,0.006,Bacteria;Verrucomicrobia;Verrucomicrobiae;Verrucomicrobiales;Akkermansiaceae;Akkermansia,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,2701000,0.849,7462785
+SRR606249,genus,0.006,Archaea;Crenarchaeota;Thermoprotei;Sulfolobales;Sulfolobaceae;Sulfolobus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.026,2679000,0.849,7462785
+SRR606249,genus,0.005,Bacteria;Firmicutes;Clostridia;Thermoanaerobacterales;Thermoanaerobacteraceae;Thermoanaerobacter,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,2210000,0.844,7462785
+SRR606249,genus,0.005,Bacteria;Chlorobi;Chlorobia;Chlorobiales;Chlorobiaceae;Chlorobaculum,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,2165000,0.843,7462785
+SRR606249,genus,0.005,Archaea;Euryarchaeota;Archaeoglobi;Archaeoglobales;Archaeoglobaceae;Archaeoglobus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.024,2139000,0.843,7462785
+SRR606249,genus,0.005,Bacteria;Proteobacteria;Alphaproteobacteria;Sphingomonadales;Sphingomonadaceae;Zymomonas,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.002,2126000,0.843,7462785
+SRR606249,genus,0.005,Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Porphyromonadaceae;Porphyromonas,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,2108000,0.843,7462785
+SRR606249,genus,0.005,Bacteria;Proteobacteria;Epsilonproteobacteria;Campylobacterales;Helicobacteraceae;Wolinella,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,2024000,0.842,7462785
+SRR606249,genus,0.005,Bacteria;Firmicutes;Bacilli;Lactobacillales;Enterococcaceae;Enterococcus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,1997000,0.841,7462785
+SRR606249,genus,0.005,Bacteria;Aquificae;Aquificae;Aquificales;Hydrogenothermaceae;Persephonella,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.013,1938000,0.840,7462785
+SRR606249,genus,0.004,Bacteria;Dictyoglomi;Dictyoglomia;Dictyoglomales;Dictyoglomaceae;Dictyoglomus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,1839000,0.839,7462785
+SRR606249,genus,0.004,Archaea;Euryarchaeota;Methanococci;Methanococcales;Methanocaldococcaceae;Methanocaldococcus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,1679000,0.837,7462785
+SRR606249,genus,0.004,Archaea;Euryarchaeota;Methanopyri;Methanopyrales;Methanopyraceae;Methanopyrus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,1631000,0.836,7462785
+SRR606249,genus,0.004,Bacteria;Aquificae;Aquificae;Aquificales;Aquificaceae;Hydrogenobaculum,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.014,1595000,0.835,7462785
+SRR606249,genus,0.003,Archaea;Euryarchaeota;;;;Aciduliprofundum,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,1477000,0.833,7462785
+SRR606249,genus,0.003,Bacteria;Deinococcus-Thermus;Deinococci;Thermales;Thermaceae;Thermus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,1379000,0.831,7462785
+SRR606249,genus,0.003,Archaea;Crenarchaeota;Thermoprotei;Desulfurococcales;Desulfurococcaceae;Ignicoccus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.003,1284000,0.829,7462785
+SRR606249,genus,0.001,Archaea;Nanoarchaeota;;Nanoarchaeales;Nanoarchaeaceae;Nanoarchaeum,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.013,431000,0.801,7462785
+SRR606249,genus,0.001,Bacteria;Fusobacteria;Fusobacteriia;Fusobacteriales;Fusobacteriaceae;Fusobacterium,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.001,270000,0.789,7462785
+SRR606249,genus,0.541,unclassified,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.062,229873000,,7462785
+SRR606249,species,0.022,Bacteria;Proteobacteria;Betaproteobacteria;Burkholderiales;Burkholderiaceae;Paraburkholderia;Paraburkholderia xenovorans,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,9304000,0.884,7462785
+SRR606249,species,0.018,Bacteria;Proteobacteria;Gammaproteobacteria;Alteromonadales;Shewanellaceae;Shewanella;Shewanella baltica,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.011,7826000,0.879,7462785
+SRR606249,species,0.017,Bacteria;Cyanobacteria;;Nostocales;Nostocaceae;Nostoc;Nostoc sp. PCC 7120,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.023,7288000,0.877,7462785
+SRR606249,species,0.017,Bacteria;Planctomycetes;Planctomycetia;Planctomycetales;Planctomycetaceae;Rhodopirellula;Rhodopirellula baltica,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.089,7039000,0.876,7462785
+SRR606249,species,0.016,Bacteria;Chloroflexi;Chloroflexia;Herpetosiphonales;Herpetosiphonaceae;Herpetosiphon;Herpetosiphon aurantiacus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.014,6604000,0.874,7462785
+SRR606249,species,0.015,Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Bacteroidaceae;Bacteroides;Bacteroides thetaiotaomicron,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.014,6259000,0.873,7462785
+SRR606249,species,0.013,Bacteria;Actinobacteria;Actinobacteria;Micromonosporales;Micromonosporaceae;Salinispora;Salinispora arenicola,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.011,5629000,0.870,7462785
+SRR606249,species,0.013,Archaea;Euryarchaeota;Methanomicrobia;Methanosarcinales;Methanosarcinaceae;Methanosarcina;Methanosarcina acetivorans,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,5422000,0.869,7462785
+SRR606249,species,0.012,Bacteria;Proteobacteria;Betaproteobacteria;Burkholderiales;Alcaligenaceae;Bordetella;Bordetella bronchiseptica,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.007,5140000,0.867,7462785
+SRR606249,species,0.012,Bacteria;Chloroflexi;Chloroflexia;Chloroflexales;Chloroflexaceae;Chloroflexus;Chloroflexus aurantiacus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.017,5049000,0.867,7462785
+SRR606249,species,0.012,Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Bacteroidaceae;Bacteroides;Bacteroides vulgatus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,4955000,0.866,7462785
+SRR606249,species,0.011,Bacteria;Actinobacteria;Actinobacteria;Micromonosporales;Micromonosporaceae;Salinispora;Salinispora tropica,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,4799000,0.865,7462785
+SRR606249,species,0.011,Bacteria;Proteobacteria;Betaproteobacteria;Burkholderiales;;Leptothrix;Leptothrix cholodnii,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.012,4743000,0.865,7462785
+SRR606249,species,0.011,Bacteria;Gemmatimonadetes;Gemmatimonadetes;Gemmatimonadales;Gemmatimonadaceae;Gemmatimonas;Gemmatimonas aurantiaca,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.038,4629000,0.864,7462785
+SRR606249,species,0.011,Bacteria;Proteobacteria;Alphaproteobacteria;Rhodobacterales;Rhodobacteraceae;Ruegeria;Ruegeria pomeroyi,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,4529000,0.864,7462785
+SRR606249,species,0.010,Bacteria;Acidobacteria;Acidobacteriia;Acidobacteriales;Acidobacteriaceae;Acidobacterium;Acidobacterium capsulatum,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.031,4167000,0.861,7462785
+SRR606249,species,0.009,Archaea;Euryarchaeota;Halobacteria;Haloferacales;Haloferacaceae;Haloferax;Haloferax volcanii,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,3932000,0.860,7462785
+SRR606249,species,0.009,Bacteria;Proteobacteria;Alphaproteobacteria;Rhodobacterales;Rhodobacteraceae;Sulfitobacter;Sulfitobacter sp. NAS-14.1,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.043,3854000,0.859,7462785
+SRR606249,species,0.009,Bacteria;Proteobacteria;Deltaproteobacteria;Desulfuromonadales;Geobacteraceae;Geobacter;Geobacter sulfurreducens,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.027,3775000,0.859,7462785
+SRR606249,species,0.009,Bacteria;Firmicutes;Clostridia;Clostridiales;Ruminococcaceae;Ruminiclostridium;Ruminiclostridium thermocellum,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.012,3656000,0.858,7462785
+SRR606249,species,0.008,Archaea;Euryarchaeota;Methanococci;Methanococcales;Methanococcaceae;Methanococcus;Methanococcus maripaludis,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.015,3283000,0.855,7462785
+SRR606249,species,0.008,Bacteria;Deinococcus-Thermus;Deinococci;Deinococcales;Deinococcaceae;Deinococcus;Deinococcus radiodurans,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,3201000,0.854,7462785
+SRR606249,species,0.007,Bacteria;Chlorobi;Chlorobia;Chlorobiales;Chlorobiaceae;Pelodictyon;Pelodictyon phaeoclathratiforme,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.011,2963000,0.852,7462785
+SRR606249,species,0.007,Bacteria;Chlorobi;Chlorobia;Chlorobiales;Chlorobiaceae;Chlorobium;Chlorobium phaeobacteroides,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.012,2875000,0.851,7462785
+SRR606249,species,0.007,Bacteria;Proteobacteria;Deltaproteobacteria;Desulfovibrionales;Desulfovibrionaceae;Desulfovibrio;Desulfovibrio piger,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.012,2865000,0.851,7462785
+SRR606249,species,0.007,Bacteria;Spirochaetes;Spirochaetia;Spirochaetales;Spirochaetaceae;Treponema;Treponema denticola,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.017,2848000,0.851,7462785
+SRR606249,species,0.007,Bacteria;Proteobacteria;Deltaproteobacteria;Desulfovibrionales;Desulfovibrionaceae;Desulfovibrio;Desulfovibrio vulgaris,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.007,2826000,0.851,7462785
+SRR606249,species,0.007,Bacteria;Firmicutes;Clostridia;Thermoanaerobacterales;Thermoanaerobacterales Family III. Incertae Sedis;Caldicellulosiruptor;Caldicellulosiruptor bescii,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,2777000,0.850,7462785
+SRR606249,species,0.006,Bacteria;Proteobacteria;Betaproteobacteria;Nitrosomonadales;Nitrosomonadaceae;Nitrosomonas;Nitrosomonas europaea,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.032,2727000,0.850,7462785
+SRR606249,species,0.006,Bacteria;Verrucomicrobia;Verrucomicrobiae;Verrucomicrobiales;Akkermansiaceae;Akkermansia;Akkermansia muciniphila,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,2701000,0.849,7462785
+SRR606249,species,0.006,Archaea;Crenarchaeota;Thermoprotei;Sulfolobales;Sulfolobaceae;Sulfolobus;Sulfolobus tokodaii,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.026,2679000,0.849,7462785
+SRR606249,species,0.006,Bacteria;Chlorobi;Chlorobia;Chlorobiales;Chlorobiaceae;Chlorobium;Chlorobium limicola,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.012,2672000,0.849,7462785
+SRR606249,species,0.006,Bacteria;Firmicutes;Clostridia;Thermoanaerobacterales;Thermoanaerobacterales Family III. Incertae Sedis;Caldicellulosiruptor;Caldicellulosiruptor saccharolyticus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.011,2601000,0.848,7462785
+SRR606249,species,0.005,Archaea;Crenarchaeota;Thermoprotei;Thermoproteales;Thermoproteaceae;Pyrobaculum;Pyrobaculum aerophilum,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.019,2247000,0.844,7462785
+SRR606249,species,0.005,Bacteria;Firmicutes;Clostridia;Thermoanaerobacterales;Thermoanaerobacteraceae;Thermoanaerobacter;Thermoanaerobacter pseudethanolicus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,2210000,0.844,7462785
+SRR606249,species,0.005,Bacteria;Chlorobi;Chlorobia;Chlorobiales;Chlorobiaceae;Chlorobaculum;Chlorobaculum tepidum,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,2165000,0.843,7462785
+SRR606249,species,0.005,Archaea;Crenarchaeota;Thermoprotei;Thermoproteales;Thermoproteaceae;Pyrobaculum;Pyrobaculum arsenaticum,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.011,2157000,0.843,7462785
+SRR606249,species,0.005,Archaea;Euryarchaeota;Archaeoglobi;Archaeoglobales;Archaeoglobaceae;Archaeoglobus;Archaeoglobus fulgidus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.024,2139000,0.843,7462785
+SRR606249,species,0.005,Bacteria;Proteobacteria;Alphaproteobacteria;Sphingomonadales;Sphingomonadaceae;Zymomonas;Zymomonas mobilis,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.002,2126000,0.843,7462785
+SRR606249,species,0.005,Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Porphyromonadaceae;Porphyromonas;Porphyromonas gingivalis,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,2108000,0.843,7462785
+SRR606249,species,0.005,Bacteria;Chlorobi;Chlorobia;Chlorobiales;Chlorobiaceae;Chlorobium;Chlorobium phaeovibrioides,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.016,2067000,0.842,7462785
+SRR606249,species,0.005,Bacteria;Proteobacteria;Epsilonproteobacteria;Campylobacterales;Helicobacteraceae;Wolinella;Wolinella succinogenes,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,2024000,0.842,7462785
+SRR606249,species,0.005,Bacteria;Firmicutes;Bacilli;Lactobacillales;Enterococcaceae;Enterococcus;Enterococcus faecalis,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,1997000,0.841,7462785
+SRR606249,species,0.005,Archaea;Crenarchaeota;Thermoprotei;Thermoproteales;Thermoproteaceae;Pyrobaculum;Pyrobaculum calidifontis,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.014,1980000,0.841,7462785
+SRR606249,species,0.005,Bacteria;Proteobacteria;Alphaproteobacteria;Rhodobacterales;Rhodobacteraceae;Sulfitobacter;Sulfitobacter sp. EE-36,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.015,1952000,0.841,7462785
+SRR606249,species,0.005,Bacteria;Aquificae;Aquificae;Aquificales;Hydrogenothermaceae;Persephonella;Persephonella marina,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.013,1938000,0.840,7462785
+SRR606249,species,0.004,Bacteria;Thermotogae;Thermotogae;Thermotogales;Thermotogaceae;Thermotoga;Thermotoga neapolitana,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.025,1851000,0.839,7462785
+SRR606249,species,0.004,Bacteria;Dictyoglomi;Dictyoglomia;Dictyoglomales;Dictyoglomaceae;Dictyoglomus;Dictyoglomus turgidum,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,1839000,0.839,7462785
+SRR606249,species,0.004,Archaea;Euryarchaeota;Thermococci;Thermococcales;Thermococcaceae;Pyrococcus;Pyrococcus furiosus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.015,1837000,0.839,7462785
+SRR606249,species,0.004,Bacteria;Aquificae;Aquificae;Aquificales;Hydrogenothermaceae;Sulfurihydrogenibium;Sulfurihydrogenibium sp. YO3AOP1,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,1777000,0.838,7462785
+SRR606249,species,0.004,Archaea;Euryarchaeota;Thermococci;Thermococcales;Thermococcaceae;Pyrococcus;Pyrococcus horikoshii,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.022,1741000,0.837,7462785
+SRR606249,species,0.004,Archaea;Euryarchaeota;Methanococci;Methanococcales;Methanocaldococcaceae;Methanocaldococcus;Methanocaldococcus jannaschii,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,1679000,0.837,7462785
+SRR606249,species,0.004,Bacteria;Thermotogae;Thermotogae;Thermotogales;Thermotogaceae;Thermotoga;Thermotoga sp. RQ2,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.043,1672000,0.836,7462785
+SRR606249,species,0.004,Archaea;Euryarchaeota;Methanopyri;Methanopyrales;Methanopyraceae;Methanopyrus;Methanopyrus kandleri,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,1631000,0.836,7462785
+SRR606249,species,0.004,Bacteria;Aquificae;Aquificae;Aquificales;Aquificaceae;Hydrogenobaculum;Hydrogenobaculum sp. Y04AAS1,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.014,1595000,0.835,7462785
+SRR606249,species,0.003,Archaea;Euryarchaeota;;;;Aciduliprofundum;Aciduliprofundum boonei,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,1477000,0.833,7462785
+SRR606249,species,0.003,Bacteria;Deinococcus-Thermus;Deinococci;Thermales;Thermaceae;Thermus;Thermus thermophilus,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,1379000,0.831,7462785
+SRR606249,species,0.003,Archaea;Crenarchaeota;Thermoprotei;Desulfurococcales;Desulfurococcaceae;Ignicoccus;Ignicoccus hospitalis,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.003,1284000,0.829,7462785
+SRR606249,species,0.003,Bacteria;Aquificae;Aquificae;Aquificales;Hydrogenothermaceae;Sulfurihydrogenibium;Sulfurihydrogenibium yellowstonense,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.002,1118000,0.826,7462785
+SRR606249,species,0.002,Bacteria;Thermotogae;Thermotogae;Thermotogales;Thermotogaceae;Thermotoga;Thermotoga petrophila,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,734000,0.814,7462785
+SRR606249,species,0.001,Archaea;Nanoarchaeota;;Nanoarchaeales;Nanoarchaeaceae;Nanoarchaeum;Nanoarchaeum equitans,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.013,431000,0.801,7462785
+SRR606249,species,0.001,Bacteria;Fusobacteria;Fusobacteriia;Fusobacteriales;Fusobacteriaceae;Fusobacterium;Fusobacterium nucleatum,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.001,270000,0.789,7462785
+SRR606249,species,0.541,unclassified,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.062,229873000,,7462785
+SRR606249,strain,0.022,Bacteria;Proteobacteria;Betaproteobacteria;Burkholderiales;Burkholderiaceae;Paraburkholderia;Paraburkholderia xenovorans;Paraburkholderia xenovorans LB400,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,9304000,0.884,7462785
+SRR606249,strain,0.017,Bacteria;Planctomycetes;Planctomycetia;Planctomycetales;Planctomycetaceae;Rhodopirellula;Rhodopirellula baltica;Rhodopirellula baltica SH 1,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.089,7039000,0.876,7462785
+SRR606249,strain,0.016,Bacteria;Chloroflexi;Chloroflexia;Herpetosiphonales;Herpetosiphonaceae;Herpetosiphon;Herpetosiphon aurantiacus;Herpetosiphon aurantiacus DSM 785,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.014,6604000,0.874,7462785
+SRR606249,strain,0.015,Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Bacteroidaceae;Bacteroides;Bacteroides thetaiotaomicron;Bacteroides thetaiotaomicron VPI-5482,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.014,6259000,0.873,7462785
+SRR606249,strain,0.013,Bacteria;Actinobacteria;Actinobacteria;Micromonosporales;Micromonosporaceae;Salinispora;Salinispora arenicola;Salinispora arenicola CNS-205,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.011,5629000,0.870,7462785
+SRR606249,strain,0.013,Archaea;Euryarchaeota;Methanomicrobia;Methanosarcinales;Methanosarcinaceae;Methanosarcina;Methanosarcina acetivorans;Methanosarcina acetivorans C2A,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,5422000,0.869,7462785
+SRR606249,strain,0.012,Bacteria;Proteobacteria;Gammaproteobacteria;Alteromonadales;Shewanellaceae;Shewanella;Shewanella baltica;Shewanella baltica OS223,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,5187000,0.868,7462785
+SRR606249,strain,0.012,Bacteria;Proteobacteria;Betaproteobacteria;Burkholderiales;Alcaligenaceae;Bordetella;Bordetella bronchiseptica;Bordetella bronchiseptica D989,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.007,5140000,0.867,7462785
+SRR606249,strain,0.012,Bacteria;Chloroflexi;Chloroflexia;Chloroflexales;Chloroflexaceae;Chloroflexus;Chloroflexus aurantiacus;Chloroflexus aurantiacus J-10-fl,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.017,5049000,0.867,7462785
+SRR606249,strain,0.012,Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Bacteroidaceae;Bacteroides;Bacteroides vulgatus;Bacteroides vulgatus ATCC 8482,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,4955000,0.866,7462785
+SRR606249,strain,0.011,Bacteria;Actinobacteria;Actinobacteria;Micromonosporales;Micromonosporaceae;Salinispora;Salinispora tropica;Salinispora tropica CNB-440,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,4799000,0.865,7462785
+SRR606249,strain,0.011,Bacteria;Proteobacteria;Betaproteobacteria;Burkholderiales;;Leptothrix;Leptothrix cholodnii;Leptothrix cholodnii SP-6,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.012,4743000,0.865,7462785
+SRR606249,strain,0.011,Bacteria;Gemmatimonadetes;Gemmatimonadetes;Gemmatimonadales;Gemmatimonadaceae;Gemmatimonas;Gemmatimonas aurantiaca;Gemmatimonas aurantiaca T-27,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.038,4629000,0.864,7462785
+SRR606249,strain,0.011,Bacteria;Proteobacteria;Alphaproteobacteria;Rhodobacterales;Rhodobacteraceae;Ruegeria;Ruegeria pomeroyi;Ruegeria pomeroyi DSS-3,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,4529000,0.864,7462785
+SRR606249,strain,0.010,Bacteria;Acidobacteria;Acidobacteriia;Acidobacteriales;Acidobacteriaceae;Acidobacterium;Acidobacterium capsulatum;Acidobacterium capsulatum ATCC 51196,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.031,4167000,0.861,7462785
+SRR606249,strain,0.009,Archaea;Euryarchaeota;Halobacteria;Haloferacales;Haloferacaceae;Haloferax;Haloferax volcanii;Haloferax volcanii DS2,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,3932000,0.860,7462785
+SRR606249,strain,0.009,Bacteria;Proteobacteria;Deltaproteobacteria;Desulfuromonadales;Geobacteraceae;Geobacter;Geobacter sulfurreducens;Geobacter sulfurreducens PCA,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.027,3775000,0.859,7462785
+SRR606249,strain,0.009,Bacteria;Firmicutes;Clostridia;Clostridiales;Ruminococcaceae;Ruminiclostridium;Ruminiclostridium thermocellum;Ruminiclostridium thermocellum ATCC 27405,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.012,3656000,0.858,7462785
+SRR606249,strain,0.008,Bacteria;Deinococcus-Thermus;Deinococci;Deinococcales;Deinococcaceae;Deinococcus;Deinococcus radiodurans;Deinococcus radiodurans R1,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,3201000,0.854,7462785
+SRR606249,strain,0.007,Bacteria;Chlorobi;Chlorobia;Chlorobiales;Chlorobiaceae;Pelodictyon;Pelodictyon phaeoclathratiforme;Pelodictyon phaeoclathratiforme BU-1,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.011,2963000,0.852,7462785
+SRR606249,strain,0.007,Bacteria;Chlorobi;Chlorobia;Chlorobiales;Chlorobiaceae;Chlorobium;Chlorobium phaeobacteroides;Chlorobium phaeobacteroides DSM 266,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.012,2875000,0.851,7462785
+SRR606249,strain,0.007,Bacteria;Proteobacteria;Deltaproteobacteria;Desulfovibrionales;Desulfovibrionaceae;Desulfovibrio;Desulfovibrio piger;Desulfovibrio piger ATCC 29098,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.012,2865000,0.851,7462785
+SRR606249,strain,0.007,Bacteria;Spirochaetes;Spirochaetia;Spirochaetales;Spirochaetaceae;Treponema;Treponema denticola;Treponema denticola ATCC 35405,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.017,2848000,0.851,7462785
+SRR606249,strain,0.007,Bacteria;Proteobacteria;Deltaproteobacteria;Desulfovibrionales;Desulfovibrionaceae;Desulfovibrio;Desulfovibrio vulgaris;Desulfovibrio vulgaris DP4,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.007,2826000,0.851,7462785
+SRR606249,strain,0.006,Bacteria;Proteobacteria;Betaproteobacteria;Nitrosomonadales;Nitrosomonadaceae;Nitrosomonas;Nitrosomonas europaea;Nitrosomonas europaea ATCC 19718,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.032,2727000,0.850,7462785
+SRR606249,strain,0.006,Bacteria;Verrucomicrobia;Verrucomicrobiae;Verrucomicrobiales;Akkermansiaceae;Akkermansia;Akkermansia muciniphila;Akkermansia muciniphila ATCC BAA-835,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,2701000,0.849,7462785
+SRR606249,strain,0.006,Archaea;Crenarchaeota;Thermoprotei;Sulfolobales;Sulfolobaceae;Sulfolobus;Sulfolobus tokodaii;Sulfolobus tokodaii str. 7,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.026,2679000,0.849,7462785
+SRR606249,strain,0.006,Bacteria;Chlorobi;Chlorobia;Chlorobiales;Chlorobiaceae;Chlorobium;Chlorobium limicola;Chlorobium limicola DSM 245,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.012,2672000,0.849,7462785
+SRR606249,strain,0.006,Bacteria;Proteobacteria;Gammaproteobacteria;Alteromonadales;Shewanellaceae;Shewanella;Shewanella baltica;Shewanella baltica OS185,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.003,2639000,0.849,7462785
+SRR606249,strain,0.006,Bacteria;Firmicutes;Clostridia;Thermoanaerobacterales;Thermoanaerobacterales Family III. Incertae Sedis;Caldicellulosiruptor;Caldicellulosiruptor saccharolyticus;Caldicellulosiruptor saccharolyticus DSM 8903,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.011,2601000,0.848,7462785
+SRR606249,strain,0.005,Archaea;Crenarchaeota;Thermoprotei;Thermoproteales;Thermoproteaceae;Pyrobaculum;Pyrobaculum aerophilum;Pyrobaculum aerophilum str. IM2,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.019,2247000,0.844,7462785
+SRR606249,strain,0.005,Bacteria;Firmicutes;Clostridia;Thermoanaerobacterales;Thermoanaerobacteraceae;Thermoanaerobacter;Thermoanaerobacter pseudethanolicus;Thermoanaerobacter pseudethanolicus ATCC 33223,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,2210000,0.844,7462785
+SRR606249,strain,0.005,Bacteria;Chlorobi;Chlorobia;Chlorobiales;Chlorobiaceae;Chlorobaculum;Chlorobaculum tepidum;Chlorobaculum tepidum TLS,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,2165000,0.843,7462785
+SRR606249,strain,0.005,Archaea;Crenarchaeota;Thermoprotei;Thermoproteales;Thermoproteaceae;Pyrobaculum;Pyrobaculum arsenaticum;Pyrobaculum arsenaticum DSM 13514,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.011,2157000,0.843,7462785
+SRR606249,strain,0.005,Archaea;Euryarchaeota;Archaeoglobi;Archaeoglobales;Archaeoglobaceae;Archaeoglobus;Archaeoglobus fulgidus;Archaeoglobus fulgidus DSM 4304,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.024,2139000,0.843,7462785
+SRR606249,strain,0.005,Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Porphyromonadaceae;Porphyromonas;Porphyromonas gingivalis;Porphyromonas gingivalis ATCC 33277,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,2108000,0.843,7462785
+SRR606249,strain,0.005,Bacteria;Chlorobi;Chlorobia;Chlorobiales;Chlorobiaceae;Chlorobium;Chlorobium phaeovibrioides;Chlorobium phaeovibrioides DSM 265,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.016,2067000,0.842,7462785
+SRR606249,strain,0.005,Bacteria;Proteobacteria;Epsilonproteobacteria;Campylobacterales;Helicobacteraceae;Wolinella;Wolinella succinogenes;Wolinella succinogenes DSM 1740,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,2024000,0.842,7462785
+SRR606249,strain,0.005,Bacteria;Firmicutes;Bacilli;Lactobacillales;Enterococcaceae;Enterococcus;Enterococcus faecalis;Enterococcus faecalis V583,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.008,1997000,0.841,7462785
+SRR606249,strain,0.005,Archaea;Crenarchaeota;Thermoprotei;Thermoproteales;Thermoproteaceae;Pyrobaculum;Pyrobaculum calidifontis;Pyrobaculum calidifontis JCM 11548,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.014,1980000,0.841,7462785
+SRR606249,strain,0.005,Bacteria;Aquificae;Aquificae;Aquificales;Hydrogenothermaceae;Persephonella;Persephonella marina;Persephonella marina EX-H1,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.013,1938000,0.840,7462785
+SRR606249,strain,0.004,Bacteria;Thermotogae;Thermotogae;Thermotogales;Thermotogaceae;Thermotoga;Thermotoga neapolitana;Thermotoga neapolitana DSM 4359,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.025,1851000,0.839,7462785
+SRR606249,strain,0.004,Bacteria;Dictyoglomi;Dictyoglomia;Dictyoglomales;Dictyoglomaceae;Dictyoglomus;Dictyoglomus turgidum;Dictyoglomus turgidum DSM 6724,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,1839000,0.839,7462785
+SRR606249,strain,0.004,Archaea;Euryarchaeota;Thermococci;Thermococcales;Thermococcaceae;Pyrococcus;Pyrococcus furiosus;Pyrococcus furiosus DSM 3638,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.015,1837000,0.839,7462785
+SRR606249,strain,0.004,Archaea;Euryarchaeota;Methanococci;Methanococcales;Methanococcaceae;Methanococcus;Methanococcus maripaludis;Methanococcus maripaludis C5,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,1770000,0.838,7462785
+SRR606249,strain,0.004,Archaea;Euryarchaeota;Thermococci;Thermococcales;Thermococcaceae;Pyrococcus;Pyrococcus horikoshii;Pyrococcus horikoshii OT3,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.022,1741000,0.837,7462785
+SRR606249,strain,0.004,Archaea;Euryarchaeota;Methanococci;Methanococcales;Methanocaldococcaceae;Methanocaldococcus;Methanocaldococcus jannaschii;Methanocaldococcus jannaschii DSM 2661,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,1679000,0.837,7462785
+SRR606249,strain,0.004,Archaea;Euryarchaeota;Methanopyri;Methanopyrales;Methanopyraceae;Methanopyrus;Methanopyrus kandleri;Methanopyrus kandleri AV19,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.009,1631000,0.836,7462785
+SRR606249,strain,0.004,Archaea;Euryarchaeota;Methanococci;Methanococcales;Methanococcaceae;Methanococcus;Methanococcus maripaludis;Methanococcus maripaludis S2,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,1513000,0.834,7462785
+SRR606249,strain,0.003,Archaea;Euryarchaeota;;;;Aciduliprofundum;Aciduliprofundum boonei;Aciduliprofundum boonei T469,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.010,1477000,0.833,7462785
+SRR606249,strain,0.003,Bacteria;Deinococcus-Thermus;Deinococci;Thermales;Thermaceae;Thermus;Thermus thermophilus;Thermus thermophilus HB27,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,1379000,0.831,7462785
+SRR606249,strain,0.003,Archaea;Crenarchaeota;Thermoprotei;Desulfurococcales;Desulfurococcaceae;Ignicoccus;Ignicoccus hospitalis;Ignicoccus hospitalis KIN4/I,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.003,1284000,0.829,7462785
+SRR606249,strain,0.003,Bacteria;Aquificae;Aquificae;Aquificales;Hydrogenothermaceae;Sulfurihydrogenibium;Sulfurihydrogenibium yellowstonense;Sulfurihydrogenibium yellowstonense SS-5,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.002,1118000,0.826,7462785
+SRR606249,strain,0.002,Bacteria;Thermotogae;Thermotogae;Thermotogales;Thermotogaceae;Thermotoga;Thermotoga petrophila;Thermotoga petrophila RKU-1,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.006,734000,0.814,7462785
+SRR606249,strain,0.001,Archaea;Nanoarchaeota;;Nanoarchaeales;Nanoarchaeaceae;Nanoarchaeum;Nanoarchaeum equitans;Nanoarchaeum equitans Kin4-M,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.013,431000,0.801,7462785
+SRR606249,strain,0.596,unclassified,1b1b1d8e,outputs.paper/trim/SRR606249.trim.fq.gz,0.224,253184000,,7462785

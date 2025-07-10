@@ -1,0 +1,5 @@
+test_workflow/outputs
+*.html
+.snakemake
+*~
+.DS_Store
