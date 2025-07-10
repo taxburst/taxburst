@@ -16,7 +16,11 @@ All bugs are mine until proven otherwise.
 
 Please file bugs and feature requests on [the issue tracker](https://github.com/taxburst/taxburst/issues).
 
-## Example image
+## Examples
+
+[A small example](https://taxburst.github.io/taxburst/pages/small.tax.html) - a test data set.
+
+[A bigger example](https://taxburst.github.io/taxburst/pages/SRR606249.x.podar.tax.html) - SRR606249 against known reference genomes.
 
 ![example output screenshot](examples/SRR606249.x.podar.tax.png)
 
