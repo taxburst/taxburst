@@ -5,3 +5,4 @@ test_workflow/outputs
 .DS_Store
 __pycache__
 *.egg-info
+dist
