@@ -14,7 +14,7 @@ The output HTML is based on https://github.com/marbl/Krona.
 
 All bugs are mine until proven otherwise.
 
-Please file bugs and feature requests on [the issue tracker](https://github.com/dib-lab/taxburst/issues).
+Please file bugs and feature requests on [the issue tracker](https://github.com/taxburst/taxburst/issues).
 
 ## Install
 
