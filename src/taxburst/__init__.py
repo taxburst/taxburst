@@ -63,12 +63,11 @@ def make_node_xml(d, indent=0):
 
     x = f"""\
 {spc}<node name="{name}">
+{spc}    <members><val>node{node_count}.members.0.js</val></members>
 {spc}    <rank><val>{rank}</val></rank>
 {spc}    <count><val>{count:.01f}</val></count>
 {spc}    <score><val>{score:.03f}</val></score>{child_out}
-{spc}    <members><val>node{node_count}.members.0.js</val></members>
-{spc}</node>
-"""
+{spc}</node>"""
     # increment global node count
     node_count += 1
 
@@ -97,16 +96,19 @@ def make_child_d(tax_rows, prefix, this_row, rank_idx):
     "Make child node dicts."
     lineage = this_row["lineage"]
 
-    # never descend into unclassified
-    assert lineage != "unclassified"
-
     children = []
-    child_rows = extract_rows_beneath(tax_rows, lineage, rank_idx + 1)
-    for child_row in child_rows:
-        child_d = make_child_d(tax_rows, lineage, child_row, rank_idx + 1)
-        children.append(child_d)
+    
+    # never descend into unclassified
+    if lineage == 'unclassified':
+        assert rank_idx == 0
+        assert not prefix
+    else:
+        child_rows = extract_rows_beneath(tax_rows, lineage, rank_idx + 1)
+        for child_row in child_rows:
+            child_d = make_child_d(tax_rows, lineage, child_row, rank_idx + 1)
+            children.append(child_d)
 
-    name = lineage[len(prefix) + 1 :]
+    name = lineage[len(prefix):].lstrip(';')
 
     child_d = dict(
         name=name,
@@ -164,21 +166,7 @@ def main():
 
     top_nodes = []
     for name, row in top_names:
-        child_rows = extract_rows_beneath(tax_rows, name, 1)
-
-        children = []
-        if name != "unclassified":
-            for child_row in child_rows:
-                child_d = make_child_d(tax_rows, name, child_row, 1)
-                children.append(child_d)
-
-        node_d = dict(
-            name=row["lineage"],
-            count=1000 * float(row["f_weighted_at_rank"]),
-            score=row["fraction"],
-            rank=row["rank"],
-            children=children,
-        )
+        node_d = make_child_d(tax_rows, "", row, 0)
         top_nodes.append(node_d)
 
     # build XHTML
