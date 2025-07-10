@@ -4,6 +4,7 @@ import csv
 import pprint
 import argparse
 import os.path
+from collections import defaultdict
 
 dirname = os.path.dirname(__file__)
 templatedir = os.path.join(dirname, "./templates")
@@ -97,9 +98,9 @@ def make_child_d(tax_rows, prefix, this_row, rank_idx):
     lineage = this_row["lineage"]
 
     children = []
-    
+
     # never descend into unclassified
-    if lineage == 'unclassified':
+    if lineage == "unclassified":
         assert rank_idx == 0
         assert not prefix
     else:
@@ -108,7 +109,7 @@ def make_child_d(tax_rows, prefix, this_row, rank_idx):
             child_d = make_child_d(tax_rows, lineage, child_row, rank_idx + 1)
             children.append(child_d)
 
-    name = lineage[len(prefix):].lstrip(';')
+    name = lineage[len(prefix) :].lstrip(";")
 
     child_d = dict(
         name=name,
@@ -121,32 +122,10 @@ def make_child_d(tax_rows, prefix, this_row, rank_idx):
     return child_d
 
 
-def main():
-    p = argparse.ArgumentParser()
-    p.add_argument("tax_csv", help="input tax CSV, in sourmash csv_summary format")
-    p.add_argument(
-        "-o", "--output-html", required=True, help="output HTML file to this location."
-    )
-    args = p.parse_args()
-
-    # find templates
-    outer_template = os.path.join(templatedir, "krona-template.html")
-    inner_template = os.path.join(templatedir, "krona-fill.html")
-
-    # read templates
-    with open(outer_template, "rt") as fp:
-        template = fp.read()
-
-    with open(inner_template, "rt") as fp:
-        fill = fp.read()
-
-    # unused example :)
-    # fill2 = [ make_node_xml(n) for n in nodes ]
-    # fill2 = "\n".join(fill2)
-
+def parse_csv_summary(tax_csv):
     # load in all tax rows. CTB: move into a class already!
     tax_rows = []
-    with open(args.tax_csv, "r", newline="") as fp:
+    with open(tax_csv, "r", newline="") as fp:
         r = csv.DictReader(fp)
         for row in r:
             lineage = row["lineage"]
@@ -168,6 +147,122 @@ def main():
     for name, row in top_names:
         node_d = make_child_d(tax_rows, "", row, 0)
         top_nodes.append(node_d)
+
+    return top_nodes
+
+
+def parse_tax_annotate(tax_csv):
+    # load in all tax rows. CTB: move into a class already!
+    tax_rows = []
+    with open(tax_csv, "r", newline="") as fp:
+        r = csv.DictReader(fp)
+        for row in r:
+            tax_rows.append(row)
+
+    ###
+
+    rows_by_tax = defaultdict(list)
+    for row in tax_rows:
+        lin = row["lineage"]
+        last = None
+        while lin or last:
+            rows_by_tax[lin].append(row)
+
+            if ";" not in lin:
+                break
+            lin, last = lin.rsplit(";", 1)
+            if not last:
+                # @CTB handle
+                continue
+
+    # make nodes
+    nodes_by_tax = {}
+    for lin, rows in rows_by_tax.items():
+        name = lin.rsplit(";")[-1]
+        rank = ranks[lin.count(";")]
+        count = 0.0
+        score = 0.0
+        for row in rows:
+            count += float(row["f_unique_weighted"]) * 1000
+            score += float(row["f_unique_to_query"])
+
+        node = dict(name=name, rank=rank, count=count, score=score)
+        nodes_by_tax[lin] = node
+
+    # add children
+    def is_child(lin1, lin2):
+        if lin1 == lin2:
+            return False
+
+        len_lin1 = lin1.count(";")
+        len_lin2 = lin2.count(";")
+        if len_lin2 == len_lin1 + 1 and lin1 + ";" in lin2:
+            return True
+        return False
+
+    for lin1, node in nodes_by_tax.items():
+        children = []
+        for lin2, node2 in nodes_by_tax.items():
+            if is_child(lin1, lin2):
+                children.append(node2)
+        node["children"] = children
+
+    top_nodes = []
+    for lin, node in nodes_by_tax.items():
+        if node["rank"] == "superkingdom":
+            top_nodes.append(node)
+
+    # calc unassigned...
+    last_row = tax_rows[-1]
+    total = int(last_row["total_weighted_hashes"])
+    found = int(last_row["sum_weighted_found"])
+
+    top_nodes.append(
+        dict(
+            name="unclassified",
+            score=1,  # @CTB
+            count=1000 - found / total * 1000,
+            rank="superkingdom",
+        )
+    )
+
+    return top_nodes
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("tax_csv", help="input tax CSV, in sourmash csv_summary format")
+    p.add_argument("-F", "--input-format", default="csv_summary")
+    p.add_argument(
+        "-o", "--output-html", required=True, help="output HTML file to this location."
+    )
+    args = p.parse_args()
+
+    # find templates
+    outer_template = os.path.join(templatedir, "krona-template.html")
+    inner_template = os.path.join(templatedir, "krona-fill.html")
+
+    # read templates
+    with open(outer_template, "rt") as fp:
+        template = fp.read()
+
+    with open(inner_template, "rt") as fp:
+        fill = fp.read()
+
+    # unused example :)
+    # fill2 = [ make_node_xml(n) for n in nodes ]
+    # fill2 = "\n".join(fill2)
+
+    # parse!
+    top_nodes = None
+    if args.input_format == "csv_summary":
+        top_nodes = parse_csv_summary(args.tax_csv)
+    elif args.input_format == "tax_annotate":
+        top_nodes = parse_tax_annotate(args.tax_csv)
+    else:
+        assert 0, f"unknown input format specified: {args.input_format}"
+
+    assert top_nodes is not None
 
     # build XHTML
     fill2 = [make_node_xml(n) for n in top_nodes]
