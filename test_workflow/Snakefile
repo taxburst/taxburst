@@ -9,5 +9,5 @@ rule build_example:
     output:
         'outputs/{name}.html',
     shell: """
-        ../build-html.py {input} -o {output}
+        taxburst {input} -o {output}
  """

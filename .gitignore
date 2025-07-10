@@ -3,3 +3,5 @@ test_workflow/outputs
 .snakemake
 *~
 .DS_Store
+__pycache__
+*.egg-info

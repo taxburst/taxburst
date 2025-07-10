@@ -1,0 +1,17 @@
+[project]
+name = "taxburst"
+description = "sunburst plots for taxonomy"
+readme = "README.md"
+requires-python = ">=3.11"
+version = "0.1"
+authors = [
+  {name = "Titus Brown", email = "titus@idyll.org"},
+]
+
+#dependencies = ["sourmash>=4.9.0,<5", "sourmash_utils>=0.3"]
+
+[metadata]
+license = { text = "BSD 3-Clause License" }
+
+[project.scripts]
+"taxburst" = "taxburst.__main__:main"

@@ -169,7 +169,3 @@ def main():
     with open(args.output_html, 'wt') as fp:
         fp.write(template)
     print(f"wrote output to '{args.output_html}'")
-
-
-if __name__ == '__main__':
-    sys.exit(main())
