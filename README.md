@@ -14,4 +14,39 @@ The output HTML is based on https://github.com/marbl/Krona.
 
 All bugs are mine until proven otherwise.
 
+Please file bugs and feature requests on [the issue tracker](https://github.com/taxburst/taxburst/issues).
+
+## Install
+
+```
+pip install taxburst
+```
+
+## Run
+
+```
+taxburst examples/small.tax.csv -o small.tax.html
+```
+then open `small.tax.html` in a browser.
+
+Currently the only input format accepted is the `csv_summary` format
+from `sourmash tax metagenome` (see
+[docs](https://sourmash.readthedocs.io/en/latest/command-line.html#sourmash-tax-metagenome-summarize-metagenome-content-from-gather-results)),
+but that is pretty easy to change.
+
+## Background and history
+
+[Krona](https://github.com/marbl/Krona) is a super cool way to explore
+taxonomic breakdowns of metagenomes. But it's kind of old, and isn't
+being actively maintained. Moreover, it doesn't work easily with
+GTDB or other non-NCBI taxonomies.
+
+So, why not grab the JavaScript code and rewrite the preprocessing code?
+
+Voila! 'taxburst'!
+
+I'd call it Krona2 or something, but the licensing for Krona prohibits that,
+to my understanding. Hence, 'taxburst'.
+
 CTB July 2025
+ctbrown@ucdavis.edu
