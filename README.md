@@ -22,6 +22,8 @@ Please file bugs and feature requests on [the issue tracker](https://github.com/
 
 [A bigger example](https://taxburst.github.io/taxburst/pages/SRR606249.x.podar.tax.html) - SRR606249 against known reference genomes.
 
+A screenshot:
+
 ![example output screenshot](examples/SRR606249.x.podar.tax.png)
 
 ## Install
