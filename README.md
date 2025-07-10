@@ -16,6 +16,10 @@ All bugs are mine until proven otherwise.
 
 Please file bugs and feature requests on [the issue tracker](https://github.com/taxburst/taxburst/issues).
 
+## Example image
+
+![example output screenshot](examples/SRR606249.x.podar.tax.png)
+
 ## Install
 
 ```
