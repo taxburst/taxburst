@@ -37,9 +37,36 @@ nodes = [
 ]
 
 
+def generate_html(top_nodes):
+    # find templates
+    outer_template = os.path.join(templatedir, "krona-template.html")
+    inner_template = os.path.join(templatedir, "krona-fill.html")
+
+    # read templates
+    with open(outer_template, "rt") as fp:
+        template = fp.read()
+
+    with open(inner_template, "rt") as fp:
+        fill = fp.read()
+
+    fill2 = [make_node_xml(n) for n in top_nodes]
+
+    # build top node
+    count_sum = sum([float(n["count"]) for n in top_nodes])
+    fill2 = "\n".join(fill2)
+    fill2 = (
+        f'<node name="all">\n<count><val>{count_sum}</val></count>\n{fill2}\n</node>'
+    )
+
+    # fill in template
+    fill = fill.replace("{{ nodes }}", fill2)
+    template = template.replace("{{ krona }}", fill)
+
+    return template
+
+
 # track total node count, for distinguishing purposes
 node_count = 1
-
 
 def make_node_xml(d, indent=0):
     "Turn a given node dict into a <node>."
@@ -240,21 +267,6 @@ def main():
     p.add_argument("--save-json", help="output a JSON file of the taxonomy")
     args = p.parse_args()
 
-    # find templates
-    outer_template = os.path.join(templatedir, "krona-template.html")
-    inner_template = os.path.join(templatedir, "krona-fill.html")
-
-    # read templates
-    with open(outer_template, "rt") as fp:
-        template = fp.read()
-
-    with open(inner_template, "rt") as fp:
-        fill = fp.read()
-
-    # unused example :)
-    # fill2 = [ make_node_xml(n) for n in nodes ]
-    # fill2 = "\n".join(fill2)
-
     # parse!
     top_nodes = None
     if args.input_format == "csv_summary":
@@ -272,21 +284,10 @@ def main():
             json.dump(top_nodes, fp)
 
     # build XHTML
-    fill2 = [make_node_xml(n) for n in top_nodes]
-
-    # build top node
-    count_sum = sum([float(n["count"]) for n in top_nodes])
-    fill2 = "\n".join(fill2)
-    fill2 = (
-        f'<node name="all">\n<count><val>{count_sum}</val></count>\n{fill2}\n</node>'
-    )
-
-    # fill in template
-    fill = fill.replace("{{ nodes }}", fill2)
-    template = template.replace("{{ krona }}", fill)
+    content = generate_html(top_nodes)
 
     # output!!
     with open(args.output_html, "wt") as fp:
-        fp.write(template)
+        fp.write(content)
 
     print(f"wrote output to '{args.output_html}'")
