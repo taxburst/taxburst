@@ -19,6 +19,7 @@ ranks = [
     "genus",
     "species",
     "strain",
+    "genome",
 ]
 
 
