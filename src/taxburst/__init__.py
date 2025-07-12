@@ -22,22 +22,7 @@ ranks = [
 ]
 
 
-# an example nodes dictionary, just for grins
-nodes = [
-    {
-        "name": "A",
-        "count": 5,
-        "score": 0.831,
-        "rank": "Phylum",
-        "children": [
-            {"name": "B", "count": 3, "score": 0.2, "rank": "Class"},
-            {"name": "C", "count": 1, "score": 0.1, "rank": "Class"},
-        ],
-    },
-]
-
-
-def generate_html(top_nodes):
+def generate_html(top_nodes, *, name=None):
     # find templates
     outer_template = os.path.join(templatedir, "krona-template.html")
     inner_template = os.path.join(templatedir, "krona-fill.html")
@@ -52,10 +37,13 @@ def generate_html(top_nodes):
     fill2 = [make_node_xml(n) for n in top_nodes]
 
     # build top node
+    if name is None:
+        name = "all"
+
     count_sum = sum([float(n["count"]) for n in top_nodes])
     fill2 = "\n".join(fill2)
     fill2 = (
-        f'<node name="all">\n<count><val>{count_sum}</val></count>\n{fill2}\n</node>'
+        f'<node name="{name}">\n<count><val>{count_sum}</val></count>\n{fill2}\n</node>'
     )
 
     # fill in template
@@ -190,8 +178,11 @@ def parse_tax_annotate(tax_csv):
     ###
 
     rows_by_tax = defaultdict(list)
+    name_col = 'match_name'
+    if name_col not in tax_rows[0].keys():
+        name_col = 'name'
     for row in tax_rows:
-        lin = row["lineage"] + ';' + row['match_name']
+        lin = row["lineage"] + ';' + row[name_col]
         last = None
         while lin or last:
             rows_by_tax[lin].append(row)
@@ -257,6 +248,15 @@ def parse_tax_annotate(tax_csv):
     return top_nodes
 
 
+def strip_suffix(filename, endings):
+    filename = os.path.basename(filename)
+
+    for ending in endings:
+        if filename.endswith(ending):
+            filename = filename[:-len(ending)]
+    return filename
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("tax_csv", help="input tax CSV, in sourmash csv_summary format")
@@ -269,10 +269,13 @@ def main():
 
     # parse!
     top_nodes = None
+    name = None
     if args.input_format == "csv_summary":
         top_nodes = parse_csv_summary(args.tax_csv)
+        name = strip_suffix(args.tax_csv, [".csv", ".csv_summary"])
     elif args.input_format == "tax_annotate":
         top_nodes = parse_tax_annotate(args.tax_csv)
+        name = strip_suffix(args.tax_csv, [".csv", ".with-lineages"])
     else:
         assert 0, f"unknown input format specified: {args.input_format}"
 
@@ -284,7 +287,7 @@ def main():
             json.dump(top_nodes, fp)
 
     # build XHTML
-    content = generate_html(top_nodes)
+    content = generate_html(top_nodes, name=name)
 
     # output!!
     with open(args.output_html, "wt") as fp:

@@ -35,10 +35,12 @@ nodes = [
 ]
 ```
 
+See `examples/simple-output.py` in the github repo for example code
+to produce an output HTML from this.
 
 ### JSON version of the internal dictionary format
 
-This converts to fairly simple JSON:
+This nested dictionary format converts to fairly simple JSON:
 ```json
 [
   {
