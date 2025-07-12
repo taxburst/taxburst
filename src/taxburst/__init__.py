@@ -5,6 +5,7 @@ import pprint
 import argparse
 import os.path
 from collections import defaultdict
+import json
 
 dirname = os.path.dirname(__file__)
 templatedir = os.path.join(dirname, "./templates")
@@ -236,6 +237,7 @@ def main():
     p.add_argument(
         "-o", "--output-html", required=True, help="output HTML file to this location."
     )
+    p.add_argument("--save-json", help="output a JSON file of the taxonomy")
     args = p.parse_args()
 
     # find templates
@@ -263,6 +265,11 @@ def main():
         assert 0, f"unknown input format specified: {args.input_format}"
 
     assert top_nodes is not None
+
+    if args.save_json:
+        print(f"saving tree in JSON format to '{args.save_json}'")
+        with open(args.save_json, "wt") as fp:
+            json.dump(top_nodes, fp)
 
     # build XHTML
     fill2 = [make_node_xml(n) for n in top_nodes]
