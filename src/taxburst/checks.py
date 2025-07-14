@@ -47,7 +47,7 @@ def check_names(top_nodes, *, fail_on_error=True):
     "Check for empty names & duplicate names."
     names = set()
     do_fail = False
-    for node in nodes_beneath_top(top_nodes, fail_on_error=fail_on_error):
+    for node in nodes_beneath_top(top_nodes):
         name = node['name']
         if not name:
             print(F"WARNING: node has empty name!?")
