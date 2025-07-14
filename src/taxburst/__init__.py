@@ -7,6 +7,8 @@ import os.path
 from collections import defaultdict
 import json
 
+from . import checks
+
 dirname = os.path.dirname(__file__)
 templatedir = os.path.join(dirname, "./templates")
 
@@ -266,6 +268,10 @@ def main():
         "-o", "--output-html", required=True, help="output HTML file to this location."
     )
     p.add_argument("--save-json", help="output a JSON file of the taxonomy")
+    p.add_argument("--check-tree", help="check that tree makes sense",
+                   action="store_true")
+    p.add_argument("--fail-on-error", help="fail if tree doesn't pass checks; implies --check-tree",
+                   action="store_true")
     args = p.parse_args()
 
     # parse!
@@ -286,6 +292,9 @@ def main():
         print(f"saving tree in JSON format to '{args.save_json}'")
         with open(args.save_json, "wt") as fp:
             json.dump(top_nodes, fp)
+
+    if args.check_tree or args.fail_on_error:
+        checks.check_all_counts(top_nodes, fail_on_error=args.fail_on_error)
 
     # build XHTML
     content = generate_html(top_nodes, name=name)
