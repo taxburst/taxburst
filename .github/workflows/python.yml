@@ -2,7 +2,7 @@ name: Python tests
 
 on:
   push:
-    branches: [latest]
+    branches: [main]
   pull_request:
   schedule:
     - cron: "0 0 * * *" # daily
