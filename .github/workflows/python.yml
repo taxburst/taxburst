@@ -1,0 +1,40 @@
+name: Python tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 0 7 * *" # monthly
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        py: ["3.10", 3.9, 3.8]
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python ${{ matrix.py }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.py }}
+
+      - name: Show Python version
+        shell: bash -el {0}
+        run: python -V
+
+      - name: Install taxburst
+        shell: bash -el {0}
+        run: python -m pip install -e .
+
+       - mame: run tests
+         run: pytest tests
+         shell: bash -el {0}

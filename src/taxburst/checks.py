@@ -1,14 +1,15 @@
 def nodes_beneath_top(top_nodes):
     for node in top_nodes:
         yield node
-        for node in nodes_beneath(node, recurse=True):
-            yield node
+        for n in nodes_beneath(node, recurse=True):
+            yield n
+
 
 def nodes_beneath(node, *, recurse=False):
     for child in node.get('children', []):
         yield child
         if recurse:
-            for c in nodes_beneath(child):
+            for c in nodes_beneath(child, recurse=recurse):
                 yield c
 
 

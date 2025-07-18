@@ -286,7 +286,7 @@ def parse_singleM(singleM_tsv):
         count = 0.0
         score = 0.0
         for row in rows:
-            count += float(row["coverage"]) * 100
+            count += float(row["coverage"]) * 1000
             score += float(1.0)
 
         node = dict(name=name, rank=rank, count=count, score=score)
