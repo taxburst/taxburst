@@ -194,7 +194,7 @@ def parse_tax_annotate(tax_csv):
                 break
             lin, last = lin.rsplit(";", 1)
             if not last:
-                # @CTB handle
+                # @CTB handle missing tax
                 continue
 
     # make nodes
@@ -251,6 +251,83 @@ def parse_tax_annotate(tax_csv):
     return top_nodes
 
 
+def parse_singleM(singleM_tsv):
+    # load in all tax rows. CTB: move into a class already!
+    tax_rows = []
+    with open(singleM_tsv, "r", newline="") as fp:
+        r = csv.DictReader(fp, delimiter='\t')
+        for row in r:
+            tax_rows.append(row)
+
+    ###
+
+    rows_by_tax = defaultdict(list)
+    for row in tax_rows:
+        lin = row["taxonomy"]
+        assert lin.startswith('Root; ')
+        lin = lin[len('Root; '):]
+        last = None
+        while lin or last:
+            rows_by_tax[lin].append(row)
+
+            if ";" not in lin:
+                break
+            lin, last = lin.rsplit(";", 1)
+            last = last.strip()
+            if not last:
+                # @CTB handle missing tax.
+                continue
+
+    # make nodes
+    nodes_by_tax = {}
+    for lin, rows in rows_by_tax.items():
+        name = lin.rsplit(";")[-1].strip()
+        rank = ranks[lin.count(";")]
+        count = 0.0
+        score = 0.0
+        for row in rows:
+            count += float(row["coverage"]) * 100
+            score += float(1.0)
+
+        node = dict(name=name, rank=rank, count=count, score=score)
+        nodes_by_tax[lin] = node
+
+    # add children
+    def is_child(lin1, lin2):
+        if lin1 == lin2:
+            return False
+
+        len_lin1 = lin1.count(";")
+        len_lin2 = lin2.count(";")
+        if len_lin2 == len_lin1 + 1 and lin1 + ";" in lin2:
+            return True
+        return False
+
+    # assign children
+    for lin1, node in nodes_by_tax.items():
+        children = []
+        for lin2, node2 in nodes_by_tax.items():
+            if is_child(lin1, lin2):
+                children.append(node2)
+        node["children"] = children
+
+    # summarize hierarchically
+#    for rank in reversed(ranks):
+#        for lin, node in nodes_by_tax.items():
+#            if node["rank"] == rank:
+#                sum_counts = 0.
+#                for child in node.get("children", []):
+#                    sum_counts += child["count"]
+
+    # pull out all the superkingdom nodes as top_nodes
+    top_nodes = []
+    for lin, node in nodes_by_tax.items():
+        if node["rank"] == "superkingdom":
+            top_nodes.append(node)
+
+    return top_nodes
+
+
 def strip_suffix(filename, endings):
     filename = os.path.basename(filename)
 
@@ -263,7 +340,12 @@ def strip_suffix(filename, endings):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("tax_csv", help="input tax CSV, in sourmash csv_summary format")
-    p.add_argument("-F", "--input-format", default="csv_summary")
+    p.add_argument("-F", "--input-format", default="csv_summary",
+                   choices=[
+                       "csv_summary",
+                       "tax_annotate",
+                       "singleM",
+                   ])
     p.add_argument(
         "-o", "--output-html", required=True, help="output HTML file to this location."
     )
@@ -283,6 +365,9 @@ def main():
     elif args.input_format == "tax_annotate":
         top_nodes = parse_tax_annotate(args.tax_csv)
         name = strip_suffix(args.tax_csv, [".csv", ".with-lineages"])
+    elif args.input_format == "singleM":
+        top_nodes = parse_singleM(args.tax_csv)
+        name = strip_suffix(args.tax_csv, [".tsv", ".profile"])
     else:
         assert 0, f"unknown input format specified: {args.input_format}"
 

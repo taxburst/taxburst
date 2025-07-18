@@ -34,15 +34,41 @@ pip install taxburst
 
 ## Run
 
-```
-taxburst examples/small.tax.csv -o small.tax.html
-```
-then open `small.tax.html` in a browser.
+### Using sourmash tax metagenome output - `summary_csv` format
 
-Currently the only input format accepted is the `csv_summary` format
+An example using the summary_csv format
 from `sourmash tax metagenome` (see
 [docs](https://sourmash.readthedocs.io/en/latest/command-line.html#sourmash-tax-metagenome-summarize-metagenome-content-from-gather-results)),
-but that is pretty easy to change.
+```
+taxburst SRR11125891.summarized.csv -o SRR11125891.summarized.html
+```
+then open `SRR11125891.summarized.html` in a browser.
+
+### Using `sourmash tax annotate` output
+
+An example using the with-lineages format
+from `sourmash tax annotate` (see
+[tax annotate docs](https://sourmash.readthedocs.io/en/latest/command-line.html#sourmash-tax-annotate-annotates-gather-output-with-taxonomy)
+
+```
+taxburst -F tax_annotate \
+    SRR11125891.t0.gather.with-lineages.csv \
+    -o SRR11125891.tax_annotate.html
+```
+then open `SRR11125891.tax_annotate.html` in a browser.
+
+### Using `singleM pipe` output
+
+An example using the profile format
+from `singleM pipe` (see
+[singlem pipe docs](https://wwood.github.io/singlem/tools/pipe)):
+
+```
+taxburst -F singlem \
+    SRR11125891.singleM.profile.tsv \
+    -o SRR11125891.singleM.html
+```
+then open `SRR11125891.singleM.html` in a browser.
 
 ## Background and history
 
