@@ -18,9 +18,13 @@ Please file bugs and feature requests on [the issue tracker](https://github.com/
 
 ## Examples
 
-[A small example](https://taxburst.github.io/taxburst/pages/small.tax.html) - a test data set.
+Here are some examples of (interactive!) taxburst plots:
 
-[A bigger example](https://taxburst.github.io/taxburst/pages/SRR606249.x.podar.tax.html) - SRR606249 against known reference genomes.
+* [small.tax.html](https://taxburst.github.io/taxburst/pages/small.tax.html) - a small example from sourmash.
+* [SRR606249.x.podar.tax.html](https://taxburst.github.io/taxburst/pages/SRR606249.x.podar.tax.html) - a bigger example against the SRR606249 defined community, using sourmash.
+* [SRR11125891.singleM.html](https://taxburst.github.io/taxburst/pages/SRR11125891.singleM.html) - displaying the results of `singlem pipe` on SRR11125891, a pig gut microbiome.
+* [SRR11125891.summarized.html](https://taxburst.github.io/taxburst/pages/SRR11125891.summarized.html) - `sourmash` taxonomic breakdown on SRR11125891.
+* [SRR11125891.tax_annotate.html](https://taxburst.github.io/taxburst/pages/SRR11125891.tax_annotate.html) - genome-resolution taxonomic breakdown of SRR11125891.
 
 A screenshot:
 
@@ -32,17 +36,46 @@ A screenshot:
 pip install taxburst
 ```
 
-## Run
+## Example command lines
 
-```
-taxburst examples/small.tax.csv -o small.tax.html
-```
-then open `small.tax.html` in a browser.
+All data files are available in the GitHub repository under `examples/`.
 
-Currently the only input format accepted is the `csv_summary` format
+### Using `sourmash tax metagenome` output - `summary_csv` format
+
+An example using the summary_csv format
 from `sourmash tax metagenome` (see
-[docs](https://sourmash.readthedocs.io/en/latest/command-line.html#sourmash-tax-metagenome-summarize-metagenome-content-from-gather-results)),
-but that is pretty easy to change.
+[tax metagenome docs](https://sourmash.readthedocs.io/en/latest/command-line.html#sourmash-tax-metagenome-summarize-metagenome-content-from-gather-results)),
+```
+taxburst examples/SRR11125891.summarized.csv \
+    -o pages/SRR11125891.summarized.html
+```
+then open `pages/SRR11125891.summarized.html` in a browser.
+
+### Using `sourmash tax annotate` output
+
+An example using the with-lineages format
+from `sourmash tax annotate` (see
+[tax annotate docs](https://sourmash.readthedocs.io/en/latest/command-line.html#sourmash-tax-annotate-annotates-gather-output-with-taxonomy)
+
+```
+taxburst -F tax_annotate \
+    examples/SRR11125891.t0.gather.with-lineages.csv \
+    -o pages/SRR11125891.tax_annotate.html
+```
+then open `pages/SRR11125891.tax_annotate.html` in a browser.
+
+### Using `singleM pipe` output
+
+An example using the profile format
+from `singlem pipe` (see
+[singlem pipe docs](https://wwood.github.io/singlem/tools/pipe)):
+
+```
+taxburst -F singleM \
+    examples/SRR11125891.singleM.profile.tsv \
+    -o pages/SRR11125891.singleM.html
+```
+then open `pages/SRR11125891.singleM.html` in a browser.
 
 ## Background and history
 
@@ -60,7 +93,7 @@ to my understanding. Hence, 'taxburst'.
 
 ## Citation information
 
-When using Krona, please cite:
+When using taxburst, please cite the Krona paper:
 [Interactive metagenomic visualization in a Web browser](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-385),
 Ondov et al., 2011.
 

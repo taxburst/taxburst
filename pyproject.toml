@@ -3,12 +3,12 @@ name = "taxburst"
 description = "sunburst plots for taxonomy"
 readme = "README.md"
 requires-python = ">=3.11"
-version = "0.1.4"
+version = "0.1.5"
 authors = [
   {name = "Titus Brown", email = "titus@idyll.org"},
 ]
 
-#dependencies = ["sourmash>=4.9.0,<5", "sourmash_utils>=0.3"]
+dependencies = ["pytest"]
 
 [metadata]
 license = { text = "BSD 3-Clause License" }
