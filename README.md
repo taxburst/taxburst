@@ -20,11 +20,11 @@ Please file bugs and feature requests on [the issue tracker](https://github.com/
 
 Here are some examples of (interactive!) taxburst plots:
 
-* [small.tax.html](pages/small.tax.html) - a small example from sourmash.
-* [SRR606249.x.podar.tax.html](pages/SRR606249.x.podar.tax.html) - a bigger example against the SRR606249 defined community, using sourmash.
-* [SRR11125891.singleM.html](pages/SRR11125891.singleM.html) - displaying the results of `singlem pipe` on SRR11125891, a pig gut microbiome.
-* [SRR11125891.summarized.html](pages/SRR11125891.summarized.html) - `sourmash` taxonomic breakdown on SRR11125891.
-* [SRR11125891.tax_annotate.html](pages/SRR11125891.tax_annotate.html) - genome-resolution taxonomic breakdown of SRR11125891.
+* [small.tax.html](https://taxburst.github.io/taxburst/pages/small.tax.html) - a small example from sourmash.
+* [SRR606249.x.podar.tax.html](https://taxburst.github.io/taxburst/pages/SRR606249.x.podar.tax.html) - a bigger example against the SRR606249 defined community, using sourmash.
+* [SRR11125891.singleM.html](https://taxburst.github.io/taxburst/pages/SRR11125891.singleM.html) - displaying the results of `singlem pipe` on SRR11125891, a pig gut microbiome.
+* [SRR11125891.summarized.html](https://taxburst.github.io/taxburst/pages/SRR11125891.summarized.html) - `sourmash` taxonomic breakdown on SRR11125891.
+* [SRR11125891.tax_annotate.html](https://taxburst.github.io/taxburst/pages/SRR11125891.tax_annotate.html) - genome-resolution taxonomic breakdown of SRR11125891.
 
 A screenshot:
 
