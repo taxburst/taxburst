@@ -38,11 +38,13 @@ pip install taxburst
 
 ## Example command lines
 
+All data files are available in the GitHub repository under `examples/`.
+
 ### Using `sourmash tax metagenome` output - `summary_csv` format
 
 An example using the summary_csv format
 from `sourmash tax metagenome` (see
-[docs](https://sourmash.readthedocs.io/en/latest/command-line.html#sourmash-tax-metagenome-summarize-metagenome-content-from-gather-results)),
+[tax metagenome docs](https://sourmash.readthedocs.io/en/latest/command-line.html#sourmash-tax-metagenome-summarize-metagenome-content-from-gather-results)),
 ```
 taxburst examples/SRR11125891.summarized.csv \
     -o pages/SRR11125891.summarized.html
@@ -65,7 +67,7 @@ then open `pages/SRR11125891.tax_annotate.html` in a browser.
 ### Using `singleM pipe` output
 
 An example using the profile format
-from `singleM pipe` (see
+from `singlem pipe` (see
 [singlem pipe docs](https://wwood.github.io/singlem/tools/pipe)):
 
 ```
@@ -73,7 +75,7 @@ taxburst -F singleM \
     examples/SRR11125891.singleM.profile.tsv \
     -o pages/SRR11125891.singleM.html
 ```
-then open `SRR11125891.singleM.html` in a browser.
+then open `pages/SRR11125891.singleM.html` in a browser.
 
 ## Background and history
 
@@ -91,7 +93,7 @@ to my understanding. Hence, 'taxburst'.
 
 ## Citation information
 
-When using Krona, please cite:
+When using taxburst, please cite the Krona paper:
 [Interactive metagenomic visualization in a Web browser](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-385),
 Ondov et al., 2011.
 
