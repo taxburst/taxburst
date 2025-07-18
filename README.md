@@ -32,17 +32,18 @@ A screenshot:
 pip install taxburst
 ```
 
-## Run
+## Example command lines
 
-### Using sourmash tax metagenome output - `summary_csv` format
+### Using `sourmash tax metagenome` output - `summary_csv` format
 
 An example using the summary_csv format
 from `sourmash tax metagenome` (see
 [docs](https://sourmash.readthedocs.io/en/latest/command-line.html#sourmash-tax-metagenome-summarize-metagenome-content-from-gather-results)),
 ```
-taxburst SRR11125891.summarized.csv -o SRR11125891.summarized.html
+taxburst examples/SRR11125891.summarized.csv \
+    -o pages/SRR11125891.summarized.html
 ```
-then open `SRR11125891.summarized.html` in a browser.
+then open `pages/SRR11125891.summarized.html` in a browser.
 
 ### Using `sourmash tax annotate` output
 
@@ -52,10 +53,10 @@ from `sourmash tax annotate` (see
 
 ```
 taxburst -F tax_annotate \
-    SRR11125891.t0.gather.with-lineages.csv \
-    -o SRR11125891.tax_annotate.html
+    examples/SRR11125891.t0.gather.with-lineages.csv \
+    -o pages/SRR11125891.tax_annotate.html
 ```
-then open `SRR11125891.tax_annotate.html` in a browser.
+then open `pages/SRR11125891.tax_annotate.html` in a browser.
 
 ### Using `singleM pipe` output
 
@@ -65,8 +66,8 @@ from `singleM pipe` (see
 
 ```
 taxburst -F singlem \
-    SRR11125891.singleM.profile.tsv \
-    -o SRR11125891.singleM.html
+    examples/SRR11125891.singleM.profile.tsv \
+    -o pages/SRR11125891.singleM.html
 ```
 then open `SRR11125891.singleM.html` in a browser.
 
