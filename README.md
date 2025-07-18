@@ -10,7 +10,7 @@ This is an update of Krona, written with the following goals in mind:
 * support ~nicer multi-stage generation of XHTML;
 * probably other things;
 
-The output HTML is based on https://github.com/marbl/Krona.
+The output HTML is derived from Krona, https://github.com/marbl/Krona.
 
 All bugs are mine until proven otherwise.
 
@@ -58,5 +58,14 @@ Voila! 'taxburst'!
 I'd call it Krona2 or something, but the licensing for Krona prohibits that,
 to my understanding. Hence, 'taxburst'.
 
+## Citation information
+
+When using Krona, please cite:
+[Interactive metagenomic visualization in a Web browser](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-385),
+Ondov et al., 2011.
+
+---
+
 CTB July 2025
+
 ctbrown@ucdavis.edu
