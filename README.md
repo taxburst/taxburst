@@ -22,6 +22,12 @@ Please file bugs and feature requests on [the issue tracker](https://github.com/
 
 [A bigger example](https://taxburst.github.io/taxburst/pages/SRR606249.x.podar.tax.html) - SRR606249 against known reference genomes.
 
+* [small.tax.html](pages/small.tax.html) - a small example from sourmash.
+* [SRR606249.x.podar.tax.html](pages/SRR606249.x.podar.tax.html) - a bigger example against the SRR606249 defined community, using sourmash.
+* [SRR11125891.singleM.html](pages/SRR11125891.singleM.html) - displaying the results of `singlem pipe` on SRR11125891, a pig gut microbiome.
+* [SRR11125891.summarized.html](pages/SRR11125891.summarized.html) - `sourmash` taxonomic breakdown on SRR11125891.
+* [SRR11125891.tax_annotate.html](pages/SRR11125891.tax_annotate.html) - genome-resolution taxonomic breakdown of SRR11125891.
+
 A screenshot:
 
 ![example output screenshot](examples/SRR606249.x.podar.tax.png)
@@ -65,7 +71,7 @@ from `singleM pipe` (see
 [singlem pipe docs](https://wwood.github.io/singlem/tools/pipe)):
 
 ```
-taxburst -F singlem \
+taxburst -F singleM \
     examples/SRR11125891.singleM.profile.tsv \
     -o pages/SRR11125891.singleM.html
 ```
