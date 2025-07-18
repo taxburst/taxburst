@@ -18,9 +18,7 @@ Please file bugs and feature requests on [the issue tracker](https://github.com/
 
 ## Examples
 
-[A small example](https://taxburst.github.io/taxburst/pages/small.tax.html) - a test data set.
-
-[A bigger example](https://taxburst.github.io/taxburst/pages/SRR606249.x.podar.tax.html) - SRR606249 against known reference genomes.
+Here are some examples of (interactive!) taxburst plots:
 
 * [small.tax.html](pages/small.tax.html) - a small example from sourmash.
 * [SRR606249.x.podar.tax.html](pages/SRR606249.x.podar.tax.html) - a bigger example against the SRR606249 defined community, using sourmash.
