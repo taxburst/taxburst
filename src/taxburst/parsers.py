@@ -1,3 +1,6 @@
+"""
+Top level module for parsing input formats.
+"""
 import csv
 from collections import defaultdict
 from .taxinfo import ranks
@@ -23,6 +26,7 @@ def parse_file(filename, input_format):
 
 
 def _strip_suffix(filename, endings):
+    "Remove endings if present, in order of list."
     filename = os.path.basename(filename)
 
     for ending in endings:
@@ -32,7 +36,7 @@ def _strip_suffix(filename, endings):
 
 
 def parse_csv_summary(tax_csv):
-    # load in all tax rows. CTB: move into a class already!
+    "Load csv_summary format from sourmash."
     tax_rows = []
     with open(tax_csv, "r", newline="") as fp:
         r = csv.DictReader(fp)
@@ -108,7 +112,8 @@ def _extract_rows_beneath(tax_rows, prefix, rank_idx):
 
 
 def parse_tax_annotate(tax_csv):
-    # load in all tax rows. CTB: move into a class already!
+    "Load in 'tax annotate' format from sourmash tax annotate."
+    # load in all tax rows.
     tax_rows = []
     with open(tax_csv, "r", newline="") as fp:
         r = csv.DictReader(fp)
@@ -122,7 +127,9 @@ def parse_tax_annotate(tax_csv):
     if name_col not in tax_rows[0].keys():
         name_col = 'name'
     for row in tax_rows:
-        lin = row["lineage"] + ';' + row[name_col]
+        orig_lin = row["lineage"] + ';' + row[name_col]
+
+        lin = orig_lin
         last = None
         while lin or last:
             rows_by_tax[lin].append(row)
@@ -131,8 +138,8 @@ def parse_tax_annotate(tax_csv):
                 break
             lin, last = lin.rsplit(";", 1)
             if not last:
-                # @CTB handle missing tax
-                continue
+                # CTB test!
+                raise Exception(f"error!? missing taxonomic entry in row '{orig_lin}'; this is not handled by taxburst")
 
     # make nodes
     nodes_by_tax = {}
@@ -159,6 +166,7 @@ def parse_tax_annotate(tax_csv):
             return True
         return False
 
+    # CTB: speed me up.
     for lin1, node in nodes_by_tax.items():
         children = []
         for lin2, node2 in nodes_by_tax.items():
@@ -179,7 +187,8 @@ def parse_tax_annotate(tax_csv):
     top_nodes.append(
         dict(
             name="unclassified",
-            score=1,  # @CTB
+            score=1,
+            # count is just ...remaining stuff :)
             count=1000 - found / total * 1000,
             rank="superkingdom",
         )
@@ -189,7 +198,7 @@ def parse_tax_annotate(tax_csv):
 
 
 def parse_SingleM(singleM_tsv):
-    # load in all tax rows. CTB: move into a class already!
+    "load in SingleM profile output format."
     tax_rows = []
     with open(singleM_tsv, "r", newline="") as fp:
         r = csv.DictReader(fp, delimiter='\t')
@@ -201,19 +210,24 @@ def parse_SingleM(singleM_tsv):
     rows_by_tax = defaultdict(list)
     for row in tax_rows:
         lin = row["taxonomy"]
+
+        # every row starts with Root; remove!
         assert lin.startswith('Root; ')
-        lin = lin[len('Root; '):]
+        orig_lin = lin[len('Root; '):]
+
+        lin = orig_lin
         last = None
         while lin or last:
             rows_by_tax[lin].append(row)
 
+            # no more lineages? break up.
             if ";" not in lin:
                 break
             lin, last = lin.rsplit(";", 1)
             last = last.strip()
             if not last:
-                # @CTB handle missing tax.
-                continue
+                # CTB test!
+                raise Exception(f"error!? missing taxonomic entry in row '{orig_lin}'; this is not handled by taxburst")
 
     # make nodes
     nodes_by_tax = {}
@@ -247,14 +261,6 @@ def parse_SingleM(singleM_tsv):
             if is_child(lin1, lin2):
                 children.append(node2)
         node["children"] = children
-
-    # summarize hierarchically
-#    for rank in reversed(ranks):
-#        for lin, node in nodes_by_tax.items():
-#            if node["rank"] == rank:
-#                sum_counts = 0.
-#                for child in node.get("children", []):
-#                    sum_counts += child["count"]
 
     # pull out all the superkingdom nodes as top_nodes
     top_nodes = []
