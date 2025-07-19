@@ -4,6 +4,7 @@ from .taxinfo import ranks
 
 
 def parse_file(filename, input_format):
+    "Parse a variety of input formats. Top level function."
     top_nodes = None
     name = None
     if input_format == "csv_summary":
@@ -21,7 +22,7 @@ def parse_file(filename, input_format):
     return top_nodes, name
 
 
-def strip_suffix(filename, endings):
+def _strip_suffix(filename, endings):
     filename = os.path.basename(filename)
 
     for ending in endings:
@@ -53,14 +54,14 @@ def parse_csv_summary(tax_csv):
 
     top_nodes = []
     for name, row in top_names:
-        node_d = make_child_d(tax_rows, "", row, 0)
+        node_d = _make_child_d(tax_rows, "", row, 0)
         top_nodes.append(node_d)
 
     return top_nodes
 
 
-def make_child_d(tax_rows, prefix, this_row, rank_idx):
-    "Make child node dicts."
+def _make_child_d(tax_rows, prefix, this_row, rank_idx):
+    "Make child node dicts, recursively."
     lineage = this_row["lineage"]
 
     children = []
@@ -70,9 +71,9 @@ def make_child_d(tax_rows, prefix, this_row, rank_idx):
         assert rank_idx == 0
         assert not prefix
     else:
-        child_rows = extract_rows_beneath(tax_rows, lineage, rank_idx + 1)
+        child_rows = _extract_rows_beneath(tax_rows, lineage, rank_idx + 1)
         for child_row in child_rows:
-            child_d = make_child_d(tax_rows, lineage, child_row, rank_idx + 1)
+            child_d = _make_child_d(tax_rows, lineage, child_row, rank_idx + 1)
             children.append(child_d)
 
     name = lineage[len(prefix) :].lstrip(";")
@@ -88,7 +89,7 @@ def make_child_d(tax_rows, prefix, this_row, rank_idx):
     return child_d
 
 
-def extract_rows_beneath(tax_rows, prefix, rank_idx):
+def _extract_rows_beneath(tax_rows, prefix, rank_idx):
     "Extract rows beneath a node."
 
     # no more!
@@ -187,7 +188,7 @@ def parse_tax_annotate(tax_csv):
     return top_nodes
 
 
-def parse_singleM(singleM_tsv):
+def parse_SingleM(singleM_tsv):
     # load in all tax rows. CTB: move into a class already!
     tax_rows = []
     with open(singleM_tsv, "r", newline="") as fp:
