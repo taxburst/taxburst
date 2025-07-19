@@ -1,0 +1,26 @@
+rule all:
+    input:
+        "../pages/SRR11125891.summarized.html",
+        "../pages/SRR11125891.tax_annotate.html",
+        "../pages/SRR11125891.SingleM.html",
+
+rule csv_sum:
+    input: "SRR11125891.summarized.csv",
+    output: "../pages/SRR11125891.summarized.html",
+    shell: """
+        taxburst {input} -o {output}
+    """
+
+rule tax_ann:
+    input: "SRR11125891.t0.gather.with-lineages.csv"
+    output: "../pages/SRR11125891.tax_annotate.html",
+    shell: """
+        taxburst {input} -o {output} -F tax_annotate
+    """
+
+rule tsv_singlem:
+    input: "SRR11125891.singleM.profile.tsv",
+    output: "../pages/SRR11125891.SingleM.html",
+    shell: """
+        taxburst {input} -o {output} -F SingleM
+    """

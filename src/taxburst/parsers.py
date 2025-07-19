@@ -2,7 +2,9 @@
 Top level module for parsing input formats.
 """
 import csv
+import os
 from collections import defaultdict
+
 from .taxinfo import ranks
 
 
@@ -12,15 +14,15 @@ def parse_file(filename, input_format):
     name = None
     if input_format == "csv_summary":
         top_nodes = parse_csv_summary(filename)
-        name = strip_suffix(filename, [".csv", ".csv_summary"])
+        name = _strip_suffix(filename, [".csv", ".csv_summary"])
     elif input_format == "tax_annotate":
         top_nodes = parse_tax_annotate(filename)
-        name = strip_suffix(filename, [".csv", ".with-lineages"])
-    elif input_format == "singleM":
-        top_nodes = parse_singleM(filename)
-        name = strip_suffix(filename, [".tsv", ".profile"])
+        name = _strip_suffix(filename, [".csv", ".with-lineages"])
+    elif input_format.lower() == "singlem":
+        top_nodes = parse_SingleM(filename)
+        name = _strip_suffix(filename, [".tsv", ".profile"])
     else:
-        assert 0, f"unknown input format specified: {args.input_format}"
+        assert 0, f"unknown input format specified: {input_format}"
 
     return top_nodes, name
 
