@@ -2,12 +2,13 @@ import pytest
 
 import taxburst
 from taxburst import checks
+from taxburst import parsers
 from taxburst_tst_utils import get_example_filepath
 
 
 def test_basic_tax_annotate():
     csv = get_example_filepath('SRR11125891.t0.gather.with-lineages.csv')
-    top_nodes = taxburst.parse_tax_annotate(csv)
+    top_nodes = parsers.parse_tax_annotate(csv)
     all_nodes = checks.collect_all_nodes(top_nodes)
 
     assert len(top_nodes) == 4 # Mammalia, unclassified
