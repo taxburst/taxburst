@@ -11,10 +11,6 @@ from .taxinfo import ranks
 from .output import generate_html
 
 
-dirname = os.path.dirname(__file__)
-templatedir = os.path.join(dirname, "./templates")
-
-
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("tax_csv", help="input tax CSV, in sourmash csv_summary format")
@@ -22,7 +18,7 @@ def main():
                    choices=[
                        "csv_summary",
                        "tax_annotate",
-                       "singleM",
+                       "SingleM",
                    ])
     p.add_argument(
         "-o", "--output-html", required=True, help="output HTML file to this location."

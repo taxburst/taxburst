@@ -1,3 +1,9 @@
+import os.path
+
+dirname = os.path.dirname(__file__)
+templatedir = os.path.join(dirname, "./templates")
+
+
 def generate_html(top_nodes, *, name=None):
     # find templates
     outer_template = os.path.join(templatedir, "krona-template.html")

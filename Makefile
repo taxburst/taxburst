@@ -1,7 +1,7 @@
 .PHONY: dist test
 
-all:
-	cd test_workflow && snakemake --delete-all-output && snakemake
+all: test
+	cd examples && snakemake --delete-all-output && snakemake -j 1
 
 dist:
 	python -m build
