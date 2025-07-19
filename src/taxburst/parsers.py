@@ -35,13 +35,13 @@ def _strip_suffix(filename, endings):
     return filename
 
 
-def make_rows_by_rank(rows, *, rank_key="rank"):
-    rows_by_rank = defaultdict(list)
-    for row in rows:
-        rank = row[rank_key]
-        rows_by_rank.append(row)
+def make_nodes_by_rank_d(nodes_by_tax):
+    nodes_by_rank = defaultdict(list)
+    for lin, node in nodes_by_tax.items():
+        rank = node["rank"]
+        nodes_by_rank[rank].append((lin, node))
 
-    return rows_by_rank
+    return nodes_by_rank
 
 
 def parse_csv_summary(tax_csv):
@@ -176,13 +176,22 @@ def parse_tax_annotate(tax_csv):
             return True
         return False
 
+    nodes_by_rank = make_nodes_by_rank_d(nodes_by_tax)
+
     # CTB: speed me up.
-    for lin1, node in nodes_by_tax.items():
-        children = []
-        for lin2, node2 in nodes_by_tax.items():
-            if is_child(lin1, lin2):
-                children.append(node2)
-        node["children"] = children
+    for parent_rank_i in range(len(ranks)):
+        parent_rank = ranks[parent_rank_i]
+        child_rank_i = parent_rank_i + 1
+        if child_rank_i >= len(ranks):
+            continue
+        child_rank = ranks[child_rank_i]
+
+        for (lin1, node) in nodes_by_rank[parent_rank]:
+            children = []
+            for (lin2, node2) in nodes_by_rank[child_rank]:
+                if is_child(lin1, lin2):
+                    children.append(node2)
+            node["children"] = children
 
     top_nodes = []
     for lin, node in nodes_by_tax.items():
