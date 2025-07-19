@@ -8,8 +8,10 @@ from taxburst_tst_utils import get_example_filepath
 def test_basic_tax_annotate():
     csv = get_example_filepath('SRR11125891.summarized.csv')
     top_nodes = taxburst.parse_csv_summary(csv)
+    all_nodes = checks.collect_all_nodes(top_nodes)
 
     assert len(top_nodes) == 4 # Mammalia, unclassified
+    assert len(all_nodes) == 480
 
     check_counts = {'p__Bacillota': 548,
                     'p__Bacteroidota': 47,

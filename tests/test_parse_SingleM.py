@@ -8,8 +8,10 @@ from taxburst_tst_utils import get_example_filepath
 def test_basic_singlem():
     tsv = get_example_filepath('SRR11125891.singleM.profile.tsv')
     top_nodes = taxburst.parse_singleM(tsv)
+    all_nodes = checks.collect_all_nodes(top_nodes)
 
     assert len(top_nodes) == 2
+    assert len(all_nodes) == 197
 
     check_counts = {'p__Bacillota': 342090,
                     'p__Bacteroidota': 22880,
