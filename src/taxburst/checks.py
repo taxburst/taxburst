@@ -1,4 +1,7 @@
 def nodes_beneath_top(top_nodes):
+    """
+    Yield all nodes beneath a list of nodes (including the nodes in the list).
+    """
     for node in top_nodes:
         yield node
         for n in nodes_beneath(node, recurse=True):
@@ -6,6 +9,7 @@ def nodes_beneath_top(top_nodes):
 
 
 def nodes_beneath(node, *, recurse=False):
+    "Yield all nodes directly under this node, with optional recursion."
     for child in node.get('children', []):
         yield child
         if recurse:
@@ -14,6 +18,7 @@ def nodes_beneath(node, *, recurse=False):
 
 
 def collect_all_nodes(top_nodes_list):
+    "Return a _list_ of all nodes."
     nodes = []
     for top_node in top_nodes_list:
         nodes.append(top_node)
