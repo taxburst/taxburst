@@ -8,7 +8,7 @@ from taxburst_tst_utils import get_example_filepath
 
 def test_basic_singlem():
     tsv = get_example_filepath('SRR11125891.singleM.profile.tsv')
-    top_nodes = parsers.parse_singleM(tsv)
+    top_nodes = parsers.parse_SingleM(tsv)
     all_nodes = checks.collect_all_nodes(top_nodes)
 
     assert len(top_nodes) == 2

@@ -91,6 +91,12 @@ Voila! 'taxburst'!
 I'd call it Krona2 or something, but the licensing for Krona prohibits that,
 to my understanding. Hence, 'taxburst'.
 
+## Miscellaneous notes on input formats
+
+* the `sourmash tax annotate` format supports assignments down to the
+  genome level, while `sourmash tax metagenome`'s `csv_summary` format
+  only goes down to the species level.
+
 ## Citation information
 
 When using taxburst, please cite the Krona paper:
