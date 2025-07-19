@@ -1,22 +1,18 @@
-import os.path
 import pytest
 
 import taxburst
 from taxburst import checks
-
-
-example_dir = os.path.join(os.path.dirname(__file__),
-                           '../examples')
-
-def get_example_filepath(filename):
-    return os.path.abspath(os.path.join(example_dir, filename))
+from taxburst import parsers
+from taxburst_tst_utils import get_example_filepath
 
 
 def test_basic_tax_annotate():
     csv = get_example_filepath('SRR11125891.t0.gather.with-lineages.csv')
-    top_nodes = taxburst.parse_tax_annotate(csv)
+    top_nodes = parsers.parse_tax_annotate(csv)
+    all_nodes = checks.collect_all_nodes(top_nodes)
 
     assert len(top_nodes) == 4 # Mammalia, unclassified
+    assert len(all_nodes) == 2982
 
     check_counts = {'p__Bacillota': 612,
                     'p__Bacteroidota': 56,
