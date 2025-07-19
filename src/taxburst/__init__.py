@@ -11,7 +11,7 @@ from .taxinfo import ranks
 from .output import generate_html
 
 
-def main():
+def main(argv=None):
     p = argparse.ArgumentParser()
     p.add_argument("tax_csv", help="input tax CSV, in sourmash csv_summary format")
     p.add_argument("-F", "--input-format", default="csv_summary",
@@ -28,7 +28,10 @@ def main():
                    action="store_true")
     p.add_argument("--fail-on-error", help="fail if tree doesn't pass checks; implies --check-tree",
                    action="store_true")
-    args = p.parse_args()
+    if argv is None:
+        args = p.parse_args()
+    else:
+        args = p.parse_args(argv)
 
     # parse!
     top_nodes, name = parsers.parse_file(args.tax_csv, args.input_format)
