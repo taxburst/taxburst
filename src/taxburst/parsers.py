@@ -35,6 +35,15 @@ def _strip_suffix(filename, endings):
     return filename
 
 
+def make_rows_by_rank(rows, *, rank_key="rank"):
+    rows_by_rank = defaultdict(list)
+    for row in rows:
+        rank = row[rank_key]
+        rows_by_rank.append(row)
+
+    return rows_by_rank
+
+
 def parse_csv_summary(tax_csv):
     "Load csv_summary format from sourmash."
     tax_rows = []
@@ -95,8 +104,9 @@ def _make_child_d(tax_rows, prefix, this_row, rank_idx):
 
 def _extract_rows_beneath(tax_rows, prefix, rank_idx):
     "Extract rows beneath a node."
+    # CTB speed up!
 
-    # no more!
+    # no more possible to extract!
     if rank_idx >= len(ranks):
         return []
 
@@ -254,7 +264,7 @@ def parse_SingleM(singleM_tsv):
             return True
         return False
 
-    # assign children
+    # assign children. CTB consider speeding up!
     for lin1, node in nodes_by_tax.items():
         children = []
         for lin2, node2 in nodes_by_tax.items():
