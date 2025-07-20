@@ -1,4 +1,6 @@
+"Test command-line level stuff, at the Python level."
 import pytest
+import os
 
 import taxburst
 from taxburst import checks
@@ -16,3 +18,35 @@ def test_noargs():
         taxburst.main(argv=[])
 
     assert e.value.code == 2
+
+
+def test_csv_summ_default(tmp_path):
+    path = get_example_filepath("SRR11125891.summarized.csv")
+    output = tmp_path / "xxx.html"
+    taxburst.main([path, "-o", str(output)])
+
+    assert os.path.exists(output)
+
+
+def test_csv_summ_specified(tmp_path):
+    path = get_example_filepath("SRR11125891.summarized.csv")
+    output = tmp_path / "xxx.html"
+    taxburst.main([path, "-o", str(output), "-F", "csv_summary"])
+
+    assert os.path.exists(output)
+
+
+def test_tax_ann(tmp_path):
+    path = get_example_filepath("SRR11125891.t0.gather.with-lineages.csv")
+    output = tmp_path / "xxx.html"
+    taxburst.main([path, "-o", str(output), "-F", "tax_annotate"])
+
+    assert os.path.exists(output)
+
+
+def test_SingleM(tmp_path):
+    path = get_example_filepath("SRR11125891.singleM.profile.tsv")
+    output = tmp_path / "xxx.html"
+    taxburst.main([path, "-o", str(output), "-F", "SingleM"])
+
+    assert os.path.exists(output)
