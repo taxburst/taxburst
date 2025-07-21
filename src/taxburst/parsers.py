@@ -23,7 +23,6 @@ def parse_file(filename, input_format):
         top_nodes = parse_SingleM(filename)
         name = _strip_suffix(filename, [".tsv", ".profile"])
     elif input_format.lower() == "json":
-        print('XXX', filename)
         with open(filename, "rb") as fp:
             top_nodes = json.load(fp)
         name = _strip_suffix(filename, [".json"])
