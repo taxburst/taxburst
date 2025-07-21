@@ -20,6 +20,25 @@ def test_noargs():
     assert e.value.code == 2
 
 
+def test_output_required(tmp_path):
+    # check that _some_ output is req
+    path = get_example_filepath("SRR11125891.lineages.json")
+    output = tmp_path / "xxx.html"
+
+    with pytest.raises(SystemExit) as e:
+        taxburst.main([path, '-F', 'json'])
+
+    assert e.value.code == -1
+
+
+def test_output_json_ok(tmp_path):
+    "just JSON output is fine"
+    path = get_example_filepath("SRR11125891.lineages.json")
+    output = tmp_path / "xxx.json"
+
+    taxburst.main([path, '-F', 'json', "--save-json", str(output)])
+
+
 def test_load_json(tmp_path):
     path = get_example_filepath("SRR11125891.lineages.json")
     output = tmp_path / "xxx.html"

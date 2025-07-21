@@ -22,7 +22,7 @@ def main(argv=None):
                        "json",
                    ])
     p.add_argument(
-        "-o", "--output-html", required=True, help="output HTML file to this location."
+        "-o", "--output-html", help="output HTML file to this location."
     )
     p.add_argument("--save-json", help="output a JSON file of the taxonomy")
     p.add_argument("--check-tree", help="check that tree makes sense",
@@ -33,6 +33,10 @@ def main(argv=None):
         args = p.parse_args()
     else:
         args = p.parse_args(argv)
+
+    if not args.output_html and not args.save_json:
+        print(f"No output specified?! Error exit.")
+        sys.exit(-1)
 
     # parse!
     top_nodes, name = parsers.parse_file(args.tax_csv, args.input_format)
@@ -50,7 +54,8 @@ def main(argv=None):
     content = generate_html(top_nodes, name=name)
 
     # output!!
-    with open(args.output_html, "wt") as fp:
-        fp.write(content)
+    if args.output_html:
+        with open(args.output_html, "wt") as fp:
+            fp.write(content)
 
-    print(f"wrote output to '{args.output_html}'")
+        print(f"wrote output to '{args.output_html}'")
