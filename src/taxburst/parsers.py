@@ -4,6 +4,7 @@ Top level module for parsing input formats.
 import csv
 import os
 from collections import defaultdict
+import json
 
 from .taxinfo import ranks
 
@@ -21,6 +22,11 @@ def parse_file(filename, input_format):
     elif input_format.lower() == "singlem":
         top_nodes = parse_SingleM(filename)
         name = _strip_suffix(filename, [".tsv", ".profile"])
+    elif input_format.lower() == "json":
+        print('XXX', filename)
+        with open(filename, "rb") as fp:
+            top_nodes = json.load(fp)
+        name = _strip_suffix(filename, [".json"])
     else:
         assert 0, f"unknown input format specified: {input_format}"
 
@@ -37,7 +43,7 @@ def _strip_suffix(filename, endings):
     return filename
 
 
-def make_nodes_by_rank_d(nodes_by_tax):
+def _make_nodes_by_rank_d(nodes_by_tax):
     nodes_by_rank = defaultdict(list)
     for lin, node in nodes_by_tax.items():
         rank = node["rank"]
@@ -178,7 +184,7 @@ def parse_tax_annotate(tax_csv):
             return True
         return False
 
-    nodes_by_rank = make_nodes_by_rank_d(nodes_by_tax)
+    nodes_by_rank = _make_nodes_by_rank_d(nodes_by_tax)
 
     # CTB: speed me up.
     for parent_rank_i in range(len(ranks)):

@@ -19,6 +19,7 @@ def main(argv=None):
                        "csv_summary",
                        "tax_annotate",
                        "SingleM",
+                       "json",
                    ])
     p.add_argument(
         "-o", "--output-html", required=True, help="output HTML file to this location."

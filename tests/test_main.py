@@ -20,6 +20,14 @@ def test_noargs():
     assert e.value.code == 2
 
 
+def test_load_json(tmp_path):
+    path = get_example_filepath("SRR11125891.lineages.json")
+    output = tmp_path / "xxx.html"
+    taxburst.main([path, "-o", str(output), '-F', 'json'])
+
+    assert os.path.exists(output)
+
+
 def test_csv_summ_default(tmp_path):
     path = get_example_filepath("SRR11125891.summarized.csv")
     output = tmp_path / "xxx.html"
