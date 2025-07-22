@@ -12,6 +12,9 @@ Python function to convert a new format into the internal tree format,
 or you can write code in _any_ language to output JSON that can be
 loaded into the internal tree format.
 
+taxburst consumes a JSON version of this format with `-F json`, and
+produces this format with `--save-json <filenam>`.
+
 (In the future, it should be possible to modify the internal JavaScript in
 the static HTML file to read the JSON directly, which would simplify this
 even more and allow for more flexibility as well.)
@@ -78,3 +81,4 @@ content = taxburst.generate_html(nodes)
 with open('nodes.html') as fp:
    fp.write(content)
 ```
+This is equivalent to `taxburst -F json nodes.json -o nodes.html`.
