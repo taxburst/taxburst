@@ -41,6 +41,7 @@ def main(argv=None):
     # parse!
     top_nodes, name = parsers.parse_file(args.tax_csv, args.input_format)
     assert top_nodes is not None
+    checks.check_structure(top_nodes)
 
     if args.save_json:
         print(f"saving tree in JSON format to '{args.save_json}'")
