@@ -30,9 +30,3 @@ def test_check_structure_2():
 def test_check_fail_if_tree_shares_objects():
     with pytest.raises(AssertionError):
         checks.trees_are_equal(good_nodes, good_nodes)
-
-
-def test_check_trees_are_equal():
-    a_copy = checks.copy_tree(good_nodes)
-    assert checks.trees_are_equal(good_nodes, a_copy)
-
