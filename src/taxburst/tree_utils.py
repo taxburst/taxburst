@@ -1,3 +1,6 @@
+from collections import defaultdict
+
+
 def nodes_beneath_top(top_nodes):
     """
     Yield all nodes beneath a list of nodes (including the nodes in the list).
@@ -70,8 +73,15 @@ def augment_node(node, names_to_nodes):
     node["children"] = new_children
 
 
-def augment_tree(first_top_nodes, other_top_nodes, names_to_nodes):
+def augment_tree(first_top_nodes, other_top_nodes):
     "Augment a set of top nodes with child nodes from other trees."
+    names_to_nodes = defaultdict(list)
+    for top_nodes in [first_top_nodes] + other_top_nodes:
+        for node in nodes_beneath_top(top_nodes):
+            name = node["name"]
+            assert name         # don't allow names to be empty
+            names_to_nodes[name].append(node)
+    
     names = set()
     found = set()
     for nodelist in other_top_nodes:
