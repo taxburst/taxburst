@@ -50,6 +50,9 @@ def check_structure(nodelist):
         for c in nodes_beneath(n, recurse=True):
             name = c["name"]
             assert name not in seen, f"duplicate name: '{name}'"
+            assert c.get("score") is not None
+            assert c.get("count") is not None
+            assert c.get("rank") is not None
             seen.add(name)
 
 
@@ -75,6 +78,8 @@ def trees_are_equal(top_nodes1, top_nodes2):
         if n1["score"] != n2["score"]:
             return False
         if n1["count"] != n2["count"]:
+            return False
+        if n1["rank"] != n2["rank"]:
             return False
 
         c1 = { c["name"] for c in n1.get("children", []) }

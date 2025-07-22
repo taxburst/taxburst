@@ -34,8 +34,6 @@ def test_tricky_combo():
     copy3 = tree_utils.copy_tree(tree3)
 
     all_names = set()
-    for n in tree_utils.nodes_beneath_top(tree1):
-        print(type(n))
     all_names.update([ n["name"] for n in tree_utils.nodes_beneath_top(tree1) ])
     all_names.update([ n["name"] for n in tree_utils.nodes_beneath_top(tree2) ])
     all_names.update([ n["name"] for n in tree_utils.nodes_beneath_top(tree3) ])
@@ -49,6 +47,7 @@ def test_tricky_combo():
     missing = all_names - found
     assert not missing, len(missing)
 
+    checks.check_structure(aug_tree)
     assert checks.trees_are_equal(tree1, copy1)
     assert checks.trees_are_equal(tree2, copy2)
     assert checks.trees_are_equal(tree3, copy3)    

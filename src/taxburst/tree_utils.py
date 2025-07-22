@@ -1,4 +1,5 @@
 from collections import defaultdict
+from .taxinfo import ranks
 
 
 def nodes_beneath_top(top_nodes):
@@ -46,6 +47,7 @@ def copy_tree(nodelist):
 def augment_node(node, names_to_nodes):
     "Augment a node with child nodes from other trees."
     name = node["name"]
+    rank = node["rank"]
 
     child_names = set()
     for other_node in names_to_nodes[name]:
@@ -62,15 +64,21 @@ def augment_node(node, names_to_nodes):
         augment_node(child, names_to_nodes)
         new_children.append(child)
 
-    for missing_child in remaining:
-        new_child = dict(name=missing_child,
-                         score=0,
-                         count=0)
-        # add children from others?
-        new_children.append(new_child)
-        augment_node(new_child, names_to_nodes)
+    if remaining:
+        this_rank_i = ranks.index(rank)
+        child_rank = ranks[this_rank_i + 1]
 
-    node["children"] = new_children
+        for missing_child in remaining:
+            new_child = dict(name=missing_child,
+                             score=0,
+                             count=0,
+                             rank=child_rank)
+            # add children from others?
+            new_children.append(new_child)
+            augment_node(new_child, names_to_nodes)
+
+    if new_children:
+        node["children"] = new_children
 
 
 def augment_tree(first_top_nodes, other_top_nodes):
@@ -97,11 +105,14 @@ def augment_tree(first_top_nodes, other_top_nodes):
 
         new_top_nodes.append(top_node)
 
+    top_rank = top_node["rank"]
+
     # add missing top nodes
     for missing_name in names - found:
         new_node = dict(name=missing_name,
                         score=0,
-                        count=0)
+                        count=0,
+                        rank=top_rank)
         augment_node(new_node, names_to_nodes)
         new_top_nodes.append(new_node)
 
