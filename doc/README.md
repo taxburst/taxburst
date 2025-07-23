@@ -24,6 +24,19 @@ normalized fraction of the number of unique k-mers in the metagenome
 matched at this rank (unweighted) - it is the aggregated
 `f_unique_weighted` value in the sourmash gather output.
 
+### `csv_summary`
+
+The `-F csv_summary` format will take in the results of `sourmash tax
+metagenome` run with `-F csv_summary`. The counts produced for
+taxburst are 1000 times the `f_weighted_at_rank` value, and the score
+is the `fration` column (aggregated `f_unique_weighted`) at that rank.
+
+### `SingleM`
+
+The `-F SingleM` format will take in the results of `singlem pipe -p`,
+a profile TSV file. The count reported by taxburst is 1000 x the
+`coverage` column. `score` is set to 1.0 for all rows.
+
 ## Internals of the input and output formats
 
 The taxburst code works in the following stages:
