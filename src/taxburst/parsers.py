@@ -166,7 +166,7 @@ def parse_tax_annotate(tax_csv):
         count = 0.0
         score = 0.0
         for row in rows:
-            count += float(row["f_unique_weighted"]) * 1000
+            count += int(row["n_unique_weighted_found"])
             score += float(row["f_unique_to_query"])
 
         node = dict(name=name, rank=rank, count=count, score=score)
@@ -215,7 +215,7 @@ def parse_tax_annotate(tax_csv):
             name="unclassified",
             score=1,
             # count is just ...remaining stuff :)
-            count=1000 - found / total * 1000,
+            count=total - found,
             rank="superkingdom",
         )
     )

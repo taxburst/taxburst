@@ -1,3 +1,29 @@
+# Additional documentation
+
+## Using with sourmash output
+
+The suggested sourmash workflow is:
+
+* run sourmash gather to generate a gather CSV;
+* annotate the gather output with taxonomy using `sourmash tax annotate`;
+* use `taxburst -F tax_annotate <with-lineages CSV> -o <taxburst HTML>`
+
+This will give the most detailed output possible.
+
+## Formats, counts, and scores
+
+### `tax_annotate`
+
+The `-F tax_annotate` format will take in sourmash gather results
+annotated with `sourmash tax annotate`. The resulting counts in the
+taxburst display will be the weighted number of hashes matching at
+each taxonomic level; multiply this by the scaled factor used in
+sourmash to get an estimate of the bp in the original metagenome.  The
+`score` (displayed as "Avg. confidence" in the taxburst panel) is the
+normalized fraction of the number of unique k-mers in the metagenome
+matched at this rank (unweighted) - it is the aggregated
+`f_unique_weighted` value in the sourmash gather output.
+
 ## Internals of the input and output formats
 
 The taxburst code works in the following stages:

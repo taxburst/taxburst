@@ -16,6 +16,10 @@ All bugs are mine until proven otherwise.
 
 Please file bugs and feature requests on [the issue tracker](https://github.com/taxburst/taxburst/issues).
 
+## Additional documentation
+
+More documentation is available in [doc/README.md](doc/README.md).
+
 ## Examples
 
 Here are some examples of (interactive!) taxburst plots:

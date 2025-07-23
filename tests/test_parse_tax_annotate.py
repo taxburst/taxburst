@@ -14,10 +14,10 @@ def test_basic_tax_annotate():
     assert len(top_nodes) == 4 # Mammalia, unclassified
     assert len(all_nodes) == 2982
 
-    check_counts = {'p__Bacillota': 612,
-                    'p__Bacteroidota': 56,
-                    's__Methanocatella smithii': 28,
-                    'Eukaryota': 29}
+    check_counts = {'p__Bacillota': 45196,
+                    'p__Bacteroidota': 4106,
+                    's__Methanocatella smithii': 2067,
+                    'Eukaryota': 2107}
     check_percent = {'p__Bacillota': 61.24,
                      'p__Bacteroidota': 5.56,
                      's__Methanocatella smithii': 2.8,
