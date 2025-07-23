@@ -1,6 +1,8 @@
-.PHONY: dist test
+.PHONY: dist test examples
 
-all: test
+all: test examples
+
+examples:
 	cd examples && snakemake --delete-all-output && snakemake -j 1
 
 dist:
