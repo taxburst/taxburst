@@ -1,20 +1,25 @@
 # taxburst: sunburst charts for taxonomy, based on Krona
 
-**WARNING: alpha mode software. Use at your own risk.**
+taxburst is a fork of the [Krona](https://github.com/marbl/Krona)
+software, Ondov, Bergman, and Philippy, 2011
+[link](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-385). It produces static HTML pages that provide an interactive display of
+a metagenomic taxonomy.
 
-This is an update of Krona, written with the following goals in mind:
+Here is an example screenshot:
 
-* liberate tax displays from the tyranny of NCBI taxonomy IDs and taxdump;
-* support dynamic generation of Krona-style plots;
-* rewrite in modern Python;
-* support ~nicer multi-stage generation of XHTML;
-* probably other things;
+![example output screenshot](examples/SRR606249.x.podar.tax.png)
 
-The output HTML is derived from Krona, https://github.com/marbl/Krona.
+Krona is a fantastic piece of software, but it has been unmaintained for
+a number of years. Moreover, the input parsing code is written in Perl
+and the default instructions require use of NCBI taxids.
 
-All bugs are mine until proven otherwise.
+The goal of taxburst is to update Krona to a maintained piece of software
+that can be adapted and adjusted in a variety of ways.  This is still
+alpha mode software, to be used at your own risk.
 
 Please file bugs and feature requests on [the issue tracker](https://github.com/taxburst/taxburst/issues).
+
+Pull requests are welcome!
 
 ## Additional documentation
 
@@ -29,10 +34,6 @@ Here are some examples of (interactive!) taxburst plots:
 * [SRR11125891.SingleM.html](https://taxburst.github.io/taxburst/pages/SRR11125891.SingleM.html) - displaying the results of `singlem pipe` on SRR11125891, a pig gut microbiome.
 * [SRR11125891.summarized.html](https://taxburst.github.io/taxburst/pages/SRR11125891.summarized.html) - `sourmash` taxonomic breakdown on SRR11125891.
 * [SRR11125891.tax_annotate.html](https://taxburst.github.io/taxburst/pages/SRR11125891.tax_annotate.html) - genome-resolution taxonomic breakdown of SRR11125891.
-
-A screenshot:
-
-![example output screenshot](examples/SRR606249.x.podar.tax.png)
 
 ## Install
 
