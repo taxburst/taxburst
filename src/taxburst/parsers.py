@@ -96,7 +96,7 @@ def _make_child_d(tax_rows, prefix, this_row, rank_idx):
             child_d = _make_child_d(tax_rows, lineage, child_row, rank_idx + 1)
             children.append(child_d)
 
-    name = lineage[len(prefix) :].lstrip(";")
+    name = lineage[len(prefix):].lstrip(";")
 
     child_d = dict(
         name=name,
