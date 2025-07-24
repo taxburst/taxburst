@@ -6,6 +6,7 @@ import os
 from collections import defaultdict
 import json
 
+from . import taxinfo
 from .taxinfo import ranks
 
 
@@ -43,9 +44,12 @@ def _strip_suffix(filename, endings):
 
 
 class GenericParser:
-    def __init__(self, filename, *, sep=','):
+    def __init__(self, filename, *, sep=',', ranks=None):
         self.filename = filename
         self.sep = sep
+        if ranks is None:
+            ranks = taxinfo.ranks
+        self.ranks = ranks
 
     def load_rows(self):
         with open(self.filename, 'r', newline='') as fp:
@@ -53,6 +57,89 @@ class GenericParser:
             rows = list(r)
 
         return rows
+
+    def build(self):
+        raise NotImplementedError
+
+
+class Parse_SourmashCSVSummary(GenericParser):
+    def build(self):
+        tax_rows = []
+        rows = self.load_rows()
+
+        for row in rows:
+            lineage = row["lineage"]
+            # eliminate all unclassified that are not top-level
+            if lineage == "unclassified" and row["rank"] != "superkingdom":
+                continue
+
+            tax_rows.append((lineage, row))
+
+        # find the top nodes/names
+        top_names = []
+        for k, row in tax_rows:
+            if row["rank"] == ranks[0]:
+                top_names.append((k, row))
+
+        top_nodes = []
+        for name, row in top_names:
+            node_d = self._make_child_d(tax_rows, "", row, 0)
+            top_nodes.append(node_d)
+
+        return top_nodes
+        
+    def _make_child_d(self, tax_rows, prefix, this_row, rank_idx):
+        "Make child node dicts, recursively."
+        lineage = this_row["lineage"]
+
+        children = []
+
+        # never descend into unclassified
+        if lineage == "unclassified":
+            assert rank_idx == 0
+            assert not prefix
+        else:
+            child_rows = self._extract_rows_beneath(tax_rows, lineage, rank_idx + 1)
+            for child_row in child_rows:
+                child_d = self._make_child_d(tax_rows, lineage, child_row, rank_idx + 1)
+                children.append(child_d)
+
+        name = lineage[len(prefix):].lstrip(";")
+
+        child_d = dict(
+            name=name,
+            count=1000 * float(this_row["f_weighted_at_rank"]),
+            score=this_row["fraction"],
+            rank=this_row["rank"],
+            children=children,
+        )
+
+        return child_d
+
+
+    def _extract_rows_beneath(self, tax_rows, prefix, rank_idx):
+        "Extract rows beneath a node."
+        # CTB speed up!
+
+        # no more possible to extract!
+        if rank_idx >= len(ranks):
+            return []
+
+        children = []
+        prefix_str = prefix + ";"
+
+        desired_rank = ranks[rank_idx]
+        for lineage, val in tax_rows:
+            if val["rank"] == desired_rank and lineage.startswith(prefix_str):
+                children.append(val)
+
+        return children
+
+
+def parse_csv_summary(tax_csv):
+    "Load csv_summary format from sourmash."
+    pp = Parse_SourmashCSVSummary(tax_csv)
+    return pp.build()
 
 
 def _make_nodes_by_rank_d(nodes_by_tax):
@@ -62,84 +149,6 @@ def _make_nodes_by_rank_d(nodes_by_tax):
         nodes_by_rank[rank].append((lin, node))
 
     return nodes_by_rank
-
-
-def parse_csv_summary(tax_csv):
-    "Load csv_summary format from sourmash."
-    pp = GenericParser(tax_csv)
-    rows = pp.load_rows()
-
-    tax_rows = []
-    for row in rows:
-        lineage = row["lineage"]
-        # eliminate all unclassified that are not top-level
-        if lineage == "unclassified" and row["rank"] != "superkingdom":
-            continue
-
-        tax_rows.append((lineage, row))
-
-    ###
-
-    # find the top nodes/names
-    top_names = []
-    for k, row in tax_rows:
-        if row["rank"] == ranks[0]:
-            top_names.append((k, row))
-
-    top_nodes = []
-    for name, row in top_names:
-        node_d = _make_child_d(tax_rows, "", row, 0)
-        top_nodes.append(node_d)
-
-    return top_nodes
-
-
-def _make_child_d(tax_rows, prefix, this_row, rank_idx):
-    "Make child node dicts, recursively."
-    lineage = this_row["lineage"]
-
-    children = []
-
-    # never descend into unclassified
-    if lineage == "unclassified":
-        assert rank_idx == 0
-        assert not prefix
-    else:
-        child_rows = _extract_rows_beneath(tax_rows, lineage, rank_idx + 1)
-        for child_row in child_rows:
-            child_d = _make_child_d(tax_rows, lineage, child_row, rank_idx + 1)
-            children.append(child_d)
-
-    name = lineage[len(prefix):].lstrip(";")
-
-    child_d = dict(
-        name=name,
-        count=1000 * float(this_row["f_weighted_at_rank"]),
-        score=this_row["fraction"],
-        rank=this_row["rank"],
-        children=children,
-    )
-
-    return child_d
-
-
-def _extract_rows_beneath(tax_rows, prefix, rank_idx):
-    "Extract rows beneath a node."
-    # CTB speed up!
-
-    # no more possible to extract!
-    if rank_idx >= len(ranks):
-        return []
-
-    children = []
-    prefix_str = prefix + ";"
-
-    desired_rank = ranks[rank_idx]
-    for lineage, val in tax_rows:
-        if val["rank"] == desired_rank and lineage.startswith(prefix_str):
-            children.append(val)
-
-    return children
 
 
 def parse_tax_annotate(tax_csv):
