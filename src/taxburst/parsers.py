@@ -42,6 +42,19 @@ def _strip_suffix(filename, endings):
     return filename
 
 
+class GenericParser:
+    def __init__(self, filename, *, sep=','):
+        self.filename = filename
+        self.sep = sep
+
+    def load_rows(self):
+        with open(self.filename, 'r', newline='') as fp:
+            r = csv.DictReader(fp)
+            rows = list(r)
+
+        return rows
+
+
 def _make_nodes_by_rank_d(nodes_by_tax):
     nodes_by_rank = defaultdict(list)
     for lin, node in nodes_by_tax.items():
@@ -53,16 +66,17 @@ def _make_nodes_by_rank_d(nodes_by_tax):
 
 def parse_csv_summary(tax_csv):
     "Load csv_summary format from sourmash."
-    tax_rows = []
-    with open(tax_csv, "r", newline="") as fp:
-        r = csv.DictReader(fp)
-        for row in r:
-            lineage = row["lineage"]
-            # eliminate all unclassified that are not top-level
-            if lineage == "unclassified" and row["rank"] != "superkingdom":
-                continue
+    pp = GenericParser(tax_csv)
+    rows = pp.load_rows()
 
-            tax_rows.append((lineage, row))
+    tax_rows = []
+    for row in rows:
+        lineage = row["lineage"]
+        # eliminate all unclassified that are not top-level
+        if lineage == "unclassified" and row["rank"] != "superkingdom":
+            continue
+
+        tax_rows.append((lineage, row))
 
     ###
 
