@@ -1,20 +1,17 @@
 import os.path
+from jinja2 import Environment, PackageLoader, select_autoescape
+
+env = Environment(
+    loader=PackageLoader("taxburst"),
+    autoescape=select_autoescape()
+)
 
 dirname = os.path.dirname(__file__)
 templatedir = os.path.join(dirname, "./templates")
 
 
 def generate_html(top_nodes, *, name=None):
-    # find templates
-    outer_template = os.path.join(templatedir, "krona-template.html")
-    inner_template = os.path.join(templatedir, "krona-fill.html")
-
-    # read templates
-    with open(outer_template, "rt") as fp:
-        template = fp.read()
-
-    with open(inner_template, "rt") as fp:
-        fill = fp.read()
+    template = env.get_template("krona.html")
 
     fill2 = [make_node_xml(n) for n in top_nodes]
 
@@ -28,11 +25,7 @@ def generate_html(top_nodes, *, name=None):
         f'<node name="{name}">\n<count><val>{count_sum}</val></count>\n{fill2}\n</node>'
     )
 
-    # fill in template
-    fill = fill.replace("{{ nodes }}", fill2)
-    template = template.replace("{{ krona }}", fill)
-
-    return template
+    return template.render(nodes=fill2)
 
 
 # track total node count, for distinguishing purposes

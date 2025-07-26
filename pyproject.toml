@@ -8,7 +8,7 @@ authors = [
   {name = "Titus Brown", email = "titus@idyll.org"},
 ]
 
-dependencies = ["pytest"]
+dependencies = ["pytest", "jinja2"]
 
 [metadata]
 license = { text = "BSD 3-Clause License" }
