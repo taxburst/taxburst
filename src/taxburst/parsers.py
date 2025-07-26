@@ -171,7 +171,7 @@ def parse_tax_annotate(tax_csv):
             count += int(row["n_unique_weighted_found"])
 
         node = dict(name=name, rank=rank, count=count)
-        if rank == 'genome':
+        if rank == 'genome' or rank == 'strain':
             node['abund'] = row['median_abund']
 
         nodes_by_tax[lin] = node
