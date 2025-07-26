@@ -1,4 +1,6 @@
-  <krona collapse="true" key="false">
+{% include "krona-header.html" %}
+
+<krona collapse="true" key="false">
    <attributes magnitude="count">
     <data>members</data>
     <attribute>magnitude</attribute>
@@ -11,5 +13,13 @@
     <dataset>sunburst dataset</dataset>
    </datasets>
    <color attribute="score" hueStart="0" hueEnd="120" valueStart="0.413" valueEnd="0.932367571822115" default="false" ></color>
-{{ nodes }}
+   <node name="{{ name }}">
+     <count><val>{{ count_sum }}</val></count>
+<!-- BEGIN taxburst nodes -->
+
+{{ nodes|safe }}
+
+<!-- END taxburst nodes -->
   </krona>
+
+{% include "krona-footer.html" %}
