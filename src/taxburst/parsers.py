@@ -20,7 +20,7 @@ def parse_file(filename, input_format):
     elif input_format == "tax_annotate":
         top_nodes = parse_tax_annotate(filename)
         name = _strip_suffix(filename, [".csv", ".with-lineages"])
-        #xtra = {'lineage': "display='full lineage'"}
+        xtra = { 'abund': 'display="Avg. abund"' }
     elif input_format.lower() == "singlem":
         top_nodes = parse_SingleM(filename)
         name = _strip_suffix(filename, [".tsv", ".profile"])
@@ -103,7 +103,6 @@ def _make_child_d(tax_rows, prefix, this_row, rank_idx):
     child_d = dict(
         name=name,
         count=1000 * float(this_row["f_weighted_at_rank"]),
-        score=this_row["fraction"],
         rank=this_row["rank"],
         children=children,
     )
@@ -166,13 +165,10 @@ def parse_tax_annotate(tax_csv):
         name = lin.rsplit(";")[-1]
         rank = ranks[lin.count(";")]
         count = 0.0
-        score = 0.0
         for row in rows:
             count += int(row["n_unique_weighted_found"])
-            score += float(row["f_unique_to_query"])
 
-        node = dict(name=name, rank=rank, count=count, score=score,
-                    lineage=orig_lin)
+        node = dict(name=name, rank=rank, count=count)
         nodes_by_tax[lin] = node
 
     # add children
@@ -216,8 +212,6 @@ def parse_tax_annotate(tax_csv):
     top_nodes.append(
         dict(
             name="unclassified",
-            score=1,
-            # count is just ...remaining stuff :)
             count=total - found,
             rank="superkingdom",
         )
@@ -264,12 +258,10 @@ def parse_SingleM(singleM_tsv):
         name = lin.rsplit(";")[-1].strip()
         rank = ranks[lin.count(";")]
         count = 0.0
-        score = 0.0
         for row in rows:
             count += float(row["coverage"]) * 1000
-            score += float(1.0)
 
-        node = dict(name=name, rank=rank, count=count, score=score)
+        node = dict(name=name, rank=rank, count=count)
         nodes_by_tax[lin] = node
 
     # add children

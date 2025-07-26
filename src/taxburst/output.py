@@ -1,17 +1,21 @@
 import os.path
-from jinja2 import Environment, PackageLoader, select_autoescape
+from jinja2 import (Environment, PackageLoader, select_autoescape,
+                    StrictUndefined)
 
 env = Environment(
     loader=PackageLoader("taxburst"),
-    autoescape=select_autoescape()
+    autoescape=select_autoescape(),
+    undefined=StrictUndefined,
 )
+
+# this one was standard in Krona but is no longer default in taxburst.
+#    'score': 'display="Avg. confidence"',
 
 basic_node_attributes = {
     'magnitude': '',
     'count': 'display="Count" dataAll="members"',
     'unassigned': 'display="Unassigned" dataNode="members"',
     'rank': 'display="Rank" mono="true"',
-    'score': 'display="Avg. confidence"',
     }
 
 
@@ -59,13 +63,12 @@ def make_node_xml(d, x, *, indent=0):
     # grab & format values
     name = d["name"]
     count = float(d["count"])
-    score = float(d["score"])
     rank = d["rank"]
     child_out = ""
     if child_nodes:
         child_out = "\n" + "\n".join(child_nodes)
 
-    # indent nicely, 'cause why ot
+    # indent nicely, 'cause why not
     spc = "  " * indent
 
     # add in extra attributes, if (1) list given and (2) node has them
@@ -79,8 +82,7 @@ def make_node_xml(d, x, *, indent=0):
 {spc}<node name="{name}">
 {spc}    <members><val>node{node_count}.members.0.js</val></members>
 {spc}    <rank><val>{rank}</val></rank>
-{spc}    <count><val>{count:.01f}</val></count>
-{spc}    <score><val>{score:.03f}</val></score>{child_out}
+{spc}    <count><val>{count:.01f}</val></count>{child_out}
 {extra}{spc}</node>"""
     # increment global node count
     node_count += 1

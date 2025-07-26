@@ -70,7 +70,6 @@ def augment_node(node, names_to_nodes):
 
         for missing_child in remaining:
             new_child = dict(name=missing_child,
-                             score=0,
                              count=0,
                              rank=child_rank)
             # add children from others?
@@ -110,7 +109,6 @@ def augment_tree(first_top_nodes, other_top_nodes):
     # add missing top nodes
     for missing_name in names - found:
         new_node = dict(name=missing_name,
-                        score=0,
                         count=0,
                         rank=top_rank)
         augment_node(new_node, names_to_nodes)
