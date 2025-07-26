@@ -20,7 +20,7 @@ def parse_file(filename, input_format):
     elif input_format == "tax_annotate":
         top_nodes = parse_tax_annotate(filename)
         name = _strip_suffix(filename, [".csv", ".with-lineages"])
-        xtra = { 'abund': 'display="Avg. abund"' }
+        xtra = { 'abund': 'display="Est abund"' }
     elif input_format.lower() == "singlem":
         top_nodes = parse_SingleM(filename)
         name = _strip_suffix(filename, [".tsv", ".profile"])
@@ -144,7 +144,9 @@ def parse_tax_annotate(tax_csv):
     name_col = 'match_name'
     if name_col not in tax_rows[0].keys():
         name_col = 'name'
+
     for row in tax_rows:
+        # add genome onto lineage
         orig_lin = row["lineage"] + ';' + row[name_col]
 
         lin = orig_lin
@@ -169,6 +171,9 @@ def parse_tax_annotate(tax_csv):
             count += int(row["n_unique_weighted_found"])
 
         node = dict(name=name, rank=rank, count=count)
+        if rank == 'genome':
+            node['abund'] = row['median_abund']
+
         nodes_by_tax[lin] = node
 
     # add children
