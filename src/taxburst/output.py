@@ -21,11 +21,10 @@ def generate_html(top_nodes, *, name=None):
 
     count_sum = round(sum([float(n["count"]) for n in top_nodes]), 4)
     fill2 = "\n".join(fill2)
-    fill2 = (
-        f'<node name="{name}">\n<count><val>{count_sum}</val></count>\n{fill2}\n</node>'
-    )
 
-    return template.render(nodes=fill2)
+    return template.render(nodes=fill2,
+                           name=name,
+                           count_sum=count_sum)
 
 
 # track total node count, for distinguishing purposes
