@@ -1,13 +1,11 @@
 {% include "krona-header.html" %}
 
 <krona collapse="true" key="false">
-   <attributes magnitude="count">
+  <attributes magnitude="count">
     <data>members</data>
-    <attribute>magnitude</attribute>
-    <attribute display="Count" dataAll="members">count</attribute>
-    <attribute display="Unassigned" dataNode="members">unassigned</attribute>
-    <attribute display="Rank" mono="true">rank</attribute>
-    <attribute display="Avg. confidence">score</attribute>
+    {% for member, addl in node_attributes.items() %}
+    <attribute {{ addl|safe }}>{{ member }}</attribute>
+    {% endfor %}
    </attributes>
    <datasets>
     <dataset>sunburst dataset</dataset>

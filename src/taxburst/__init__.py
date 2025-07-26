@@ -51,8 +51,12 @@ def main(argv=None):
     if args.check_tree or args.fail_on_error:
         checks.check_all_counts(top_nodes, fail_on_error=args.fail_on_error)
 
+    #for t in top_nodes:
+    #    t['fiz'] = 'foo'
+
     # build XHTML
-    content = generate_html(top_nodes, name=name)
+    content = generate_html(top_nodes, name=name,
+                            extra_attributes=None)
 
     # output!!
     if args.output_html:
