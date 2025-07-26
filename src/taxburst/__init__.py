@@ -39,7 +39,7 @@ def main(argv=None):
         sys.exit(-1)
 
     # parse!
-    top_nodes, name = parsers.parse_file(args.tax_csv, args.input_format)
+    top_nodes, name, xtra = parsers.parse_file(args.tax_csv, args.input_format)
     assert top_nodes is not None
     checks.check_structure(top_nodes)
 
@@ -51,12 +51,9 @@ def main(argv=None):
     if args.check_tree or args.fail_on_error:
         checks.check_all_counts(top_nodes, fail_on_error=args.fail_on_error)
 
-    #for t in top_nodes:
-    #    t['fiz'] = 'foo'
-
     # build XHTML
     content = generate_html(top_nodes, name=name,
-                            extra_attributes=None)
+                            extra_attributes=xtra)
 
     # output!!
     if args.output_html:

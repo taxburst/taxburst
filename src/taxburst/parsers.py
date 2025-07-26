@@ -13,12 +13,14 @@ def parse_file(filename, input_format):
     "Parse a variety of input formats. Top level function."
     top_nodes = None
     name = None
+    xtra = None
     if input_format == "csv_summary":
         top_nodes = parse_csv_summary(filename)
         name = _strip_suffix(filename, [".csv", ".csv_summary"])
     elif input_format == "tax_annotate":
         top_nodes = parse_tax_annotate(filename)
         name = _strip_suffix(filename, [".csv", ".with-lineages"])
+        #xtra = {'lineage': "display='full lineage'"}
     elif input_format.lower() == "singlem":
         top_nodes = parse_SingleM(filename)
         name = _strip_suffix(filename, [".tsv", ".profile"])
@@ -29,7 +31,7 @@ def parse_file(filename, input_format):
     else:
         assert 0, f"unknown input format specified: {input_format}"
 
-    return top_nodes, name
+    return top_nodes, name, xtra
 
 
 def _strip_suffix(filename, endings):
@@ -169,7 +171,8 @@ def parse_tax_annotate(tax_csv):
             count += int(row["n_unique_weighted_found"])
             score += float(row["f_unique_to_query"])
 
-        node = dict(name=name, rank=rank, count=count, score=score)
+        node = dict(name=name, rank=rank, count=count, score=score,
+                    lineage=orig_lin)
         nodes_by_tax[lin] = node
 
     # add children
