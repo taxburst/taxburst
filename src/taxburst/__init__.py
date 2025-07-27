@@ -7,7 +7,6 @@ import json
 
 from . import checks
 from .parsers import parse_file
-from .taxinfo import ranks
 from .output import generate_html
 
 

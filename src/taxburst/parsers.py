@@ -7,9 +7,6 @@ from collections import defaultdict
 import json
 
 
-from .taxinfo import ranks
-
-
 def parse_file(filename, input_format):
     "Parse a variety of input formats. Top level function."
     top_nodes = None
@@ -96,7 +93,7 @@ class Parse_SourmashCSVSummary(GenericParser):
         # find the top nodes/names by superkingdom annotation
         top_names = []
         for k, row in tax_rows:
-            if row["rank"] == ranks[0]:
+            if row["rank"] == self.ranks[0]:
                 top_names.append((k, row))
 
         # turn top names into nodes recursively
@@ -146,13 +143,13 @@ class Parse_SourmashCSVSummary(GenericParser):
         # CTB speed up!
 
         # no more possible to extract => exit
-        if rank_idx >= len(ranks):
+        if rank_idx >= len(self.ranks):
             return []
 
         children = []
         prefix_str = prefix + ";"
 
-        desired_rank = ranks[rank_idx]
+        desired_rank = self.ranks[rank_idx]
         for lineage, val in tax_rows:
             if val["rank"] == desired_rank and lineage.startswith(prefix_str):
                 children.append(val)
@@ -205,7 +202,7 @@ class Parse_SourmashTaxAnnotate(GenericParser):
         nodes_by_tax = {}
         for lin, rows in rows_by_tax.items():
             name = lin.rsplit(";")[-1]
-            rank = ranks[lin.count(";")]
+            rank = self.ranks[lin.count(";")]
             count = 0.0
             for row in rows:
                 count += int(row["n_unique_weighted_found"])
@@ -230,12 +227,12 @@ class Parse_SourmashTaxAnnotate(GenericParser):
         nodes_by_rank = self._make_nodes_by_rank_d(nodes_by_tax)
 
         # CTB: speed me up.
-        for parent_rank_i in range(len(ranks)):
-            parent_rank = ranks[parent_rank_i]
+        for parent_rank_i in range(len(self.ranks)):
+            parent_rank = self.ranks[parent_rank_i]
             child_rank_i = parent_rank_i + 1
-            if child_rank_i >= len(ranks):
+            if child_rank_i >= len(self.ranks):
                 continue
-            child_rank = ranks[child_rank_i]
+            child_rank = self.ranks[child_rank_i]
 
             for (lin1, node) in nodes_by_rank[parent_rank]:
                 children = []
@@ -302,7 +299,7 @@ class Parse_SingleMProfile(GenericParser):
         nodes_by_tax = {}
         for lin, rows in rows_by_tax.items():
             name = lin.rsplit(";")[-1].strip()
-            rank = ranks[lin.count(";")]
+            rank = self.ranks[lin.count(";")]
             count = 0.0
             for row in rows:
                 count += float(row["coverage"]) * 1000

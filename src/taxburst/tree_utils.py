@@ -1,5 +1,17 @@
 from collections import defaultdict
-from .taxinfo import ranks
+
+
+ranks = [
+    "superkingdom",
+    "phylum",
+    "class",
+    "order",
+    "family",
+    "genus",
+    "species",
+    "strain",
+    "genome",
+]
 
 
 def nodes_beneath_top(top_nodes):
