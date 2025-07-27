@@ -70,7 +70,7 @@ class GenericParser:
 
     def load_rows(self):
         with open(self.filename, 'r', newline='') as fp:
-            r = csv.DictReader(fp)
+            r = csv.DictReader(fp, delimiter=self.sep)
             rows = list(r)
 
         return rows
@@ -81,10 +81,10 @@ class GenericParser:
 
 class Parse_SourmashCSVSummary(GenericParser):
     def build(self):
-        tax_rows = []
         rows = self.load_rows()
 
         # turn rows into list of (lineage, row) tuples
+        tax_rows = []
         for row in rows:
             lineage = row["lineage"]
             # eliminate all unclassified that are not top-level
@@ -272,73 +272,73 @@ def parse_tax_annotate(tax_csv):
     return pp.build()
 
 
-def parse_SingleM(singleM_tsv):
-    "load in SingleM profile output format."
-    tax_rows = []
-    with open(singleM_tsv, "r", newline="") as fp:
-        r = csv.DictReader(fp, delimiter='\t')
-        for row in r:
-            tax_rows.append(row)
+class Parse_SingleMProfile(GenericParser):
+    def build(self):
+        tax_rows = self.load_rows()
 
-    ###
+        rows_by_tax = defaultdict(list)
+        for row in tax_rows:
+            lin = row["taxonomy"]
 
-    rows_by_tax = defaultdict(list)
-    for row in tax_rows:
-        lin = row["taxonomy"]
+            # every row starts with Root; remove!
+            assert lin.startswith('Root; ')
+            orig_lin = lin[len('Root; '):]
 
-        # every row starts with Root; remove!
-        assert lin.startswith('Root; ')
-        orig_lin = lin[len('Root; '):]
+            lin = orig_lin
+            last = None
+            while lin or last:
+                rows_by_tax[lin].append(row)
 
-        lin = orig_lin
-        last = None
-        while lin or last:
-            rows_by_tax[lin].append(row)
+                # no more lineages? break up.
+                if ";" not in lin:
+                    break
+                lin, last = lin.rsplit(";", 1)
+                last = last.strip()
+                if not last:
+                    # CTB test!
+                    raise Exception(f"error!? missing taxonomic entry in row '{orig_lin}'; this is not handled by taxburst")
 
-            # no more lineages? break up.
-            if ";" not in lin:
-                break
-            lin, last = lin.rsplit(";", 1)
-            last = last.strip()
-            if not last:
-                # CTB test!
-                raise Exception(f"error!? missing taxonomic entry in row '{orig_lin}'; this is not handled by taxburst")
+        # make nodes
+        nodes_by_tax = {}
+        for lin, rows in rows_by_tax.items():
+            name = lin.rsplit(";")[-1].strip()
+            rank = ranks[lin.count(";")]
+            count = 0.0
+            for row in rows:
+                count += float(row["coverage"]) * 1000
 
-    # make nodes
-    nodes_by_tax = {}
-    for lin, rows in rows_by_tax.items():
-        name = lin.rsplit(";")[-1].strip()
-        rank = ranks[lin.count(";")]
-        count = 0.0
-        for row in rows:
-            count += float(row["coverage"]) * 1000
+            node = dict(name=name, rank=rank, count=count)
+            nodes_by_tax[lin] = node
 
-        node = dict(name=name, rank=rank, count=count)
-        nodes_by_tax[lin] = node
+        # add children
+        def is_child(lin1, lin2):
+            if lin1 == lin2:
+                return False
 
-    # add children
-    def is_child(lin1, lin2):
-        if lin1 == lin2:
+            len_lin1 = lin1.count(";")
+            len_lin2 = lin2.count(";")
+            if len_lin2 == len_lin1 + 1 and lin1 + ";" in lin2:
+                return True
             return False
 
-        len_lin1 = lin1.count(";")
-        len_lin2 = lin2.count(";")
-        if len_lin2 == len_lin1 + 1 and lin1 + ";" in lin2:
-            return True
-        return False
+        # assign children. CTB consider speeding up!
+        for lin1, node in nodes_by_tax.items():
+            children = []
+            for lin2, node2 in nodes_by_tax.items():
+                if is_child(lin1, lin2):
+                    children.append(node2)
+            node["children"] = children
 
-    # assign children. CTB consider speeding up!
-    for lin1, node in nodes_by_tax.items():
-        children = []
-        for lin2, node2 in nodes_by_tax.items():
-            if is_child(lin1, lin2):
-                children.append(node2)
-        node["children"] = children
+        # pull out all the superkingdom nodes as top_nodes
+        top_nodes = []
+        for lin, node in nodes_by_tax.items():
+            if node["rank"] == "superkingdom":
+                top_nodes.append(node)
 
-    # pull out all the superkingdom nodes as top_nodes
-    top_nodes = []
-    for lin, node in nodes_by_tax.items():
-        if node["rank"] == "superkingdom":
-            top_nodes.append(node)
+        return top_nodes
 
-    return top_nodes
+
+def parse_SingleM(singleM_tsv):
+    "load in SingleM profile output format."
+    pp = Parse_SingleMProfile(singleM_tsv, sep='\t')
+    return pp.build()
