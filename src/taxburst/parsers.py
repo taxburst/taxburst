@@ -14,12 +14,14 @@ def parse_file(filename, input_format):
     "Parse a variety of input formats. Top level function."
     top_nodes = None
     name = None
+    xtra = None
     if input_format == "csv_summary":
         top_nodes = parse_csv_summary(filename)
         name = _strip_suffix(filename, [".csv", ".csv_summary"])
     elif input_format == "tax_annotate":
         top_nodes = parse_tax_annotate(filename)
         name = _strip_suffix(filename, [".csv", ".with-lineages"])
+        xtra = { 'abund': 'display="Est abund"' }
     elif input_format.lower() == "singlem":
         top_nodes = parse_SingleM(filename)
         name = _strip_suffix(filename, [".tsv", ".profile"])
@@ -30,7 +32,7 @@ def parse_file(filename, input_format):
     else:
         assert 0, f"unknown input format specified: {input_format}"
 
-    return top_nodes, name
+    return top_nodes, name, xtra
 
 
 def _strip_suffix(filename, endings):
@@ -166,7 +168,9 @@ def parse_tax_annotate(tax_csv):
     name_col = 'match_name'
     if name_col not in tax_rows[0].keys():
         name_col = 'name'
+
     for row in tax_rows:
+        # add genome onto lineage
         orig_lin = row["lineage"] + ';' + row[name_col]
 
         lin = orig_lin
@@ -187,12 +191,13 @@ def parse_tax_annotate(tax_csv):
         name = lin.rsplit(";")[-1]
         rank = ranks[lin.count(";")]
         count = 0.0
-        score = 0.0
         for row in rows:
             count += int(row["n_unique_weighted_found"])
-            score += float(row["f_unique_to_query"])
 
-        node = dict(name=name, rank=rank, count=count, score=score)
+        node = dict(name=name, rank=rank, count=count)
+        if rank == 'genome' or rank == 'strain':
+            node['abund'] = row['median_abund']
+
         nodes_by_tax[lin] = node
 
     # add children
@@ -236,8 +241,6 @@ def parse_tax_annotate(tax_csv):
     top_nodes.append(
         dict(
             name="unclassified",
-            score=1,
-            # count is just ...remaining stuff :)
             count=total - found,
             rank="superkingdom",
         )
@@ -284,12 +287,10 @@ def parse_SingleM(singleM_tsv):
         name = lin.rsplit(";")[-1].strip()
         rank = ranks[lin.count(";")]
         count = 0.0
-        score = 0.0
         for row in rows:
             count += float(row["coverage"]) * 1000
-            score += float(1.0)
 
-        node = dict(name=name, rank=rank, count=count, score=score)
+        node = dict(name=name, rank=rank, count=count)
         nodes_by_tax[lin] = node
 
     # add children

@@ -1,18 +1,16 @@
 {% include "krona-header.html" %}
 
 <krona collapse="true" key="false">
-   <attributes magnitude="count">
+  <attributes magnitude="count">
     <data>members</data>
-    <attribute>magnitude</attribute>
-    <attribute display="Count" dataAll="members">count</attribute>
-    <attribute display="Unassigned" dataNode="members">unassigned</attribute>
-    <attribute display="Rank" mono="true">rank</attribute>
-    <attribute display="Avg. confidence">score</attribute>
+    {% for member, addl in node_attributes.items() %}
+    <attribute {{ addl|safe }}>{{ member }}</attribute>
+    {% endfor %}
    </attributes>
    <datasets>
     <dataset>sunburst dataset</dataset>
    </datasets>
-   <color attribute="score" hueStart="0" hueEnd="120" valueStart="0.413" valueEnd="0.932367571822115" default="false" ></color>
+   <color attribute="count" hueStart="0" hueEnd="120" valueStart="0.413" valueEnd="0.932367571822115" default="false" ></color>
    <node name="{{ name }}">
      <count><val>{{ count_sum }}</val></count>
 <!-- BEGIN taxburst nodes -->
