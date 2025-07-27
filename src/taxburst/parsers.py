@@ -1,6 +1,7 @@
 """
 Top level module for parsing input formats.
 """
+
 import csv
 import os
 from collections import defaultdict
@@ -18,7 +19,7 @@ def parse_file(filename, input_format):
     elif input_format == "tax_annotate":
         top_nodes = parse_tax_annotate(filename)
         name = _strip_suffix(filename, [".csv", ".with-lineages"])
-        xtra = { 'abund': 'display="Est abund"' }
+        xtra = {"abund": 'display="Est abund"'}
     elif input_format.lower() == "singlem":
         top_nodes = parse_SingleM(filename)
         name = _strip_suffix(filename, [".tsv", ".profile"])
@@ -38,7 +39,7 @@ def _strip_suffix(filename, endings):
 
     for ending in endings:
         if filename.endswith(ending):
-            filename = filename[:-len(ending)]
+            filename = filename[: -len(ending)]
     return filename
 
 
@@ -47,6 +48,7 @@ class GenericParser:
 
     For row-oriented formats, should only need to implement 'build()'.
     """
+
     default_ranks = [
         "superkingdom",
         "phylum",
@@ -58,7 +60,8 @@ class GenericParser:
         "strain",
         "genome",
     ]
-    def __init__(self, filename, *, sep=',', ranks=None):
+
+    def __init__(self, filename, *, sep=",", ranks=None):
         self.filename = filename
         self.sep = sep
         if ranks is None:
@@ -66,7 +69,7 @@ class GenericParser:
         self.ranks = ranks
 
     def load_rows(self):
-        with open(self.filename, 'r', newline='') as fp:
+        with open(self.filename, "r", newline="") as fp:
             r = csv.DictReader(fp, delimiter=self.sep)
             rows = list(r)
 
@@ -103,7 +106,7 @@ class Parse_SourmashCSVSummary(GenericParser):
             top_nodes.append(node_d)
 
         return top_nodes
-        
+
     def _make_child_d(self, tax_rows, prefix, this_row, rank_idx):
         "Make child node dicts, recursively."
         lineage = this_row["lineage"]
@@ -124,7 +127,7 @@ class Parse_SourmashCSVSummary(GenericParser):
                 children.append(child_d)
 
         # name is last element of prefix
-        name = lineage[len(prefix):].lstrip(";")
+        name = lineage[len(prefix) :].lstrip(";")
 
         # build actual node!
         child_d = dict(
@@ -136,7 +139,6 @@ class Parse_SourmashCSVSummary(GenericParser):
         )
 
         return child_d
-
 
     def _extract_rows_beneath(self, tax_rows, prefix, rank_idx):
         "Extract rows beneath a node."
@@ -178,13 +180,13 @@ class Parse_SourmashTaxAnnotate(GenericParser):
         rows = self.load_rows()
 
         rows_by_tax = defaultdict(list)
-        name_col = 'match_name'
+        name_col = "match_name"
         if name_col not in rows[0].keys():
-            name_col = 'name'
+            name_col = "name"
 
         for row in rows:
             # add genome onto lineage
-            orig_lin = row["lineage"] + ';' + row[name_col]
+            orig_lin = row["lineage"] + ";" + row[name_col]
 
             lin = orig_lin
             last = None
@@ -196,7 +198,9 @@ class Parse_SourmashTaxAnnotate(GenericParser):
                 lin, last = lin.rsplit(";", 1)
                 if not last:
                     # CTB test!
-                    raise Exception(f"error!? missing taxonomic entry in row '{orig_lin}'; this is not handled by taxburst")
+                    raise Exception(
+                        f"error!? missing taxonomic entry in row '{orig_lin}'; this is not handled by taxburst"
+                    )
 
         # make nodes
         nodes_by_tax = {}
@@ -208,8 +212,8 @@ class Parse_SourmashTaxAnnotate(GenericParser):
                 count += int(row["n_unique_weighted_found"])
 
             node = dict(name=name, rank=rank, count=count)
-            if rank == 'genome' or rank == 'strain':
-                node['abund'] = row['median_abund']
+            if rank == "genome" or rank == "strain":
+                node["abund"] = row["median_abund"]
 
             nodes_by_tax[lin] = node
 
@@ -234,9 +238,9 @@ class Parse_SourmashTaxAnnotate(GenericParser):
                 continue
             child_rank = self.ranks[child_rank_i]
 
-            for (lin1, node) in nodes_by_rank[parent_rank]:
+            for lin1, node in nodes_by_rank[parent_rank]:
                 children = []
-                for (lin2, node2) in nodes_by_rank[child_rank]:
+                for lin2, node2 in nodes_by_rank[child_rank]:
                     if is_child(lin1, lin2):
                         children.append(node2)
                         node["children"] = children
@@ -262,7 +266,6 @@ class Parse_SourmashTaxAnnotate(GenericParser):
         return top_nodes
 
 
-
 def parse_tax_annotate(tax_csv):
     "Load in 'tax annotate' format from sourmash tax annotate."
     pp = Parse_SourmashTaxAnnotate(tax_csv)
@@ -278,8 +281,8 @@ class Parse_SingleMProfile(GenericParser):
             lin = row["taxonomy"]
 
             # every row starts with Root; remove!
-            assert lin.startswith('Root; ')
-            orig_lin = lin[len('Root; '):]
+            assert lin.startswith("Root; ")
+            orig_lin = lin[len("Root; ") :]
 
             lin = orig_lin
             last = None
@@ -293,7 +296,9 @@ class Parse_SingleMProfile(GenericParser):
                 last = last.strip()
                 if not last:
                     # CTB test!
-                    raise Exception(f"error!? missing taxonomic entry in row '{orig_lin}'; this is not handled by taxburst")
+                    raise Exception(
+                        f"error!? missing taxonomic entry in row '{orig_lin}'; this is not handled by taxburst"
+                    )
 
         # make nodes
         nodes_by_tax = {}
@@ -337,5 +342,5 @@ class Parse_SingleMProfile(GenericParser):
 
 def parse_SingleM(singleM_tsv):
     "load in SingleM profile output format."
-    pp = Parse_SingleMProfile(singleM_tsv, sep='\t')
+    pp = Parse_SingleMProfile(singleM_tsv, sep="\t")
     return pp.build()

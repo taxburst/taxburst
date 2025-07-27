@@ -1,5 +1,6 @@
 from .tree_utils import *
 
+
 def check_count(node, *, fail_on_error=False):
     "Check for a parent node count that is less than sum of child node counts."
     children = node.get("children", [])
@@ -10,10 +11,14 @@ def check_count(node, *, fail_on_error=False):
     count = round(float(node["count"]), 4)
 
     if count < sub_counts:
-        print(f"WARNING: parent node {node['name']} has count {count}, but nodes beneath sum to {sub_counts}")
-        print([ n["count"] for n in children ])
+        print(
+            f"WARNING: parent node {node['name']} has count {count}, but nodes beneath sum to {sub_counts}"
+        )
+        print([n["count"] for n in children])
         if fail_on_error:
-            raise Exception("ERROR: some counts do not make sense; see warning message above")
+            raise Exception(
+                "ERROR: some counts do not make sense; see warning message above"
+            )
 
 
 def check_all_counts(top_nodes, *, fail_on_error=True):
@@ -27,9 +32,9 @@ def check_names(top_nodes, *, fail_on_error=True):
     names = set()
     do_fail = False
     for node in nodes_beneath_top(top_nodes):
-        name = node['name']
+        name = node["name"]
         if not name:
-            print(F"WARNING: node has empty name!?")
+            print(f"WARNING: node has empty name!?")
             do_fail = True
         elif name in names:
             print(f"WARNING: duplicate node name: '{name}'")
@@ -79,8 +84,8 @@ def trees_are_equal(top_nodes1, top_nodes2):
         if n1["rank"] != n2["rank"]:
             return False
 
-        c1 = { c["name"] for c in n1.get("children", []) }
-        c2 = { c["name"] for c in n2.get("children", []) }
+        c1 = {c["name"] for c in n1.get("children", [])}
+        c2 = {c["name"] for c in n2.get("children", [])}
         assert c1 == c2
 
     return True

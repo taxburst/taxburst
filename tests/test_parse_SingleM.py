@@ -7,21 +7,25 @@ from taxburst_tst_utils import get_example_filepath
 
 
 def test_basic_singlem():
-    tsv = get_example_filepath('SRR11125891.singleM.profile.tsv')
+    tsv = get_example_filepath("SRR11125891.singleM.profile.tsv")
     top_nodes = parsers.parse_SingleM(tsv)
     all_nodes = checks.collect_all_nodes(top_nodes)
 
     assert len(top_nodes) == 2
     assert len(all_nodes) == 197
 
-    check_counts = {'p__Bacillota': 342090,
-                    'p__Bacteroidota': 22880,
-                    's__Methanocatella smithii': 18000}
-    check_percent = {'p__Bacillota': 85.87,
-                     'p__Bacteroidota': 5.74,
-                     's__Methanocatella smithii': 4.52}
+    check_counts = {
+        "p__Bacillota": 342090,
+        "p__Bacteroidota": 22880,
+        "s__Methanocatella smithii": 18000,
+    }
+    check_percent = {
+        "p__Bacillota": 85.87,
+        "p__Bacteroidota": 5.74,
+        "s__Methanocatella smithii": 4.52,
+    }
 
-    total = sum([ node["count"] for node in top_nodes ])
+    total = sum([node["count"] for node in top_nodes])
 
     found_count = set()
     found_percent = set()

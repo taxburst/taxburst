@@ -13,21 +13,27 @@ from .output import generate_html
 def main(argv=None):
     p = argparse.ArgumentParser()
     p.add_argument("tax_csv", help="input tax CSV, in sourmash csv_summary format")
-    p.add_argument("-F", "--input-format", default="csv_summary",
-                   choices=[
-                       "csv_summary",
-                       "tax_annotate",
-                       "SingleM",
-                       "json",
-                   ])
     p.add_argument(
-        "-o", "--output-html", help="output HTML file to this location."
+        "-F",
+        "--input-format",
+        default="csv_summary",
+        choices=[
+            "csv_summary",
+            "tax_annotate",
+            "SingleM",
+            "json",
+        ],
     )
+    p.add_argument("-o", "--output-html", help="output HTML file to this location.")
     p.add_argument("--save-json", help="output a JSON file of the taxonomy")
-    p.add_argument("--check-tree", help="check that tree makes sense",
-                   action="store_true")
-    p.add_argument("--fail-on-error", help="fail if tree doesn't pass checks; implies --check-tree",
-                   action="store_true")
+    p.add_argument(
+        "--check-tree", help="check that tree makes sense", action="store_true"
+    )
+    p.add_argument(
+        "--fail-on-error",
+        help="fail if tree doesn't pass checks; implies --check-tree",
+        action="store_true",
+    )
     if argv is None:
         args = p.parse_args()
     else:
@@ -51,8 +57,7 @@ def main(argv=None):
         checks.check_all_counts(top_nodes, fail_on_error=args.fail_on_error)
 
     # build XHTML
-    content = generate_html(top_nodes, name=name,
-                            extra_attributes=xtra)
+    content = generate_html(top_nodes, name=name, extra_attributes=xtra)
 
     # output!!
     if args.output_html:

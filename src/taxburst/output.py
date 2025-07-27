@@ -1,6 +1,5 @@
 import os.path
-from jinja2 import (Environment, PackageLoader, select_autoescape,
-                    StrictUndefined)
+from jinja2 import Environment, PackageLoader, select_autoescape, StrictUndefined
 
 env = Environment(
     loader=PackageLoader("taxburst"),
@@ -12,11 +11,11 @@ env = Environment(
 #    'score': 'display="Avg. confidence"',
 
 basic_node_attributes = {
-    'magnitude': '',
-    'count': 'display="Count" dataAll="members"',
-    'unassigned': 'display="Unassigned" dataNode="members"',
-    'rank': 'display="Rank" mono="true"',
-    }
+    "magnitude": "",
+    "count": 'display="Count" dataAll="members"',
+    "unassigned": 'display="Unassigned" dataNode="members"',
+    "rank": 'display="Rank" mono="true"',
+}
 
 
 def generate_html(top_nodes, *, name=None, extra_attributes=None):
@@ -25,7 +24,7 @@ def generate_html(top_nodes, *, name=None, extra_attributes=None):
     if extra_attributes is None:
         extra_attributes = {}
     else:
-        extra_attributes=dict(extra_attributes)
+        extra_attributes = dict(extra_attributes)
 
     node_attributes = dict(basic_node_attributes)
     node_attributes.update(extra_attributes)
@@ -39,14 +38,14 @@ def generate_html(top_nodes, *, name=None, extra_attributes=None):
 
     count_sum = round(sum([float(n["count"]) for n in top_nodes]), 4)
 
-    return template.render(nodes=fill,
-                           name=name,
-                           count_sum=count_sum,
-                           node_attributes=node_attributes)
+    return template.render(
+        nodes=fill, name=name, count_sum=count_sum, node_attributes=node_attributes
+    )
 
 
 # track total node count, for distinguishing purposes
 node_count = 1
+
 
 def make_node_xml(d, x, *, indent=0):
     "Turn a given node dict into a <node>. x is list of attributes to add."
