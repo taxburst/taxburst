@@ -21,6 +21,7 @@ def main(argv=None):
             "csv_summary",
             "tax_annotate",
             "SingleM",
+            "krona",
             "json",
         ],
     )

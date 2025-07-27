@@ -78,3 +78,11 @@ def test_SingleM(tmp_path):
     taxburst.main([path, "-o", str(output), "-F", "SingleM"])
 
     assert os.path.exists(output)
+
+
+def test_krona(tmp_path):
+    path = get_example_filepath("SRR11125891.krona.tsv")
+    output = tmp_path / "xxx.html"
+    taxburst.main([path, "-o", str(output), "-F", "krona"])
+
+    assert os.path.exists(output)

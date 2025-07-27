@@ -23,6 +23,9 @@ def parse_file(filename, input_format):
     elif input_format.lower() == "singlem":
         top_nodes = parse_SingleM(filename)
         name = _strip_suffix(filename, [".tsv", ".profile"])
+    elif input_format.lower() == "krona":
+        top_nodes = parse_krona(filename)
+        name = _strip_suffix(filename, [".tsv", ".krona"])
     elif input_format.lower() == "json":
         with open(filename, "rb") as fp:
             top_nodes = json.load(fp)
@@ -343,4 +346,80 @@ class Parse_SingleMProfile(GenericParser):
 def parse_SingleM(singleM_tsv):
     "load in SingleM profile output format."
     pp = Parse_SingleMProfile(singleM_tsv, sep="\t")
+    return pp.build()
+
+
+class Parse_Krona(GenericParser):
+    def build(self):
+        tax_rows = self.load_rows()
+
+        rows_by_tax = defaultdict(list)
+        available_ranks = None
+        for row in tax_rows:
+            # initialize list of available ranks
+            if available_ranks is None:
+                available_ranks = []
+                for rank in self.ranks:
+                    if rank not in row:
+                        break
+                    available_ranks.append(rank)
+
+            get_ranks = list(reversed(available_ranks))
+            lineage = []
+            while get_ranks:
+                rank = get_ranks.pop()
+                lineage.append(row[rank])
+
+            # special case unclassified
+            if row[rank] == "unclassified":
+                rows_by_tax["unclassified"].append(row)
+                continue
+
+            for i in range(0, len(lineage)):
+                lin = ";".join(lineage[: i + 1])
+                rows_by_tax[lin].append(row)
+
+        # make nodes
+        nodes_by_tax = {}
+        for lin, rows in rows_by_tax.items():
+            name = lin.rsplit(";")[-1].strip()
+            rank = self.ranks[lin.count(";")]
+            count = 0.0
+            for row in rows:
+                count += float(row["fraction"]) * 1000
+
+            node = dict(name=name, rank=rank, count=count)
+            nodes_by_tax[lin] = node
+
+        # add children
+        def is_child(lin1, lin2):
+            if lin1 == lin2:
+                return False
+
+            len_lin1 = lin1.count(";")
+            len_lin2 = lin2.count(";")
+            if len_lin2 == len_lin1 + 1 and lin1 + ";" in lin2:
+                return True
+            return False
+
+        # assign children. CTB consider speeding up!
+        for lin1, node in nodes_by_tax.items():
+            children = []
+            for lin2, node2 in nodes_by_tax.items():
+                if is_child(lin1, lin2):
+                    children.append(node2)
+            node["children"] = children
+
+        # pull out all the superkingdom nodes as top_nodes
+        top_nodes = []
+        for lin, node in nodes_by_tax.items():
+            if node["rank"] == "superkingdom":
+                top_nodes.append(node)
+
+        return top_nodes
+
+
+def parse_krona(krona_tsv):
+    "Load in krona output format"
+    pp = Parse_Krona(krona_tsv, sep="\t")
     return pp.build()
