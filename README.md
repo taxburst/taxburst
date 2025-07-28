@@ -1,9 +1,10 @@
 # taxburst: sunburst charts for taxonomy, based on Krona
 
 taxburst is a fork of the [Krona](https://github.com/marbl/Krona)
-software, Ondov, Bergman, and Philippy, 2011
-[link](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-385). It produces static HTML pages that provide an interactive display of
-a metagenomic taxonomy.
+software, (see:
+[Ondov, Bergman, and Philippy, 2011](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-385)). It
+produces static HTML pages that provide an interactive display of a
+metagenomic taxonomy.
 
 Here is an example screenshot:
 
@@ -13,9 +14,9 @@ Krona is a fantastic piece of software, but it has been unmaintained for
 a number of years. Moreover, the input parsing code is written in Perl
 and the default instructions require use of NCBI taxids.
 
-The goal of taxburst is to update Krona to a maintained piece of software
-that can be adapted and adjusted in a variety of ways.  This is still
-alpha mode software, to be used at your own risk.
+The goal of taxburst is to update Krona to a maintained, documented
+piece of software that can be adapted and adjusted in a variety of
+ways.  This is still alpha mode software, to be used at your own risk.
 
 Please file bugs and feature requests on [the issue tracker](https://github.com/taxburst/taxburst/issues).
 
@@ -95,12 +96,6 @@ Voila! 'taxburst'!
 
 I'd call it Krona2 or something, but the licensing for Krona prohibits that,
 to my understanding. Hence, 'taxburst'.
-
-## Miscellaneous notes on input formats
-
-* the `sourmash tax annotate` format supports assignments down to the
-  genome level, while `sourmash tax metagenome`'s `csv_summary` format
-  only goes down to the species level.
 
 ## Citation information
 
