@@ -4,6 +4,7 @@ all: test examples
 
 examples:
 	cd examples && snakemake --delete-all-output && snakemake -j 1
+	cp examples/*.html doc/examples/
 
 dist:
 	python -m build

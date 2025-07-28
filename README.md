@@ -30,11 +30,9 @@ More documentation is available in [doc/README.md](doc/README.md).
 
 Here are some examples of (interactive!) taxburst plots:
 
-* [small.tax.html](https://taxburst.github.io/taxburst/pages/small.tax.html) - a small example from sourmash.
-* [SRR606249.x.podar.tax.html](https://taxburst.github.io/taxburst/pages/SRR606249.x.podar.tax.html) - sourmash taxonomy on the SRR606249 defined community.
-* [SRR11125891.SingleM.html](https://taxburst.github.io/taxburst/pages/SRR11125891.SingleM.html) - displaying the results of `singlem pipe` on SRR11125891, a pig gut microbiome.
-* [SRR11125891.summarized.html](https://taxburst.github.io/taxburst/pages/SRR11125891.summarized.html) - `sourmash` taxonomic breakdown on SRR11125891.
-* [SRR11125891.tax_annotate.html](https://taxburst.github.io/taxburst/pages/SRR11125891.tax_annotate.html) - genome-resolution taxonomic breakdown of SRR11125891.
+* [SRR11125891.SingleM.html](https://taxburst.github.io/taxburst/examples/SRR11125891.SingleM.html) - displaying the results of `singlem pipe` on SRR11125891, a pig gut microbiome.
+* [SRR11125891.summarized.html](https://taxburst.github.io/taxburst/examples/SRR11125891.summarized.html) - `sourmash` taxonomic breakdown on SRR11125891.
+* [SRR11125891.tax_annotate.html](https://taxburst.github.io/taxburst/examples/SRR11125891.tax_annotate.html) - genome-resolution taxonomic breakdown of SRR11125891.
 
 ## Install
 
@@ -53,9 +51,9 @@ from `sourmash tax metagenome` (see
 [tax metagenome docs](https://sourmash.readthedocs.io/en/latest/command-line.html#sourmash-tax-metagenome-summarize-metagenome-content-from-gather-results)),
 ```
 taxburst examples/SRR11125891.summarized.csv \
-    -o pages/SRR11125891.summarized.html
+    -o SRR11125891.summarized.html
 ```
-then open `pages/SRR11125891.summarized.html` in a browser.
+then open `SRR11125891.summarized.html` in a browser.
 
 ### Using `sourmash tax annotate` output
 
@@ -66,9 +64,9 @@ from `sourmash tax annotate` (see
 ```
 taxburst -F tax_annotate \
     examples/SRR11125891.t0.gather.with-lineages.csv \
-    -o pages/SRR11125891.tax_annotate.html
+    -o SRR11125891.tax_annotate.html
 ```
-then open `pages/SRR11125891.tax_annotate.html` in a browser.
+then open `SRR11125891.tax_annotate.html` in a browser.
 
 ### Using `singleM pipe` output
 
@@ -79,9 +77,9 @@ from `singlem pipe` (see
 ```
 taxburst -F singleM \
     examples/SRR11125891.singleM.profile.tsv \
-    -o pages/SRR11125891.singleM.html
+    -o SRR11125891.singleM.html
 ```
-then open `pages/SRR11125891.singleM.html` in a browser.
+then open `SRR11125891.singleM.html` in a browser.
 
 ## Background and history
 
