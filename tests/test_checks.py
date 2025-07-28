@@ -1,4 +1,5 @@
 "Test the checks code. IINNNNNNNCEPTION!!"
+
 import pytest
 
 from taxburst import checks
@@ -15,6 +16,7 @@ good_nodes = [
         ],
     },
 ]
+
 
 def test_check_structure_1():
     checks.check_structure(good_nodes)

@@ -1,4 +1,5 @@
 "Test command-line level stuff, at the Python level."
+
 import pytest
 import os
 
@@ -26,7 +27,7 @@ def test_output_required(tmp_path):
     output = tmp_path / "xxx.html"
 
     with pytest.raises(SystemExit) as e:
-        taxburst.main([path, '-F', 'json'])
+        taxburst.main([path, "-F", "json"])
 
     assert e.value.code == -1
 
@@ -36,13 +37,13 @@ def test_output_json_ok(tmp_path):
     path = get_example_filepath("SRR11125891.lineages.json")
     output = tmp_path / "xxx.json"
 
-    taxburst.main([path, '-F', 'json', "--save-json", str(output)])
+    taxburst.main([path, "-F", "json", "--save-json", str(output)])
 
 
 def test_load_json(tmp_path):
     path = get_example_filepath("SRR11125891.lineages.json")
     output = tmp_path / "xxx.html"
-    taxburst.main([path, "-o", str(output), '-F', 'json'])
+    taxburst.main([path, "-o", str(output), "-F", "json"])
 
     assert os.path.exists(output)
 
@@ -75,5 +76,13 @@ def test_SingleM(tmp_path):
     path = get_example_filepath("SRR11125891.singleM.profile.tsv")
     output = tmp_path / "xxx.html"
     taxburst.main([path, "-o", str(output), "-F", "SingleM"])
+
+    assert os.path.exists(output)
+
+
+def test_krona(tmp_path):
+    path = get_example_filepath("SRR11125891.krona.tsv")
+    output = tmp_path / "xxx.html"
+    taxburst.main([path, "-o", str(output), "-F", "krona"])
 
     assert os.path.exists(output)
