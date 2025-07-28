@@ -1,123 +1,36 @@
-# Additional documentation
+# taxburst documentation
 
-## Using with sourmash output
+taxburst is a fork of the [Krona](https://github.com/marbl/Krona)
+software, (see:
+[Ondov, Bergman, and Philippy, 2011](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-385)). It
+produces static HTML pages that provide an interactive display of a
+metagenomic taxonomy.
 
-The suggested sourmash workflow is:
+This is still alpha mode software, to be used at your own risk.
 
-* run sourmash gather to generate a gather CSV;
-* annotate the gather output with taxonomy using `sourmash tax annotate`;
-* use `taxburst -F tax_annotate <with-lineages CSV> -o <taxburst HTML>`
+Please file bug reports and feature requests on [the issue tracker](https://github.com/taxburst/taxburst/issues).
 
-This will give the most detailed output possible.
+## Install
 
-## Formats, counts, and scores
+taxburst is available on the Python Package Index (PyPI) under [pypi.org/project/taxburst](https://pypi.org/project/taxburst/).
 
-### `tax_annotate`
+To install it, run:
 
-The `-F tax_annotate` format will take in sourmash gather results
-annotated with `sourmash tax annotate`. The resulting counts in the
-taxburst display will be the weighted number of hashes matching at
-each taxonomic level; multiply this by the scaled factor used in
-sourmash to get an estimate of the bp in the original metagenome.  The
-`score` (displayed as "Avg. confidence" in the taxburst panel) is the
-normalized fraction of the number of unique k-mers in the metagenome
-matched at this rank (unweighted) - it is the aggregated
-`f_unique_weighted` value in the sourmash gather output.
-
-### `csv_summary`
-
-The `-F csv_summary` format will take in the results of `sourmash tax
-metagenome` run with `-F csv_summary`. The counts produced for
-taxburst are 1000 times the `f_weighted_at_rank` value, and the score
-is the `fration` column (aggregated `f_unique_weighted`) at that rank.
-
-### `SingleM`
-
-The `-F SingleM` format will take in the results of `singlem pipe -p`,
-a profile TSV file. The count reported by taxburst is 1000 x the
-`coverage` column. `score` is set to 1.0 for all rows.
-
-## Internals of the input and output formats
-
-The taxburst code works in the following stages:
-
-1. Load in an input file containing some taxonomic summary.
-2. Convert that summary into an internal tree format in Python, based on nested lists of dictionaries.
-3. Convert that internal tree format into XHTML, which can then be saved in a static HTML file with accompanying JavaScript to support interactive visualization.
-
-These two intermediate formats are useful to know about because there
-are two ways to support new input formats: you can either write a
-Python function to convert a new format into the internal tree format,
-or you can write code in _any_ language to output JSON that can be
-loaded into the internal tree format.
-
-taxburst consumes a JSON version of this format with `-F json`, and
-produces this format with `--save-json <filenam>`.
-
-(In the future, it should be possible to modify the internal JavaScript in
-the static HTML file to read the JSON directly, which would simplify this
-even more and allow for more flexibility as well.)
-
-### Internal dictionary format
-
-Here is a simple example of the internal dictionary format:
-
-```python
-nodes = [
-    {
-        "name": "A",
-        "count": 5,
-        "score": 0.831,
-        "rank": "Phylum",
-        "children": [
-            {"name": "B", "count": 3, "score": 0.2, "rank": "Class"},
-            {"name": "C", "count": 1, "score": 0.1, "rank": "Class"},
-        ],
-    },
-]
+```
+pip install taxburst
 ```
 
-See `examples/simple-output.py` in the github repo for example code
-to produce an output HTML from this.
+## Authors
 
-### JSON version of the internal dictionary format
+The original Krona software was developed by Brian Ondov, Nicholas
+Bergman, and Adam Philippy.
 
-This nested dictionary format converts to fairly simple JSON:
-```json
-[
-  {
-    "name": "A",
-    "count": 5,
-    "score": 0.831,
-    "rank": "Phylum",
-    "children": [
-      {
-        "name": "B",
-        "count": 3,
-        "score": 0.2,
-        "rank": "Class"
-      },
-      {
-        "name": "C",
-        "count": 1,
-        "score": 0.1,
-        "rank": "Class"
-      }
-    ]
-  }
-]
-```
+taxburst is developed by Titus Brown. The HTML format is largely unchanged,
+but the parsing front-end and output mechanisms have been completely
+rewritten in Python.
 
-This can be loaded from a file and converted into an HTML file like so:
-```python
-import json
-import taxburst
+## Citation information
 
-with open('nodes.json') as fp:
-   nodes = json.load(fp)
-   
-content = taxburst.generate_html(nodes)
-with open('nodes.html') as fp:
-   fp.write(content)
-```
-This is equivalent to `taxburst -F json nodes.json -o nodes.html`.
+When using taxburst, please cite the Krona paper:
+[Interactive metagenomic visualization in a Web browser](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-385),
+Ondov et al., 2011.
