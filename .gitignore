@@ -6,3 +6,4 @@ test_workflow/outputs
 __pycache__
 *.egg-info
 dist
+site

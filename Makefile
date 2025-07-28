@@ -10,3 +10,6 @@ dist:
 
 test:
 	pytest
+
+serve:
+	mkdocs serve
