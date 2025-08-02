@@ -1,9 +1,15 @@
 name: build and deploy mkdocs to github pages
 
+permissions:
+  pages: write
+  contents: write
+
 on:
   push:
     branches:
       - main
+      - fix_deploy
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
