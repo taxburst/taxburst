@@ -6,9 +6,31 @@ software, (see:
 produces static HTML pages that provide an interactive display of a
 metagenomic taxonomy.
 
-This is still alpha mode software, to be used at your own risk.
+The goal of taxburst is to update Krona to a maintained, documented
+piece of software that can be adapted and adjusted in a variety of
+ways.  This is still alpha mode software, to be used at your own risk.
 
-Please file bug reports and feature requests on [the issue tracker](https://github.com/taxburst/taxburst/issues).
+Here is an example screenshot:
+
+![example output screenshot](examples/SRR606249.x.podar.tax.png)
+
+## Support and help
+
+Please file bugs and feature requests on [the issue tracker](https://github.com/taxburst/taxburst/issues).
+
+Pull requests are welcome!
+
+## Additional documentation
+
+More documentation is available at [taxburst.github.io/taxburst/](https://taxburst.github.io/taxburst/).
+
+## Examples
+
+Here are some examples of (interactive!) taxburst plots:
+
+* [SRR11125891.SingleM.html](examples/SRR11125891.SingleM.html) - displaying the results of `singlem pipe` on SRR11125891, a pig gut microbiome.
+* [SRR11125891.summarized.html](examples/SRR11125891.summarized.html) - `sourmash` taxonomic breakdown on SRR11125891.
+* [SRR11125891.tax_annotate.html](taxburst/examples/SRR11125891.tax_annotate.html) - genome-resolution taxonomic breakdown of SRR11125891.
 
 ## Install
 

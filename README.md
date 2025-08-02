@@ -8,7 +8,7 @@ metagenomic taxonomy.
 
 Here is an example screenshot:
 
-![example output screenshot](examples/SRR606249.x.podar.tax.png)
+![example output screenshot](doc/examples/SRR606249.x.podar.tax.png)
 
 Krona is a fantastic piece of software, but it has been unmaintained for
 a number of years. Moreover, the input parsing code is written in Perl
@@ -24,7 +24,7 @@ Pull requests are welcome!
 
 ## Additional documentation
 
-More documentation is available in [doc/README.md](doc/README.md).
+More documentation is available at [taxburst.github.io/taxburst/](https://taxburst.github.io/taxburst/).
 
 ## Examples
 
