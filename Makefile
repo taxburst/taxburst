@@ -1,4 +1,4 @@
-.PHONY: dist test examples
+.PHONY: dist test examples doc
 
 all: test examples
 
@@ -14,3 +14,6 @@ test:
 
 serve:
 	mkdocs serve
+
+doc:
+	mkdocs build
