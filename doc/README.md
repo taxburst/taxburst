@@ -20,10 +20,6 @@ Please file bugs and feature requests on [the issue tracker](https://github.com/
 
 Pull requests are welcome!
 
-## Additional documentation
-
-More documentation is available at [taxburst.github.io/taxburst/](https://taxburst.github.io/taxburst/).
-
 ## Examples
 
 Here are some examples of (interactive!) taxburst plots:
