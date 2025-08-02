@@ -1,14 +1,13 @@
 # taxburst documentation
 
 taxburst is a fork of the [Krona](https://github.com/marbl/Krona)
-software, (see:
-[Ondov, Bergman, and Philippy, 2011](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-385)). It
+software ([Ondov, Bergman, and Philippy, 2011](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-385)). It
 produces static HTML pages that provide an interactive display of a
 metagenomic taxonomy.
 
 The goal of taxburst is to update Krona to a maintained, documented
 piece of software that can be adapted and adjusted in a variety of
-ways.  This is still alpha mode software, to be used at your own risk.
+ways.  This is still beta mode software, to be used at your own risk.
 
 Here is an example screenshot:
 
@@ -19,10 +18,6 @@ Here is an example screenshot:
 Please file bugs and feature requests on [the issue tracker](https://github.com/taxburst/taxburst/issues).
 
 Pull requests are welcome!
-
-## Additional documentation
-
-More documentation is available at [taxburst.github.io/taxburst/](https://taxburst.github.io/taxburst/).
 
 ## Examples
 
@@ -49,7 +44,10 @@ Bergman, and Adam Philippy.
 
 taxburst is developed by Titus Brown. The HTML format is largely unchanged,
 but the parsing front-end and output mechanisms have been completely
-rewritten in Python.
+rewritten in Python, and enhanced output validation has been added.
+
+You can contact Titus at ctbrown@ucdavis.edu if needed, but please use
+the issue tracker as much as possible :).
 
 ## Citation information
 

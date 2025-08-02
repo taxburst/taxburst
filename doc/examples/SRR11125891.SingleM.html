@@ -5969,7 +5969,7 @@ function enableData()
 function showData(indexData, indexAttribute, summary)
 {
 	var dataWindow = window.open('', '_blank');
-	var title = 'Krona - ' + attributes[indexAttribute].displayName + ' - ' + focusNode.name;
+	var title = 'taxburst - ' + attributes[indexAttribute].displayName + ' - ' + focusNode.name;
 	dataWindow.document.title = title;
 	
 	nodeData = new Array();
@@ -6031,7 +6031,7 @@ function showList(indexList, indexAttribute, summary)
 			pre.innerHTML = list;
 		}
 		
-		dataWindow.document.title = 'Krona - ' + attributes[indexAttribute].displayName + ' - ' + focusNode.name;
+		dataWindow.document.title = 'taxburst - ' + attributes[indexAttribute].displayName + ' - ' + focusNode.name;
 	}
 }
 
@@ -6119,7 +6119,7 @@ function svgHeader()
 	"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\
 <svg width="' + imageWidth + '" height="' + imageHeight + '" version="1.1"\
 	xmlns="http://www.w3.org/2000/svg">\
-<title>Krona (snapshot) - ' +
+<title>taxburst (snapshot) - ' +
 (datasets > 1 ? datasetNames[currentDataset] + ' - ' : '') + selectedNode.name +
 '</title>\
 <defs>\
@@ -6557,7 +6557,7 @@ function updateView()
 	updateKeyControl();
 	updateDatasetWidths();
 	
-	document.title = 'Krona - ' + selectedNode.name;
+	document.title = 'taxburst - ' + selectedNode.name;
 	updateNavigationButtons();
 	snapshotButton.disabled = true;
 	
