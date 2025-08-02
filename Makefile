@@ -1,4 +1,4 @@
-.PHONY: dist test examples doc
+.PHONY: dist test examples doc gh-deploy
 
 all: test examples
 
@@ -17,3 +17,7 @@ serve:
 
 doc:
 	mkdocs build
+
+gh-deploy:
+	mkdocs gh-deploy
+
