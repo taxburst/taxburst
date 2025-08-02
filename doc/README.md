@@ -30,7 +30,7 @@ Here are some examples of (interactive!) taxburst plots:
 
 * [SRR11125891.SingleM.html](examples/SRR11125891.SingleM.html) - displaying the results of `singlem pipe` on SRR11125891, a pig gut microbiome.
 * [SRR11125891.summarized.html](examples/SRR11125891.summarized.html) - `sourmash` taxonomic breakdown on SRR11125891.
-* [SRR11125891.tax_annotate.html](taxburst/examples/SRR11125891.tax_annotate.html) - genome-resolution taxonomic breakdown of SRR11125891.
+* [SRR11125891.tax_annotate.html](examples/SRR11125891.tax_annotate.html) - genome-resolution taxonomic breakdown of SRR11125891.
 
 ## Install
 
