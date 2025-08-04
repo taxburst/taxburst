@@ -189,11 +189,18 @@ class Parse_SourmashTaxAnnotate(GenericParser):
 
         for row in rows:
             # add genome onto lineage
-            orig_lin = row["lineage"] + ";" + row[name_col]
+            orig_lin = row["lineage"]
+            if not orig_lin:
+                print(f'IGNORING row with empty lineage: name={row["name"]}')
+                continue
+            orig_lin = orig_lin + ";" + row[name_col]
 
             lin = orig_lin
+            first = True
             last = None
-            while lin or last:
+            while first or last:
+                first = False
+                assert lin
                 rows_by_tax[lin].append(row)
 
                 if ";" not in lin:
@@ -209,6 +216,7 @@ class Parse_SourmashTaxAnnotate(GenericParser):
         nodes_by_tax = {}
         for lin, rows in rows_by_tax.items():
             name = lin.rsplit(";")[-1]
+
             rank = self.ranks[lin.count(";")]
             count = 0.0
             for row in rows:
@@ -288,8 +296,10 @@ class Parse_SingleMProfile(GenericParser):
             orig_lin = lin[len("Root; ") :]
 
             lin = orig_lin
+            first = True
             last = None
-            while lin or last:
+            while first or last:
+                first = False
                 rows_by_tax[lin].append(row)
 
                 # no more lineages? break up.
