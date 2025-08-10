@@ -37,7 +37,7 @@ taxburst is available on the Python Package Index (PyPI) under [pypi.org/project
 
 To install it, run:
 
-```
+```bash
 pip install taxburst
 ```
 
