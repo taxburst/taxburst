@@ -1,5 +1,9 @@
 # taxburst documentation
 
+
+<a href="https://pypi.org/project/taxburst/"><img alt="PyPI" src="https://badge.fury.io/py/taxburst.svg"></a>
+[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/taxburst/README.html)
+
 taxburst is a fork of the [Krona](https://github.com/marbl/Krona)
 software ([Ondov, Bergman, and Philippy, 2011](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-385)). It
 produces static HTML pages that provide an interactive display of a
@@ -33,8 +37,15 @@ taxburst is available on the Python Package Index (PyPI) under [pypi.org/project
 
 To install it, run:
 
-```
+```bash
 pip install taxburst
+```
+
+It is also available on Bioconda.
+
+```bash
+conda create -n taxburst -c bioconda taxburst
+conda activate taxburst
 ```
 
 ## Authors
