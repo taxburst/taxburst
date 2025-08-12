@@ -40,6 +40,10 @@ Here are some examples of (interactive!) taxburst plots:
 * [SRR11125891.tax_annotate.html](examples/SRR11125891.tax_annotate.html) - genome-resolution taxonomic breakdown of SRR11125891.
 * [SRR11125891.krona.html](examples/SRR11125891.krona.html) - krona-format input parsing output (produced by `sourmash tax metagenome`).
 
+The input formats behind these taxburst plots can be found in `examples/`
+folder in the top level of the git repo.  The README in that directory
+contains some minimal documentation on how the examples were created.
+
 ## Install
 
 taxburst is available on the Python Package Index (PyPI) under [pypi.org/project/taxburst](https://pypi.org/project/taxburst/).
