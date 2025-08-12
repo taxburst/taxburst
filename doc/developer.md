@@ -1,9 +1,61 @@
 # Information for Developers
 
 Please file issues in
-[the issue tracker](https://github.com/taxburst/taxburst/issues) if you have questions or comments!
+[the issue tracker](https://github.com/taxburst/taxburst/issues) if
+you have questions or comments!
 
 Pull requests are welcome!
+
+## Guidance on writing new parsers
+
+The current built-in parsers are contained in
+`src/taxburst/parsers.py`.  In general, the easiest way to proceed is
+to copy an existing parsing class (e.g. `Parse_SourmashCSVSummary` and
+modify the `build` method.  The current parsers mostly work by
+creating a `nodes_by_tax` dictionary that contains (key, value) pairs
+where each key is a semicolon-separated lineage
+(e.g. `d__Bacteria;p__Spirochaetota`) and each value is a "node
+dictionary", a dictionary containing at least `name`, `count`, and
+`rank`. This dictionary must contain all lineage subpaths.
+
+If the `nodes_by_tax` dictionary is built properly, then the function
+`taxburst.parsers.assign_children` will build the hierarchy of nodes
+needed for conversion into XHTML.
+
+Basic consistency checks are applied to this tree before output, and
+additional consistency checks can be run with `--check-tree` on the
+taxburst command line.
+
+### Examples, documentation, and automated testing
+
+For each new format, please add an example (ideally, calculated for the
+metagenome `SRR11125891`) to the `examples/` top-level directory, and
+(ideally) add a step to the snakemake workflow in `examples/Snakefile`
+so that taxburst is automatically run on the example. You should also
+add a link to the example output in the `doc/README.md` file.
+
+Please also add a brief description of the new parser format to
+the `doc/command-line.md` document.
+
+Last but by no means least, please add a new `tests/test_parse_*.py` file
+that runs the parser and checks a few values.
+
+Feel free to ask for help on any of these tasks!
+
+### Additional points
+
+There is no inherent restriction on ranks, although the current parsing
+classes all inherit from `GenericParser` which supports the normal
+NCBI/GTDB ranks from "superkingdom" on down.
+
+Other keys are allowed in the node dictionary but are ignored in the
+output format unless an `extra_attributes` dictionary is returned by
+the parsing function; see the `tax_annotate` format parser for an
+example.
+
+
+@CTB talk about hooks
+@CTB talk about testing
 
 ## Internals of the input and output formats
 
