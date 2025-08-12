@@ -6,7 +6,7 @@ import os.path
 import json
 
 from . import checks
-from .parsers import parse_file
+from . import parsers
 from .output import generate_html
 
 
@@ -17,13 +17,7 @@ def main(argv=None):
         "-F",
         "--input-format",
         default="csv_summary",
-        choices=[
-            "csv_summary",
-            "tax_annotate",
-            "SingleM",
-            "krona",
-            "json",
-        ],
+        choices=parsers.input_formats,
     )
     p.add_argument("-o", "--output-html", help="output HTML file to this location.")
     p.add_argument("--save-json", help="output a JSON file of the taxonomy")

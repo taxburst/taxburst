@@ -25,9 +25,9 @@ Please file bugs and feature requests on [the issue tracker](https://github.com/
 
 Pull requests are welcome!
 
-## Additional documentation
+## Documentation
 
-More documentation is available at [taxburst.github.io/taxburst/](https://taxburst.github.io/taxburst/).
+User and developer documentation is available at [taxburst.github.io/taxburst/](https://taxburst.github.io/taxburst/).
 
 ## Examples
 

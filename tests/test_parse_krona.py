@@ -15,14 +15,14 @@ def test_basic_krona():
     assert len(all_nodes) == 1429
 
     check_counts = {
-        "p__Bacillota": 374,
-        "p__Bacteroidota": 94,
-        "s__Methanocatella smithii": 8,
+        "p__Bacillota": 612,
+        "p__Bacteroidota": 56,
+        "s__Methanocatella smithii": 28,
     }
     check_percent = {
-        "p__Bacillota": 37.36,
-        "p__Bacteroidota": 9.38,
-        "s__Methanocatella smithii": 0.85,
+        "p__Bacillota": 61.24,
+        "p__Bacteroidota": 5.56,
+        "s__Methanocatella smithii": 2.8,
     }
 
     total = sum([node["count"] for node in top_nodes])

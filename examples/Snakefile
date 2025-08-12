@@ -3,6 +3,7 @@ rule all:
         "../doc/examples/SRR11125891.summarized.html",
         "../doc/examples/SRR11125891.tax_annotate.html",
         "../doc/examples/SRR11125891.SingleM.html",
+        "../doc/examples/SRR11125891.krona.html",
 
 rule csv_sum:
     input: "SRR11125891.summarized.csv",
@@ -23,4 +24,12 @@ rule tsv_singlem:
     output: "../doc/examples/SRR11125891.SingleM.html",
     shell: """
         taxburst {input} -o {output} -F SingleM
+    """
+
+
+rule tsv_krona:
+    input: "SRR11125891.krona.tsv",
+    output: "../doc/examples/SRR11125891.krona.html",
+    shell: """
+        taxburst -F krona {input} -o {output}
     """

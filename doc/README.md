@@ -17,6 +17,18 @@ Here is an example screenshot:
 
 ![example output screenshot](examples/SRR606249.x.podar.tax.png)
 
+## Input formats
+
+taxburst v0.3.0 (Aug 2025) has parsers for the following formats:
+
+* sourmash `tax annotate` and `csv_summary` outputs;
+* SingleM profile output;
+* Krona format;
+* nested dictionaries in JSON;
+
+Please [file an issue](https://github.com/taxburst/taxburst/issues) if you
+need support for an additional format!
+
 ## Support and help
 
 Please file bugs and feature requests on [the issue tracker](https://github.com/taxburst/taxburst/issues).
@@ -30,6 +42,11 @@ Here are some examples of (interactive!) taxburst plots:
 * [SRR11125891.SingleM.html](examples/SRR11125891.SingleM.html) - displaying the results of `singlem pipe` on SRR11125891, a pig gut microbiome.
 * [SRR11125891.summarized.html](examples/SRR11125891.summarized.html) - `sourmash` taxonomic breakdown on SRR11125891.
 * [SRR11125891.tax_annotate.html](examples/SRR11125891.tax_annotate.html) - genome-resolution taxonomic breakdown of SRR11125891.
+* [SRR11125891.krona.html](examples/SRR11125891.krona.html) - krona-format input parsing output (produced by `sourmash tax metagenome`).
+
+The input formats behind these taxburst plots can be found in `examples/`
+folder in the top level of the git repo.  The README in that directory
+contains some minimal documentation on how the examples were created.
 
 ## Install
 

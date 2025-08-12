@@ -1,5 +1,8 @@
 """
 Top level module for parsing input formats.
+
+Please see the developer docs at docs/developer.md in the git repo for
+guidance on writing a new parser.
 """
 
 import csv
@@ -8,11 +11,21 @@ from collections import defaultdict
 import json
 
 
+input_formats = [
+    "csv_summary",
+    "tax_annotate",
+    "SingleM",
+    "krona",
+    "json",
+]
+
 def parse_file(filename, input_format):
     "Parse a variety of input formats. Top level function."
     top_nodes = None
     name = None
     xtra = None
+
+    assert input_format in input_formats
     if input_format == "csv_summary":
         top_nodes = parse_csv_summary(filename)
         name = _strip_suffix(filename, [".csv", ".csv_summary"])
@@ -45,6 +58,28 @@ def _strip_suffix(filename, endings):
             filename = filename[: -len(ending)]
     return filename
 
+# common utility function...
+def assign_children(nodes_by_tax):
+    "takes a dictionary { lin, node_dict }; returns top nodes"
+    # assign children
+    children_by_lin = defaultdict(list)
+    top_nodes = []
+    for lin, node in nodes_by_tax.items():
+        if lin.count(";") == 0: # top node
+            top_nodes.append(node)
+            continue
+
+        # pick off prefix
+        parent_lin = lin.rsplit(';', 1)[0]
+        # assign child to parent
+        children_by_lin[parent_lin].append(node)
+
+    for lin, node in nodes_by_tax.items():
+        children = children_by_lin[lin]
+        node["children"] = children
+
+    return top_nodes
+
 
 class GenericParser:
     """Generic parser for turning CSV/TSV into internal nodes dictionaries.
@@ -61,7 +96,7 @@ class GenericParser:
         "genus",
         "species",
         "strain",
-        "genome",
+        "genome",               # CTB: do we use this?
     ]
 
     def __init__(self, filename, *, sep=",", ranks=None):
@@ -96,70 +131,23 @@ class Parse_SourmashCSVSummary(GenericParser):
 
             tax_rows.append((lineage, row))
 
-        # find the top nodes/names by superkingdom annotation
-        top_names = []
-        for k, row in tax_rows:
-            if row["rank"] == self.ranks[0]:
-                top_names.append((k, row))
+        # build nodes
+        nodes_by_tax = {}
+        for (lin, row) in tax_rows:
+            name = lin.rsplit(";")[-1]
+            rank = self.ranks[lin.count(";")]
+            assert row["rank"] == rank
 
-        # turn top names into nodes recursively
-        top_nodes = []
-        for name, row in top_names:
-            node_d = self._make_child_d(tax_rows, "", row, 0)
-            top_nodes.append(node_d)
+            node = dict(
+                name=name,
+                count=1000 * float(row["f_weighted_at_rank"]),
+                rank=row["rank"],
+                score=row["fraction"],
+            )
 
-        return top_nodes
+            nodes_by_tax[lin] = node
 
-    def _make_child_d(self, tax_rows, prefix, this_row, rank_idx):
-        "Make child node dicts, recursively."
-        lineage = this_row["lineage"]
-
-        children = []
-
-        # never descend into unclassified
-        if lineage == "unclassified":
-            assert rank_idx == 0
-            assert not prefix
-        else:
-            # get all immediate child rows. This is badly implemented as
-            # an iterative search :sob:
-            child_rows = self._extract_rows_beneath(tax_rows, lineage, rank_idx + 1)
-            # recurse into children
-            for child_row in child_rows:
-                child_d = self._make_child_d(tax_rows, lineage, child_row, rank_idx + 1)
-                children.append(child_d)
-
-        # name is last element of prefix
-        name = lineage[len(prefix) :].lstrip(";")
-
-        # build actual node!
-        child_d = dict(
-            name=name,
-            count=1000 * float(this_row["f_weighted_at_rank"]),
-            score=this_row["fraction"],
-            rank=this_row["rank"],
-            children=children,
-        )
-
-        return child_d
-
-    def _extract_rows_beneath(self, tax_rows, prefix, rank_idx):
-        "Extract rows beneath a node."
-        # CTB speed up!
-
-        # no more possible to extract => exit
-        if rank_idx >= len(self.ranks):
-            return []
-
-        children = []
-        prefix_str = prefix + ";"
-
-        desired_rank = self.ranks[rank_idx]
-        for lineage, val in tax_rows:
-            if val["rank"] == desired_rank and lineage.startswith(prefix_str):
-                children.append(val)
-
-        return children
+        return assign_children(nodes_by_tax)
 
 
 def parse_csv_summary(tax_csv):
@@ -169,14 +157,6 @@ def parse_csv_summary(tax_csv):
 
 
 class Parse_SourmashTaxAnnotate(GenericParser):
-    def _make_nodes_by_rank_d(self, nodes_by_tax):
-        nodes_by_rank = defaultdict(list)
-        for lin, node in nodes_by_tax.items():
-            rank = node["rank"]
-            nodes_by_rank[rank].append((lin, node))
-
-        return nodes_by_rank
-
     def build(self):
         # load in all tax rows.
         tax_rows = []
@@ -228,38 +208,7 @@ class Parse_SourmashTaxAnnotate(GenericParser):
 
             nodes_by_tax[lin] = node
 
-        # add children
-        def is_child(lin1, lin2):
-            if lin1 == lin2:
-                return False
-
-            len_lin1 = lin1.count(";")
-            len_lin2 = lin2.count(";")
-            if len_lin2 == len_lin1 + 1 and lin1 + ";" in lin2:
-                return True
-            return False
-
-        nodes_by_rank = self._make_nodes_by_rank_d(nodes_by_tax)
-
-        # CTB: speed me up.
-        for parent_rank_i in range(len(self.ranks)):
-            parent_rank = self.ranks[parent_rank_i]
-            child_rank_i = parent_rank_i + 1
-            if child_rank_i >= len(self.ranks):
-                continue
-            child_rank = self.ranks[child_rank_i]
-
-            for lin1, node in nodes_by_rank[parent_rank]:
-                children = []
-                for lin2, node2 in nodes_by_rank[child_rank]:
-                    if is_child(lin1, lin2):
-                        children.append(node2)
-                        node["children"] = children
-
-        top_nodes = []
-        for lin, node in nodes_by_tax.items():
-            if node["rank"] == "superkingdom":
-                top_nodes.append(node)
+        top_nodes = assign_children(nodes_by_tax)
 
         # calc unassigned...
         last_row = rows[-1]
@@ -295,6 +244,7 @@ class Parse_SingleMProfile(GenericParser):
             assert lin.startswith("Root; ")
             orig_lin = lin[len("Root; ") :]
 
+            # create sublineages to root for every lineage
             lin = orig_lin
             first = True
             last = None
@@ -313,7 +263,7 @@ class Parse_SingleMProfile(GenericParser):
                         f"error!? missing taxonomic entry in row '{orig_lin}'; this is not handled by taxburst"
                     )
 
-        # make nodes
+        # make nodes containing information for each lineage entry
         nodes_by_tax = {}
         for lin, rows in rows_by_tax.items():
             name = lin.rsplit(";")[-1].strip()
@@ -325,32 +275,8 @@ class Parse_SingleMProfile(GenericParser):
             node = dict(name=name, rank=rank, count=count)
             nodes_by_tax[lin] = node
 
-        # add children
-        def is_child(lin1, lin2):
-            if lin1 == lin2:
-                return False
-
-            len_lin1 = lin1.count(";")
-            len_lin2 = lin2.count(";")
-            if len_lin2 == len_lin1 + 1 and lin1 + ";" in lin2:
-                return True
-            return False
-
-        # assign children. CTB consider speeding up!
-        for lin1, node in nodes_by_tax.items():
-            children = []
-            for lin2, node2 in nodes_by_tax.items():
-                if is_child(lin1, lin2):
-                    children.append(node2)
-            node["children"] = children
-
-        # pull out all the superkingdom nodes as top_nodes
-        top_nodes = []
-        for lin, node in nodes_by_tax.items():
-            if node["rank"] == "superkingdom":
-                top_nodes.append(node)
-
-        return top_nodes
+        # assign children & find top nodes
+        return assign_children(nodes_by_tax)
 
 
 def parse_SingleM(singleM_tsv):
@@ -366,7 +292,7 @@ class Parse_Krona(GenericParser):
         rows_by_tax = defaultdict(list)
         available_ranks = None
         for row in tax_rows:
-            # initialize list of available ranks
+            # initialize list of available ranks from file itself.
             if available_ranks is None:
                 available_ranks = []
                 for rank in self.ranks:
@@ -374,13 +300,14 @@ class Parse_Krona(GenericParser):
                         break
                     available_ranks.append(rank)
 
+            # for each line, get values for each available rank
             get_ranks = list(reversed(available_ranks))
             lineage = []
             while get_ranks:
                 rank = get_ranks.pop()
                 lineage.append(row[rank])
 
-            # special case unclassified
+            # special case unclassified: skip building sublineages
             if row[rank] == "unclassified":
                 rows_by_tax["unclassified"].append(row)
                 continue
@@ -401,32 +328,7 @@ class Parse_Krona(GenericParser):
             node = dict(name=name, rank=rank, count=count)
             nodes_by_tax[lin] = node
 
-        # add children
-        def is_child(lin1, lin2):
-            if lin1 == lin2:
-                return False
-
-            len_lin1 = lin1.count(";")
-            len_lin2 = lin2.count(";")
-            if len_lin2 == len_lin1 + 1 and lin1 + ";" in lin2:
-                return True
-            return False
-
-        # assign children. CTB consider speeding up!
-        for lin1, node in nodes_by_tax.items():
-            children = []
-            for lin2, node2 in nodes_by_tax.items():
-                if is_child(lin1, lin2):
-                    children.append(node2)
-            node["children"] = children
-
-        # pull out all the superkingdom nodes as top_nodes
-        top_nodes = []
-        for lin, node in nodes_by_tax.items():
-            if node["rank"] == "superkingdom":
-                top_nodes.append(node)
-
-        return top_nodes
+        return assign_children(nodes_by_tax)
 
 
 def parse_krona(krona_tsv):
