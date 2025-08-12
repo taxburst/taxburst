@@ -169,14 +169,6 @@ def parse_csv_summary(tax_csv):
 
 
 class Parse_SourmashTaxAnnotate(GenericParser):
-    def _make_nodes_by_rank_d(self, nodes_by_tax):
-        nodes_by_rank = defaultdict(list)
-        for lin, node in nodes_by_tax.items():
-            rank = node["rank"]
-            nodes_by_rank[rank].append((lin, node))
-
-        return nodes_by_rank
-
     def build(self):
         # load in all tax rows.
         tax_rows = []
@@ -228,38 +220,22 @@ class Parse_SourmashTaxAnnotate(GenericParser):
 
             nodes_by_tax[lin] = node
 
-        # add children
-        def is_child(lin1, lin2):
-            if lin1 == lin2:
-                return False
-
-            len_lin1 = lin1.count(";")
-            len_lin2 = lin2.count(";")
-            if len_lin2 == len_lin1 + 1 and lin1 + ";" in lin2:
-                return True
-            return False
-
-        nodes_by_rank = self._make_nodes_by_rank_d(nodes_by_tax)
-
-        # CTB: speed me up.
-        for parent_rank_i in range(len(self.ranks)):
-            parent_rank = self.ranks[parent_rank_i]
-            child_rank_i = parent_rank_i + 1
-            if child_rank_i >= len(self.ranks):
-                continue
-            child_rank = self.ranks[child_rank_i]
-
-            for lin1, node in nodes_by_rank[parent_rank]:
-                children = []
-                for lin2, node2 in nodes_by_rank[child_rank]:
-                    if is_child(lin1, lin2):
-                        children.append(node2)
-                        node["children"] = children
-
+        # assign children
+        children_by_lin = defaultdict(list)
         top_nodes = []
         for lin, node in nodes_by_tax.items():
-            if node["rank"] == "superkingdom":
+            if lin.count(";") == 0: # top node
                 top_nodes.append(node)
+                continue
+
+            # pick off prefix
+            parent_lin = lin.rsplit(';', 1)[0]
+            # assign child to parent
+            children_by_lin[parent_lin].append(node)
+
+        for lin, node in nodes_by_tax.items():
+            children = children_by_lin[lin]
+            node["children"] = children
 
         # calc unassigned...
         last_row = rows[-1]
