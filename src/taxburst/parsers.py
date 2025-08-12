@@ -1,5 +1,8 @@
 """
 Top level module for parsing input formats.
+
+Please see the developer docs at docs/developer.md in the git repo for
+guidance on writing a new parser.
 """
 
 import csv
@@ -8,11 +11,21 @@ from collections import defaultdict
 import json
 
 
+input_formats = [
+    "csv_summary",
+    "tax_annotate",
+    "SingleM",
+    "krona",
+    "json",
+]
+
 def parse_file(filename, input_format):
     "Parse a variety of input formats. Top level function."
     top_nodes = None
     name = None
     xtra = None
+
+    assert input_format in input_formats
     if input_format == "csv_summary":
         top_nodes = parse_csv_summary(filename)
         name = _strip_suffix(filename, [".csv", ".csv_summary"])
@@ -83,7 +96,7 @@ class GenericParser:
         "genus",
         "species",
         "strain",
-        "genome",
+        "genome",               # CTB: do we use this?
     ]
 
     def __init__(self, filename, *, sep=",", ranks=None):
