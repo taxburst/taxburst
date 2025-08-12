@@ -54,6 +54,9 @@ that runs the parser and checks a few values.
 If you are writing a parser in another language that outputs JSON,
 please feel free to include the original file and the JSON output file
 in the examples, and link to your parsing code in the documentation.
+Note: for the moment, the JSON format doesn't support custom attribute
+display; if you need this, please let us know and we'll figure
+something out!
 
 Feel free to ask for help on any of these tasks!p
 
@@ -61,7 +64,9 @@ Feel free to ask for help on any of these tasks!p
 
 There is no inherent restriction on ranks, although the current parsing
 classes all inherit from `GenericParser` which supports the normal
-NCBI/GTDB ranks from "superkingdom" on down.
+NCBI/GTDB ranks from "superkingdom" on down. Eventually we want to support
+custom ranks (LINS, ICTV, etc); drop us a note if you're interested in
+helping out, or testing!
 
 Other keys are allowed in the node dictionary but are ignored in the
 output format unless an `extra_attributes` dictionary is returned by
