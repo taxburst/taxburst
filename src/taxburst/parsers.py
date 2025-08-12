@@ -118,70 +118,23 @@ class Parse_SourmashCSVSummary(GenericParser):
 
             tax_rows.append((lineage, row))
 
-        # find the top nodes/names by superkingdom annotation
-        top_names = []
-        for k, row in tax_rows:
-            if row["rank"] == self.ranks[0]:
-                top_names.append((k, row))
+        # build nodes
+        nodes_by_tax = {}
+        for (lin, row) in tax_rows:
+            name = lin.rsplit(";")[-1]
+            rank = self.ranks[lin.count(";")]
+            assert row["rank"] == rank
 
-        # turn top names into nodes recursively
-        top_nodes = []
-        for name, row in top_names:
-            node_d = self._make_child_d(tax_rows, "", row, 0)
-            top_nodes.append(node_d)
+            node = dict(
+                name=name,
+                count=1000 * float(row["f_weighted_at_rank"]),
+                rank=row["rank"],
+                score=row["fraction"],
+            )
 
-        return top_nodes
+            nodes_by_tax[lin] = node
 
-    def _make_child_d(self, tax_rows, prefix, this_row, rank_idx):
-        "Make child node dicts, recursively."
-        lineage = this_row["lineage"]
-
-        children = []
-
-        # never descend into unclassified
-        if lineage == "unclassified":
-            assert rank_idx == 0
-            assert not prefix
-        else:
-            # get all immediate child rows. This is badly implemented as
-            # an iterative search :sob:
-            child_rows = self._extract_rows_beneath(tax_rows, lineage, rank_idx + 1)
-            # recurse into children
-            for child_row in child_rows:
-                child_d = self._make_child_d(tax_rows, lineage, child_row, rank_idx + 1)
-                children.append(child_d)
-
-        # name is last element of prefix
-        name = lineage[len(prefix) :].lstrip(";")
-
-        # build actual node!
-        child_d = dict(
-            name=name,
-            count=1000 * float(this_row["f_weighted_at_rank"]),
-            score=this_row["fraction"],
-            rank=this_row["rank"],
-            children=children,
-        )
-
-        return child_d
-
-    def _extract_rows_beneath(self, tax_rows, prefix, rank_idx):
-        "Extract rows beneath a node."
-        # CTB speed up!
-
-        # no more possible to extract => exit
-        if rank_idx >= len(self.ranks):
-            return []
-
-        children = []
-        prefix_str = prefix + ";"
-
-        desired_rank = self.ranks[rank_idx]
-        for lineage, val in tax_rows:
-            if val["rank"] == desired_rank and lineage.startswith(prefix_str):
-                children.append(val)
-
-        return children
+        return assign_children(nodes_by_tax)
 
 
 def parse_csv_summary(tax_csv):
@@ -310,9 +263,7 @@ class Parse_SingleMProfile(GenericParser):
             nodes_by_tax[lin] = node
 
         # assign children & find top nodes
-        top_nodes = assign_children(nodes_by_tax)
-
-        return top_nodes
+        return assign_children(nodes_by_tax)
 
 
 def parse_SingleM(singleM_tsv):
@@ -364,9 +315,7 @@ class Parse_Krona(GenericParser):
             node = dict(name=name, rank=rank, count=count)
             nodes_by_tax[lin] = node
 
-        top_nodes = assign_children(nodes_by_tax)
-
-        return top_nodes
+        return assign_children(nodes_by_tax)
 
 
 def parse_krona(krona_tsv):
