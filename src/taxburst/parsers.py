@@ -328,7 +328,7 @@ class Parse_Krona(GenericParser):
         rows_by_tax = defaultdict(list)
         available_ranks = None
         for row in tax_rows:
-            # initialize list of available ranks
+            # initialize list of available ranks from file itself.
             if available_ranks is None:
                 available_ranks = []
                 for rank in self.ranks:
@@ -336,13 +336,14 @@ class Parse_Krona(GenericParser):
                         break
                     available_ranks.append(rank)
 
+            # for each line, get values for each available rank
             get_ranks = list(reversed(available_ranks))
             lineage = []
             while get_ranks:
                 rank = get_ranks.pop()
                 lineage.append(row[rank])
 
-            # special case unclassified
+            # special case unclassified: skip building sublineages
             if row[rank] == "unclassified":
                 rows_by_tax["unclassified"].append(row)
                 continue
@@ -363,30 +364,7 @@ class Parse_Krona(GenericParser):
             node = dict(name=name, rank=rank, count=count)
             nodes_by_tax[lin] = node
 
-        # add children
-        def is_child(lin1, lin2):
-            if lin1 == lin2:
-                return False
-
-            len_lin1 = lin1.count(";")
-            len_lin2 = lin2.count(";")
-            if len_lin2 == len_lin1 + 1 and lin1 + ";" in lin2:
-                return True
-            return False
-
-        # assign children. CTB consider speeding up!
-        for lin1, node in nodes_by_tax.items():
-            children = []
-            for lin2, node2 in nodes_by_tax.items():
-                if is_child(lin1, lin2):
-                    children.append(node2)
-            node["children"] = children
-
-        # pull out all the superkingdom nodes as top_nodes
-        top_nodes = []
-        for lin, node in nodes_by_tax.items():
-            if node["rank"] == "superkingdom":
-                top_nodes.append(node)
+        top_nodes = assign_children(nodes_by_tax)
 
         return top_nodes
 
