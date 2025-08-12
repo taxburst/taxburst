@@ -10,13 +10,16 @@ Pull requests are welcome!
 
 The current built-in parsers are contained in
 `src/taxburst/parsers.py`.  In general, the easiest way to proceed is
-to copy an existing parsing class (e.g. `Parse_SourmashCSVSummary` and
-modify the `build` method.  The current parsers mostly work by
-creating a `nodes_by_tax` dictionary that contains (key, value) pairs
-where each key is a semicolon-separated lineage
-(e.g. `d__Bacteria;p__Spirochaetota`) and each value is a "node
-dictionary", a dictionary containing at least `name`, `count`, and
-`rank`. This dictionary must contain all lineage subpaths.
+to copy and rename an existing parsing class
+(e.g. `Parse_SourmashCSVSummary` and modify the `build` method.
+Then add a new if/else branch in the top level `parse_file` method.
+
+The current parsers mostly work by creating a `nodes_by_tax`
+dictionary that contains (key, value) pairs where each key is a
+semicolon-separated lineage (e.g. `d__Bacteria;p__Spirochaetota`) and
+each value is a "node dictionary", a dictionary containing at least
+`name`, `count`, and `rank`. This dictionary must contain all lineage
+subpaths.
 
 If the `nodes_by_tax` dictionary is built properly, then the function
 `taxburst.parsers.assign_children` will build the hierarchy of nodes
@@ -52,10 +55,6 @@ Other keys are allowed in the node dictionary but are ignored in the
 output format unless an `extra_attributes` dictionary is returned by
 the parsing function; see the `tax_annotate` format parser for an
 example.
-
-
-@CTB talk about hooks
-@CTB talk about testing
 
 ## Internals of the input and output formats
 
