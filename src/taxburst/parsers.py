@@ -45,6 +45,28 @@ def _strip_suffix(filename, endings):
             filename = filename[: -len(ending)]
     return filename
 
+# common utility function...
+def assign_children(nodes_by_tax):
+    "takes a dictionary { lin, node_dict }; returns top nodes"
+    # assign children
+    children_by_lin = defaultdict(list)
+    top_nodes = []
+    for lin, node in nodes_by_tax.items():
+        if lin.count(";") == 0: # top node
+            top_nodes.append(node)
+            continue
+
+        # pick off prefix
+        parent_lin = lin.rsplit(';', 1)[0]
+        # assign child to parent
+        children_by_lin[parent_lin].append(node)
+
+    for lin, node in nodes_by_tax.items():
+        children = children_by_lin[lin]
+        node["children"] = children
+
+    return top_nodes
+
 
 class GenericParser:
     """Generic parser for turning CSV/TSV into internal nodes dictionaries.
@@ -220,22 +242,7 @@ class Parse_SourmashTaxAnnotate(GenericParser):
 
             nodes_by_tax[lin] = node
 
-        # assign children
-        children_by_lin = defaultdict(list)
-        top_nodes = []
-        for lin, node in nodes_by_tax.items():
-            if lin.count(";") == 0: # top node
-                top_nodes.append(node)
-                continue
-
-            # pick off prefix
-            parent_lin = lin.rsplit(';', 1)[0]
-            # assign child to parent
-            children_by_lin[parent_lin].append(node)
-
-        for lin, node in nodes_by_tax.items():
-            children = children_by_lin[lin]
-            node["children"] = children
+        top_nodes = assign_children(nodes_by_tax)
 
         # calc unassigned...
         last_row = rows[-1]
@@ -271,6 +278,7 @@ class Parse_SingleMProfile(GenericParser):
             assert lin.startswith("Root; ")
             orig_lin = lin[len("Root; ") :]
 
+            # create sublineages to root for every lineage
             lin = orig_lin
             first = True
             last = None
@@ -289,7 +297,7 @@ class Parse_SingleMProfile(GenericParser):
                         f"error!? missing taxonomic entry in row '{orig_lin}'; this is not handled by taxburst"
                     )
 
-        # make nodes
+        # make nodes containing information for each lineage entry
         nodes_by_tax = {}
         for lin, rows in rows_by_tax.items():
             name = lin.rsplit(";")[-1].strip()
@@ -301,30 +309,8 @@ class Parse_SingleMProfile(GenericParser):
             node = dict(name=name, rank=rank, count=count)
             nodes_by_tax[lin] = node
 
-        # add children
-        def is_child(lin1, lin2):
-            if lin1 == lin2:
-                return False
-
-            len_lin1 = lin1.count(";")
-            len_lin2 = lin2.count(";")
-            if len_lin2 == len_lin1 + 1 and lin1 + ";" in lin2:
-                return True
-            return False
-
-        # assign children. CTB consider speeding up!
-        for lin1, node in nodes_by_tax.items():
-            children = []
-            for lin2, node2 in nodes_by_tax.items():
-                if is_child(lin1, lin2):
-                    children.append(node2)
-            node["children"] = children
-
-        # pull out all the superkingdom nodes as top_nodes
-        top_nodes = []
-        for lin, node in nodes_by_tax.items():
-            if node["rank"] == "superkingdom":
-                top_nodes.append(node)
+        # assign children & find top nodes
+        top_nodes = assign_children(nodes_by_tax)
 
         return top_nodes
 
