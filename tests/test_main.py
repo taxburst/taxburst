@@ -37,13 +37,14 @@ def test_output_json_ok(tmp_path):
     path = get_example_filepath("SRR11125891.lineages.json")
     output = tmp_path / "xxx.json"
 
-    taxburst.main([path, "-F", "json", "--save-json", str(output)])
+    taxburst.main([path, "-F", "json", "--save-json", str(output),
+                   '--check-tree'])
 
 
 def test_load_json(tmp_path):
     path = get_example_filepath("SRR11125891.lineages.json")
     output = tmp_path / "xxx.html"
-    taxburst.main([path, "-o", str(output), "-F", "json"])
+    taxburst.main([path, "-o", str(output), "-F", "json", '--check-tree'])
 
     assert os.path.exists(output)
 
@@ -51,7 +52,7 @@ def test_load_json(tmp_path):
 def test_csv_summ_default(tmp_path):
     path = get_example_filepath("SRR11125891.summarized.csv")
     output = tmp_path / "xxx.html"
-    taxburst.main([path, "-o", str(output)])
+    taxburst.main([path, "-o", str(output), '--check-tree'])
 
     assert os.path.exists(output)
 
@@ -59,7 +60,8 @@ def test_csv_summ_default(tmp_path):
 def test_csv_summ_specified(tmp_path):
     path = get_example_filepath("SRR11125891.summarized.csv")
     output = tmp_path / "xxx.html"
-    taxburst.main([path, "-o", str(output), "-F", "csv_summary"])
+    taxburst.main([path, "-o", str(output), "-F", "csv_summary",
+                   '--check-tree'])
 
     assert os.path.exists(output)
 
@@ -67,7 +69,8 @@ def test_csv_summ_specified(tmp_path):
 def test_tax_ann(tmp_path):
     path = get_example_filepath("SRR11125891.t0.gather.with-lineages.csv")
     output = tmp_path / "xxx.html"
-    taxburst.main([path, "-o", str(output), "-F", "tax_annotate"])
+    taxburst.main([path, "-o", str(output), "-F", "tax_annotate",
+                   '--check-tree'])
 
     assert os.path.exists(output)
 
@@ -75,7 +78,8 @@ def test_tax_ann(tmp_path):
 def test_SingleM(tmp_path):
     path = get_example_filepath("SRR11125891.singleM.profile.tsv")
     output = tmp_path / "xxx.html"
-    taxburst.main([path, "-o", str(output), "-F", "SingleM"])
+    taxburst.main([path, "-o", str(output), "-F", "SingleM",
+                   '--check-tree'])
 
     assert os.path.exists(output)
 
@@ -83,6 +87,7 @@ def test_SingleM(tmp_path):
 def test_krona(tmp_path):
     path = get_example_filepath("SRR11125891.krona.tsv")
     output = tmp_path / "xxx.html"
-    taxburst.main([path, "-o", str(output), "-F", "krona"])
+    taxburst.main([path, "-o", str(output), "-F", "krona",
+                   '--check-tree'])
 
     assert os.path.exists(output)
