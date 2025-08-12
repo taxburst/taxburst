@@ -1,5 +1,8 @@
 # taxburst: sunburst charts for taxonomy, based on Krona
 
+<a href="https://pypi.org/project/taxburst/"><img alt="PyPI" src="https://badge.fury.io/py/taxburst.svg"></a>
+[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/taxburst/README.html)
+
 taxburst is a fork of the [Krona](https://github.com/marbl/Krona)
 software, (see:
 [Ondov, Bergman, and Philippy, 2011](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-385)). It
@@ -36,8 +39,17 @@ Here are some examples of (interactive!) taxburst plots:
 
 ## Install
 
-```
+Via pypi
+
+```bash
 pip install taxburst
+```
+
+or from bioconda
+
+```bash
+conda create -n taxburst -c bioconda taxburst
+conda activate taxburst
 ```
 
 ## Example command lines
@@ -49,7 +61,8 @@ All data files are available in the GitHub repository under `examples/`.
 An example using the summary_csv format
 from `sourmash tax metagenome` (see
 [tax metagenome docs](https://sourmash.readthedocs.io/en/latest/command-line.html#sourmash-tax-metagenome-summarize-metagenome-content-from-gather-results)),
-```
+
+```bash
 taxburst examples/SRR11125891.summarized.csv \
     -o SRR11125891.summarized.html
 ```
@@ -61,7 +74,7 @@ An example using the with-lineages format
 from `sourmash tax annotate` (see
 [tax annotate docs](https://sourmash.readthedocs.io/en/latest/command-line.html#sourmash-tax-annotate-annotates-gather-output-with-taxonomy)
 
-```
+```bash
 taxburst -F tax_annotate \
     examples/SRR11125891.t0.gather.with-lineages.csv \
     -o SRR11125891.tax_annotate.html
@@ -74,7 +87,7 @@ An example using the profile format
 from `singlem pipe` (see
 [singlem pipe docs](https://wwood.github.io/singlem/tools/pipe)):
 
-```
+```bash
 taxburst -F singleM \
     examples/SRR11125891.singleM.profile.tsv \
     -o SRR11125891.singleM.html
