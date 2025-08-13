@@ -19,6 +19,7 @@ input_formats = [
     "json",
 ]
 
+
 def parse_file(filename, input_format):
     "Parse a variety of input formats. Top level function."
     top_nodes = None
@@ -58,25 +59,36 @@ def _strip_suffix(filename, endings):
             filename = filename[: -len(ending)]
     return filename
 
+
 # common utility function...
 def assign_children(nodes_by_tax):
-    "takes a dictionary { lin, node_dict }; returns top nodes"
+    """
+    Takes a dictionary { lin, node_dict }; returns top nodes with children
+    properly assigned. Assumes lineages are semicolon-separated and
+    unclassified/unassigned have been removed.
+    """
     # assign children
     children_by_lin = defaultdict(list)
     top_nodes = []
     for lin, node in nodes_by_tax.items():
-        if lin.count(";") == 0: # top node
+        if lin.count(";") == 0:  # top node, no parent.
             top_nodes.append(node)
             continue
 
-        # pick off prefix
-        parent_lin = lin.rsplit(';', 1)[0]
+        # pick off prefix => parent sublineage.
+        parent_lin = lin.rsplit(";", 1)[0]
+        assert parent_lin, f"'{lin}' has empty superkingdom - this is not allowed!"
+
         # assign child to parent
         children_by_lin[parent_lin].append(node)
 
     for lin, node in nodes_by_tax.items():
         children = children_by_lin[lin]
         node["children"] = children
+
+    # every lineage in the input dict should have an entry in the
+    # children_by_lin dict.
+    assert len(nodes_by_tax) == len(children_by_lin)
 
     return top_nodes
 
@@ -96,7 +108,7 @@ class GenericParser:
         "genus",
         "species",
         "strain",
-        "genome",               # CTB: do we use this?
+        "genome",  # CTB: do we use this?
     ]
 
     def __init__(self, filename, *, sep=",", ranks=None):
@@ -133,7 +145,7 @@ class Parse_SourmashCSVSummary(GenericParser):
 
         # build nodes
         nodes_by_tax = {}
-        for (lin, row) in tax_rows:
+        for lin, row in tax_rows:
             name = lin.rsplit(";")[-1]
             rank = self.ranks[lin.count(";")]
             assert row["rank"] == rank
