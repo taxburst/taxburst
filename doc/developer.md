@@ -9,13 +9,13 @@ Pull requests are welcome!
 ## Guidance on writing new parsers
 
 The current built-in parsers are contained in
-`src/taxburst/parsers.py`.  In general, if you are a Python
-programmer, the easiest way to proceed is to copy and rename an
-existing parsing class (e.g. `Parse_SourmashCSVSummary`) and modify the
-`build` method.  Then add a new if/else branch in the top level
-`parse_file` method.
+`src/taxburst/parsers.py`.  In general, if you are familiar with
+Python, the easiest way to proceed is to copy and rename an existing
+parsing class (e.g. `Parse_SourmashCSVSummary`) and modify the `build`
+method.  Then add a new if/else branch in the top level `parse_file`
+method.
 
-The current parsers mostly work by creating a `nodes_by_tax`
+The current parsers work by creating a `nodes_by_tax`
 dictionary that contains (key, value) pairs where each key is a
 semicolon-separated lineage (e.g. `d__Bacteria;p__Spirochaetota`) and
 each value is a "node dictionary", a dictionary containing at least

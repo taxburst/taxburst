@@ -1,7 +1,7 @@
 import pytest
 
 import taxburst
-from taxburst import checks
+from taxburst import checks, parsers
 
 good_nodes = [
     {
@@ -48,3 +48,22 @@ def test_check_fail_name():
 def test_check_fail_counts():
     with pytest.raises(Exception):
         checks.check_all_counts(bad_nodes, fail_on_error=True)
+
+
+def test_assign_children_empty_lin():
+    # empty lineages are not allowed by 'assign_children'
+    node_d = dict(name='foo', rank='superkingdom', count=100)
+    nodes_by_tax = { '': node_d }
+
+    with pytest.raises(AssertionError):
+        parsers.assign_children(nodes_by_tax)
+
+
+def test_assign_children_empty_superkingdom():
+    node_d = dict(name='foo', rank='phylum', count=100)
+    nodes_by_tax = { ';test': node_d }
+
+    with pytest.raises(AssertionError) as e:
+        parsers.assign_children(nodes_by_tax)
+
+    assert 'has empty sublineage' in str(e.value)
