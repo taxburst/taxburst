@@ -71,13 +71,14 @@ def assign_children(nodes_by_tax):
     children_by_lin = defaultdict(list)
     top_nodes = []
     for lin, node in nodes_by_tax.items():
+        assert lin
         if lin.count(";") == 0:  # top node, no parent.
             top_nodes.append(node)
             continue
 
         # pick off prefix => parent sublineage.
         parent_lin = lin.rsplit(";", 1)[0]
-        assert parent_lin, f"'{lin}' has empty superkingdom - this is not allowed!"
+        assert parent_lin, f"'{lin}' has empty sublineage - this is not allowed!"
 
         # assign child to parent
         children_by_lin[parent_lin].append(node)
