@@ -123,3 +123,14 @@ def augment_tree(first_top_nodes, other_top_nodes):
         new_top_nodes.append(new_node)
 
     return new_top_nodes
+
+
+def normalize_tree_counts(top_nodes):
+    """Normalize all the counts in the tree to a sum of 1 (across each layer)
+
+    NOTE: Changes tree in place. Returns None.
+    """
+    sum_counts = sum([ n["count"] for n in top_nodes ])
+
+    for n in nodes_beneath_top(top_nodes):
+        n["count"] /= sum_counts
