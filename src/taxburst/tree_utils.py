@@ -129,6 +129,8 @@ def normalize_tree_counts(top_nodes):
     """Normalize all the counts in the tree to a sum of 1 (across each layer)
 
     NOTE: Changes tree in place. Returns None.
+
+    @CTB test me.
     """
     sum_counts = sum([ n["count"] for n in top_nodes ])
 
