@@ -1,0 +1,764 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../command-line/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
+    
+    
+      
+        <title>Developer Information - taxburst docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#information-for-developers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="taxburst docs" class="md-header__button md-logo" aria-label="taxburst docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            taxburst docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Developer Information
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/taxburst/taxburst" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="taxburst docs" class="md-nav__button md-logo" aria-label="taxburst docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    taxburst docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/taxburst/taxburst" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quickstart
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../command-line/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Command line docs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Developer Information
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Developer Information
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#guidance-on-writing-new-parsers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guidance on writing new parsers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guidance on writing new parsers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples-documentation-and-automated-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples, documentation, and automated testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional points
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internals-of-the-input-and-output-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internals of the input and output formats
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Internals of the input and output formats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-dictionary-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal dictionary format
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-version-of-the-internal-dictionary-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON version of the internal dictionary format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output formatting
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#guidance-on-writing-new-parsers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guidance on writing new parsers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guidance on writing new parsers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples-documentation-and-automated-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples, documentation, and automated testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional points
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internals-of-the-input-and-output-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internals of the input and output formats
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Internals of the input and output formats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-dictionary-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal dictionary format
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-version-of-the-internal-dictionary-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON version of the internal dictionary format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output formatting
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="information-for-developers">Information for Developers<a class="headerlink" href="#information-for-developers" title="Permanent link">&para;</a></h1>
+<p>Please file issues in
+<a href="https://github.com/taxburst/taxburst/issues">the issue tracker</a> if
+you have questions or comments!</p>
+<p>Pull requests are welcome!</p>
+<h2 id="guidance-on-writing-new-parsers">Guidance on writing new parsers<a class="headerlink" href="#guidance-on-writing-new-parsers" title="Permanent link">&para;</a></h2>
+<p>The current built-in parsers are contained in
+<code>src/taxburst/parsers.py</code>.  In general, if you are familiar with
+Python, the easiest way to proceed is to copy and rename an existing
+parsing class (e.g. <code>Parse_SourmashCSVSummary</code>) and modify the <code>build</code>
+method.  Then add a new if/else branch in the top level <code>parse_file</code>
+method.</p>
+<p>The current parsers work by creating a <code>nodes_by_tax</code>
+dictionary that contains (key, value) pairs where each key is a
+semicolon-separated lineage (e.g. <code>d__Bacteria;p__Spirochaetota</code>) and
+each value is a "node dictionary", a dictionary containing at least
+<code>name</code>, <code>count</code>, and <code>rank</code>. This dictionary must contain all lineage
+subpaths - e.g. if there is an entry for <code>d__Bacteria;p__Spirochaetota</code>
+then there must also be an entry for <code>d__Bacteria</code>.</p>
+<p>If the <code>nodes_by_tax</code> dictionary is built properly, then the function
+<code>taxburst.parsers.assign_children</code> will build the hierarchy of nodes
+needed for conversion into XHTML.</p>
+<p>Many consistency checks are applied to this tree before output, and
+additional consistency checks can be run with <code>--check-tree</code> on the
+taxburst command line. If you find an error that is not caught by
+these checks, please file an issue about it and we will add it to the
+checks!</p>
+<p>An alternative approach to writing a parser is to produce your own
+set of nested dictionaries in Python, or, if you prefer to program
+in a different language, write code to output the JSON format (see below).</p>
+<h3 id="examples-documentation-and-automated-testing">Examples, documentation, and automated testing<a class="headerlink" href="#examples-documentation-and-automated-testing" title="Permanent link">&para;</a></h3>
+<p>For each new Python-based format parser, please add an example
+(ideally, calculated for the metagenome <code>SRR11125891</code>) to the
+<code>examples/</code> top-level directory, and (ideally) add a step to the
+snakemake workflow in <code>examples/Snakefile</code> so that taxburst is
+automatically run on the example. You should also add a link to the
+example output in the <code>doc/README.md</code> file.</p>
+<p>Please also add a brief description of the new parser format to
+the <code>doc/command-line.md</code> document.</p>
+<p>Last but by no means least, please add a new <code>tests/test_parse_*.py</code> file
+that runs the parser and checks a few values.</p>
+<p>If you are writing a parser in another language that outputs JSON,
+please feel free to include the original file and the JSON output file
+in the examples, and link to your parsing code in the documentation.
+Note: for the moment, the JSON format doesn't support custom attribute
+display; if you need this, please let us know and we'll figure
+something out!</p>
+<p>Feel free to ask for help on any of these tasks!p</p>
+<h3 id="additional-points">Additional points<a class="headerlink" href="#additional-points" title="Permanent link">&para;</a></h3>
+<p>There is no inherent restriction on ranks, although the current parsing
+classes all inherit from <code>GenericParser</code> which supports the normal
+NCBI/GTDB ranks from "superkingdom" on down. Eventually we want to support
+custom ranks (LINS, ICTV, etc); drop us a note if you're interested in
+helping out, or testing!</p>
+<p>Other keys are allowed in the node dictionary but are ignored in the
+output format unless an <code>extra_attributes</code> dictionary is returned by
+the parsing function; see the <code>tax_annotate</code> format parser for an
+example.</p>
+<h2 id="internals-of-the-input-and-output-formats">Internals of the input and output formats<a class="headerlink" href="#internals-of-the-input-and-output-formats" title="Permanent link">&para;</a></h2>
+<p>The taxburst code works in the following stages:</p>
+<ol>
+<li>Load in an input file containing some taxonomic summary.</li>
+<li>Convert that summary into an internal tree format in Python, based on nested lists of dictionaries.</li>
+<li>Convert that internal tree format into XHTML, which is then saved in a static HTML file with accompanying JavaScript to support interactive visualization.</li>
+</ol>
+<p>These two intermediate formats are useful to know about because there
+are two ways to support new input formats: you can either write a
+Python function to convert a new format into the internal tree format,
+or you can write code in <em>any</em> language to output JSON that can be
+loaded into the internal tree format.</p>
+<p>taxburst consumes a JSON version of this format with <code>-F json</code>, and
+produces this format with <code>--save-json &lt;filenam&gt;</code>.</p>
+<p>(In the future, it should be possible to modify the internal JavaScript in
+the static HTML file to read the JSON directly, which would simplify this
+even more and allow for more flexibility as well.)</p>
+<h3 id="internal-dictionary-format">Internal dictionary format<a class="headerlink" href="#internal-dictionary-format" title="Permanent link">&para;</a></h3>
+<p>Here is a simple example of the internal dictionary format:</p>
+<pre><code class="language-python">nodes = [
+    {
+        &quot;name&quot;: &quot;A&quot;,
+        &quot;count&quot;: 5,
+        &quot;score&quot;: 0.831,
+        &quot;rank&quot;: &quot;Phylum&quot;,
+        &quot;children&quot;: [
+            {&quot;name&quot;: &quot;B&quot;, &quot;count&quot;: 3, &quot;score&quot;: 0.2, &quot;rank&quot;: &quot;Class&quot;},
+            {&quot;name&quot;: &quot;C&quot;, &quot;count&quot;: 1, &quot;score&quot;: 0.1, &quot;rank&quot;: &quot;Class&quot;},
+        ],
+    },
+]
+</code></pre>
+<p>See
+<a href="https://github.com/taxburst/taxburst/blob/main/examples/simple-output.py"><code>examples/simple-output.py</code></a>
+in the github repo for example code to produce an output HTML from
+this.</p>
+<h3 id="json-version-of-the-internal-dictionary-format">JSON version of the internal dictionary format<a class="headerlink" href="#json-version-of-the-internal-dictionary-format" title="Permanent link">&para;</a></h3>
+<p>This nested dictionary format converts to fairly simple JSON:</p>
+<pre><code class="language-json">[
+  {
+    &quot;name&quot;: &quot;A&quot;,
+    &quot;count&quot;: 5,
+    &quot;rank&quot;: &quot;Phylum&quot;,
+    &quot;children&quot;: [
+      {
+        &quot;name&quot;: &quot;B&quot;,
+        &quot;count&quot;: 3,
+        &quot;rank&quot;: &quot;Class&quot;
+      },
+      {
+        &quot;name&quot;: &quot;C&quot;,
+        &quot;count&quot;: 1,
+        &quot;rank&quot;: &quot;Class&quot;
+      }
+    ]
+  }
+]
+</code></pre>
+<p>This can be loaded from a file and converted into an HTML file like so:</p>
+<pre><code class="language-python">import json
+import taxburst
+
+with open('nodes.json') as fp:
+   nodes = json.load(fp)
+
+content = taxburst.generate_html(nodes)
+with open('nodes.html') as fp:
+   fp.write(content)
+</code></pre>
+<p>This is equivalent to <code>taxburst -F json nodes.json -o nodes.html</code>.</p>
+<h2 id="output-formatting">Output formatting<a class="headerlink" href="#output-formatting" title="Permanent link">&para;</a></h2>
+<p>taxburst uses
+<a href="https://jinja.palletsprojects.com/en/stable/">Jinja2 templates</a> to
+provide customizable formatting of the HTML output. Please see the
+files in
+<a href="https://github.com/taxburst/taxburst/tree/main/src/taxburst/templates">src/taxburst/templates/</a>
+for implementation.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../command-line/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Command line docs">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Command line docs
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
