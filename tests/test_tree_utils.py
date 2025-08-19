@@ -24,6 +24,14 @@ def test_check_trees_are_equal():
     assert checks.trees_are_equal(good_nodes, a_copy)
 
 
+def test_check_normalize_tree():
+    a_copy = tree_utils.copy_tree(good_nodes)
+    tree_utils.normalize_tree_counts(a_copy)
+    assert a_copy[0]["count"] == 1
+    assert a_copy[0]["children"][0]["count"] == 3/5
+    assert a_copy[0]["children"][1]["count"] == 1/5
+
+
 def test_tricky_combo():
     from taxburst import parsers
 
