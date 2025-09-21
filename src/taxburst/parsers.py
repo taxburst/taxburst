@@ -179,6 +179,9 @@ class Parse_SourmashTaxAnnotate(GenericParser):
         name_col = "match_name"
         if name_col not in rows[0].keys():
             name_col = "name"
+        count_col = "n_unique_weighted_found"
+        if not rows[0][count_col]:
+            count_col = "unique_intersect_bp"
 
         for row in rows:
             # add genome onto lineage
@@ -213,7 +216,7 @@ class Parse_SourmashTaxAnnotate(GenericParser):
             rank = self.ranks[lin.count(";")]
             count = 0.0
             for row in rows:
-                count += int(row["n_unique_weighted_found"])
+                count += int(row[count_col])
 
             node = dict(name=name, rank=rank, count=count)
             if rank == "genome" or rank == "strain":
