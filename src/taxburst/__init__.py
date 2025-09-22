@@ -4,13 +4,20 @@ import pprint
 import argparse
 import os.path
 import json
+from importlib.metadata import version
 
 from . import checks
 from . import parsers
 from .output import generate_html
 
 
+VERSION = version(__name__)
+
+
 def main(argv=None):
+    print(f"== This is taxburst version {VERSION}. ==", file=sys.stderr)
+    print("== Please cite Ondov et al., 2011, doi:10.1186/1471-2105-12-385 ==\n", file=sys.stderr)
+
     p = argparse.ArgumentParser()
     p.add_argument("tax_csv", help="input tax CSV, in sourmash csv_summary format")
     p.add_argument(
@@ -29,6 +36,7 @@ def main(argv=None):
         help="fail if tree doesn't pass checks; implies --check-tree",
         action="store_true",
     )
+
     if argv is None:
         args = p.parse_args()
     else:
