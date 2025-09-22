@@ -67,4 +67,4 @@ def main(argv=None):
         with open(args.output_html, "wt") as fp:
             fp.write(content)
 
-        print(f"wrote output to '{args.output_html}'")
+        print(f"wrote HTML output to '{args.output_html}'")

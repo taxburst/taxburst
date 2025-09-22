@@ -5,6 +5,7 @@ Please see the developer docs at docs/developer.md in the git repo for
 guidance on writing a new parser.
 """
 
+import sys
 import csv
 import os
 from collections import defaultdict
@@ -33,7 +34,7 @@ def parse_file(filename, input_format):
     elif input_format == "tax_annotate":
         top_nodes = parse_tax_annotate(filename)
         name = _strip_suffix(filename, [".csv", ".with-lineages"])
-        xtra = {"abund": 'display="Est abund"'}
+        xtra = {"abund": 'display="Est abund"'} # @CTB
     elif input_format.lower() == "singlem":
         top_nodes = parse_SingleM(filename)
         name = _strip_suffix(filename, [".tsv", ".profile"])
@@ -45,7 +46,9 @@ def parse_file(filename, input_format):
             top_nodes = json.load(fp)
         name = _strip_suffix(filename, [".json"])
     else:
-        assert 0, f"unknown input format specified: {input_format}"
+        raise ValueError(f"unknown input format specified: {input_format}")
+
+    print(f"loaded file '{filename}' with input parser '{input_format}'")
 
     return top_nodes, name, xtra
 
